@@ -1,0 +1,119 @@
+﻿<div class="modal inmodal" id="BuscadorEmpresas" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">@General._BuscadorEmpresas._Lbl_Buscar_Empresa</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-striped small" id="dtEnterprises">
+                    <thead>
+                        <tr>
+                            <th>@General._BuscadorEmpresas.Tblh_BuscadorEmpresas_IDEmpresa</th>
+                            <th>@General._BuscadorEmpresas.Tblh_Buscadorempresas_Acronimo</th>
+                            <th>@General._BuscadorEmpresas.Tblh_BuscadorEmpreas_RazonSocial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="sch-search">@General._BuscadorEmpresas.Tblf_BuscadorEmpresas_IDEmpresa</th>
+                            <th class="sch-search">@General._BuscadorEmpresas.Tblf_BuscadorEmpresas_Acronimo</th>
+                            <th class="sch-search">@General._BuscadorEmpresas.Tblf_BuscadorEmpresas_RazonSocial</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;@General._BuscadorEmpresas.Tblf_BuscadorEmpresas_Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var modalId = null;
+    $("#BuscadorEmpresas").on('hide.bs.modal', function () {
+        if ($.fn.DataTable.isDataTable("#dtEnterprises")) {
+            $('#dtEnterprises').DataTable().clear().destroy();
+        }
+    });
+
+    $("#BuscadorEmpresas").on("shown.bs.modal", function (e) {
+        modalId = $(e.relatedTarget).data('modal-eid');
+        DtTableEmpresa = $('#dtEnterprises').DataTable({
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        $(this).val($(this).val().replace(/[-.&\\"\\'\\+\\?\\*\\/\\¿\\!\\¡]/gi, ''));
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+                });
+            },
+            columns: [
+                { "data": "IDEMPRESA" },
+                { "data": "ACRONIMO" },
+                { "data": "NOMBRE" },
+            ],
+            "filter": true,
+            "pagingType": "simple_numbers",
+            "orderClasses": true,
+            "columnFilter": true,
+            "tooltip": true,
+            "sDom": "lrtip",
+            "searchDelay": 500,
+            "scrollCollapse": true,
+            "bDeferRender": true,
+            "bFilter": true,
+            bProcessing: true,
+            bServerSide: true,
+            sAjaxSource: "@Url.Action("_ModalEnterprise","Home", new { Area = "Contratista" })"
+        });
+
+        $('.sch-search').each(function () {
+            var title = $('#dtEnterprises thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" class="form-control" placeholder="' + title + '" style="width:100%;height:32px;" "  />');
+        });
+
+        $('#dtEnterprises tbody').on('click', 'tr', function (e1) {
+            e1.preventDefault();
+            e1.stopImmediatePropagation();
+            if (DtTableEmpresa != null) {
+                var data = DtTableEmpresa.row(this).data();
+                $(this).removeClass('selected');
+                modalRetornaDataEmpresa(data);
+                $("[data-dismiss=modal]").trigger({ type: "click" });
+            }
+            else {
+                $(this).addClass('selected');
+            }
+            return false;
+        });
+
+        function modalRetornaDataEmpresa(elemento) {
+            if (elemento != undefined) {
+                switch (modalId) {
+                    case 1:
+                        $('#txtIDEMPRESA_MODAL_1').val(elemento.IDEMPRESA);
+                        $('#txtID_PROPIETARIO_MODAL_1').val(elemento.IDEMPRESA);
+                        $('#txtACRONIMO_MODAL_1').val(elemento.ACRONIMO);
+                        break;
+                    case 2:
+                        $('#txtIDEMPRESA_MODAL_2').val(elemento.IDEMPRESA);
+                        $('#txtID_PROPIETARIO_MODAL_2').val(elemento.IDEMPRESA);
+                        $('#txtACRONIMO_MODAL_2').val(elemento.ACRONIMO);
+                        break;
+                }
+            }
+        }
+    });
+</script>
+

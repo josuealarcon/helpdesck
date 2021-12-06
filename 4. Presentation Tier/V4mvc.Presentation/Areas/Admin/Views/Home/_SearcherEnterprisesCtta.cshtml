@@ -1,0 +1,211 @@
+﻿<!--pop_empresa.asp-->
+<div class="modal inmodal" id="searcher-enterprisectta" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content  animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Busqueda Empresa Contratista</h5>
+            </div>
+            <div class="modal-body" id="modal-searcher-enterprisectta">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Mostrar</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control input-sm" data-bind="options:$root.listLength,value:length">
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Registros</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <label>@Mandante.Home.General.Lbl_Operacion</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control input-sm" data-bind="options:$root.listDivisiones, optionsText:'DIVISION', optionsValue:'DIVCOD',value:divcod, optionsCaption:'TODOS'">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover table-striped dataTable small" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-bind="click:function(data,event){order('1',this)}">
+                                @Mandante.Home.General.Lbl_IDEmpresa
+                                <div class="pull-right"><i data-bind="visible: sort() == 1,css: sort() == 1 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('0',this)}">
+                                @Mandante.Home.General.Lbl_Acronimo
+                                <div class="pull-right"><i data-bind="visible: sort() == 0,css: sort() == 0 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('2',this)}">
+                                @Mandante.Home.General.Lbl_Nombre_RazonSocial
+                                <div class="pull-right"><i data-bind="visible: sort() == 2,css: sort() == 2 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: listEnterpriseCtta">
+                        <tr data-bind="click:function(data,event){$root.selectItem($data)}">
+                            <td data-bind="text: IDEMPRESA"></td>
+                            <td data-bind="text: ACRONIMO"></td>
+                            <td data-bind="text: NOMBRE"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th><input class="form-control input-sm" type="text" placeholder="IDEMPRESA" data-bind="textInput: idempresa" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="ACRONIMO" data-bind="textInput: acronimo" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="NOMBRE" data-bind="textInput: nombre" /></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row">
+                    <div class="pull-right">
+                        <ul id="pagination-enteprisectta" class="pagination"></ul>
+                    </div>
+                    <div class="pull-left">
+                        @Mandante.Home.Tabla.Lbl_Mostrando <span data-bind="text: (start() + 1)"></span> @Mandante.Home.Tabla.Lbl_A <span data-bind="text: registros()"></span> @Mandante.Home.Tabla.Lbl_De <span data-bind="text: count()"></span> @Mandante.Home.Tabla.Lbl_Registros
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> &nbsp;@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/knockoutJS")
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var modelEnterpriseCtta = null;
+    function loadSearcherEnterpriseCtta(idModal) {
+
+        function EnterpriseCttaViewModel() {
+            ko.cleanNode($('#modal-searcher-enterprisectta')[0]);
+            var self = this;
+            self.idModal = ko.observable(idModal);
+            self.listEnterpriseCtta = ko.observableArray();
+            self.active = ko.observable(true);
+            self.page = ko.observable();
+            self.start = ko.observable(0);
+            self.listLength = ko.observableArray([10, 25, 50, 100]);
+            self.listDivisiones = ko.observableArray();
+            self.length = ko.observable(10);
+            self.sort = ko.observable("0");
+            self.ordering = ko.observable("asc");
+            self.count = ko.observable(0);
+            self.registros = ko.observable(self.length());
+            self.acronimo = ko.observable().extend({ throttle: 1000 });
+            self.idempresa = ko.observable().extend({ throttle: 1000 });
+            self.nombre = ko.observable().extend({ throttle: 1000 });
+            self.divcod = ko.observable();
+
+            self.addEnterpriseCtta = function (data) { for (var key in data) { self.listEnterpriseCtta.push(ko.toJS(data[key])); } }
+
+            self.page.subscribe(function (value) {
+                self.registros(value * self.length());
+                var pag = ((value * self.length()) - self.length());
+                self.start(pag);
+            });
+
+            self.order = function (value) {
+                self.sort(value);
+                self.start(0);
+                self.ordering() == 'asc' ? self.ordering('desc') : self.ordering('asc');
+            }
+
+            self.length.subscribe(function () {
+                self.init();
+                self.registros(self.length());
+            });
+
+            self.divcod.subscribe(function () { self.init() });
+            self.ordering.subscribe(function () { self.init() });
+            self.acronimo.subscribe(function () { self.init() });
+            self.idempresa.subscribe(function () { self.init() });
+            self.nombre.subscribe(function () { self.init() });
+
+            self.init = function () {
+                if (self.active()) {
+                    var data = {
+                        START: self.start,
+                        LENGTH: self.length,
+                        COLUMN: self.sort,
+                        DIRECTION: self.ordering,
+                        ACRONIMO: self.acronimo,
+                        IDEMPRESA: self.idempresa,
+                        NOMBRE: self.nombre,
+                        DIVISION: self.divcod
+                    };
+
+                    $('#pagination-enteprisectta').pagination({
+                        ajax: function (options, refresh, $target) {
+                            self.page(options.current),
+                                $.ajax({
+                                    url: '@Url.Action("_SearcherEnterprisesCtta", "Home", new { Area = "Mandante" })',
+                                    data: data,
+                                    dataType: 'json'
+                                }).done(function (res) {
+                                    self.listEnterpriseCtta.removeAll();
+                                    self.addEnterpriseCtta(res.data);
+                                    self.count(res.COUNT);
+                                    refresh({
+                                        total: res.COUNT,
+                                        length: self.length()
+                                    });
+                                }).fail(function (error) { console.log('error'); });
+                        },
+                        prev: "@Mandante.Home.Tabla.Lbl_Anterior",
+                        next: "@Mandante.Home.Tabla.Lbl_Siguiente"
+                    });
+                }
+            }
+
+            self.clear = function () {
+                self.active(false);
+                self.length(10);
+                self.sort('0');
+                self.ordering('asc');
+                self.acronimo('');
+                self.idempresa('');
+                self.nombre('');
+                self.divcod('');
+            }
+
+            self.selectItem = function (data) {
+                switch (self.idModal()) {
+                    case 1:
+                        $('#txtIdEmpresa').val(data.IDEMPRESA).trigger('change');
+                        $('#txtAcronimo').val(data.ACRONIMO).trigger('change');
+                        break;
+                    case 2:
+                        $('#txtSubIdEmpresa').val(data.IDEMPRESA).trigger('change');
+                        $('#txtAcronimoSubIdEmpresa').val(data.ACRONIMO).trigger('change');
+                        break;
+                }
+                self.clear();
+                $('#searcher-enterprisectta').modal('hide');
+            }
+        }
+
+        var vmEnterpriseCtta = new EnterpriseCttaViewModel();
+        vmEnterpriseCtta.init();
+        modelEnterpriseCtta = vmEnterpriseCtta;
+        ko.applyBindings(vmEnterpriseCtta, $('#modal-searcher-enterprisectta')[0]);
+
+        $.getJSON('@Url.Action("GetAllDivisiones", "Home", new { Area = "Mandante" })', function (data) {
+            vmEnterpriseCtta.listDivisiones.removeAll();
+            vmEnterpriseCtta.listDivisiones(data);
+        });
+
+    }
+
+</script>

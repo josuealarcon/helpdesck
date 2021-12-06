@@ -1,0 +1,16 @@
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\bin\Debug\Newtonsoft.Json.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.AssemblyReference.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CoreCompileInputs.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CopyComplete
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.pdb
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.dll
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.pdb
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.AssemblyReference.cache
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CopyComplete
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.dll
+C:\Users\Tilin\source\repos\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.pdb

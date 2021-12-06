@@ -1,0 +1,50 @@
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.dll.config
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Abstractions.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Container.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.Entities.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Newtonsoft.Json.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.Entities.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.dll.config
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Abstractions.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Container.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.dll.config
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.AssemblyReference.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.CoreCompileInputs.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.CopyComplete
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.dll.config
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.ServiceClient.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Abstractions.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Container.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.Entities.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.Entities.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.BusinessLogic.dll.config
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Abstractions.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Unity.Container.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.pdb
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\V4mvc.DataAccess.dll.config
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.AssemblyReference.cache
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.CoreCompileInputs.cache
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.csproj.CopyComplete
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.dll
+C:\Users\Tilin\source\repos\helpdesk\3. Service Tier\V4mvc.ServiceClient\obj\Debug\V4mvc.ServiceClient.pdb

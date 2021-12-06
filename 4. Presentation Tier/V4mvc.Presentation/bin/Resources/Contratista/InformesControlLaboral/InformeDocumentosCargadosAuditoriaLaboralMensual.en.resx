@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Msg_DocumentosCargadosValidadosyResultadosAuditorias" xml:space="preserve">
+    <value>Documentos Cargados y Validados para Auditorias Laborales - Resultados Auditorias Laborales y Remuneraciones (Por Empresas)</value>
+  </data>
+  <data name="Msg_Informe_Documentos_Nota" xml:space="preserve">
+    <value>NOTA</value>
+  </data>
+  <data name="Msg_Informe_Documentos_NotaMensaje" xml:space="preserve">
+    <value>MENSAJE</value>
+  </data>
+  <data name="Tblb_Filtros_PeriodoConsultado" xml:space="preserve">
+    <value>Periodo Consultado</value>
+  </data>
+  <data name="Tblh_Filtro_DatosFiltro" xml:space="preserve">
+    <value>Datos Filtro</value>
+  </data>
+  <data name="Tblh_Filtro_FiltrosDeInforme" xml:space="preserve">
+    <value>Report Filters</value>
+  </data>
+  <data name="Tblh_Informe_Acronimo" xml:space="preserve">
+    <value>Acronimo</value>
+  </data>
+  <data name="Tblh_Informe_Alto" xml:space="preserve">
+    <value>Alto: 61 a 75%</value>
+  </data>
+  <data name="Tblh_Informe_Aprob" xml:space="preserve">
+    <value>Aprob.</value>
+  </data>
+  <data name="Tblh_Informe_Aud" xml:space="preserve">
+    <value>%Aud.</value>
+  </data>
+  <data name="Tblh_Informe_Auditoria" xml:space="preserve">
+    <value>Auditoria</value>
+  </data>
+  <data name="Tblh_Informe_AuditoriaControlLaboral" xml:space="preserve">
+    <value>Auditoria Control Laboral</value>
+  </data>
+  <data name="Tblh_Informe_AuditoriaPresencial" xml:space="preserve">
+    <value>Auditoria Presencial</value>
+  </data>
+  <data name="Tblh_Informe_AuditoriaRemuneraciones" xml:space="preserve">
+    <value>Auditoria Remuneraciones</value>
+  </data>
+  <data name="Tblh_Informe_Bajo" xml:space="preserve">
+    <value>Bajo: 91 a 100%</value>
+  </data>
+  <data name="Tblh_Informe_Banco" xml:space="preserve">
+    <value>Banco</value>
+  </data>
+  <data name="Tblh_Informe_Calc" xml:space="preserve">
+    <value>%Calc</value>
+  </data>
+  <data name="Tblh_Informe_Certif" xml:space="preserve">
+    <value>Certif</value>
+  </data>
+  <data name="Tblh_Informe_Critico" xml:space="preserve">
+    <value>Critico: 0 a 60%</value>
+  </data>
+  <data name="Tblh_Informe_Ctrl" xml:space="preserve">
+    <value>%Ctrl</value>
+  </data>
+  <data name="Tblh_Informe_Datos" xml:space="preserve">
+    <value>Datos</value>
+  </data>
+  <data name="Tblh_Informe_Deuda" xml:space="preserve">
+    <value>Deuda</value>
+  </data>
+  <data name="Tblh_Informe_Dot" xml:space="preserve">
+    <value>Dot</value>
+  </data>
+  <data name="Tblh_Informe_Ejec" xml:space="preserve">
+    <value>Ejec.</value>
+  </data>
+  <data name="Tblh_Informe_Empresa" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="Tblh_Informe_F29" xml:space="preserve">
+    <value>F-29</value>
+  </data>
+  <data name="Tblh_Informe_F30" xml:space="preserve">
+    <value>F-30</value>
+  </data>
+  <data name="Tblh_Informe_F301" xml:space="preserve">
+    <value>F-30-1</value>
+  </data>
+  <data name="Tblh_Informe_Foliado" xml:space="preserve">
+    <value>Foliado</value>
+  </data>
+  <data name="Tblh_Informe_Form" xml:space="preserve">
+    <value>Form.</value>
+  </data>
+  <data name="Tblh_Informe_Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Tblh_Informe_Imposic" xml:space="preserve">
+    <value>Imposic.</value>
+  </data>
+  <data name="Tblh_Informe_IVA" xml:space="preserve">
+    <value>IVA</value>
+  </data>
+  <data name="Tblh_Informe_LDocs" xml:space="preserve">
+    <value>L. Docs.</value>
+  </data>
+  <data name="Tblh_Informe_LeyendaEstado" xml:space="preserve">
+    <value>SI=Validado - NO=Pendiente sin Validar - RE=Rechazado - ZX o Blancos=Sin Datos en el Sistema</value>
+  </data>
+  <data name="Tblh_Informe_LibroR" xml:space="preserve">
+    <value>Libro R.</value>
+  </data>
+  <data name="Tblh_Informe_Medio" xml:space="preserve">
+    <value>Medio: 76 a 90%</value>
+  </data>
+  <data name="Tblh_Informe_Mes" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Tblh_Informe_Mutual" xml:space="preserve">
+    <value>Mutual</value>
+  </data>
+  <data name="Tblh_Informe_Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Tblh_Informe_Pago" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="Tblh_Informe_Planilla" xml:space="preserve">
+    <value>Planilla</value>
+  </data>
+  <data name="Tblh_Informe_Porcentaje" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="Tblh_Informe_Previred" xml:space="preserve">
+    <value>Previred</value>
+  </data>
+  <data name="Tblh_Informe_Proc" xml:space="preserve">
+    <value>Proc.</value>
+  </data>
+  <data name="Tblh_Informe_Remu" xml:space="preserve">
+    <value>Remu.</value>
+  </data>
+  <data name="Tblh_Informe_Riesgos" xml:space="preserve">
+    <value>Riesgos</value>
+  </data>
+  <data name="Tblh_Informe_Tipo" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+</root>

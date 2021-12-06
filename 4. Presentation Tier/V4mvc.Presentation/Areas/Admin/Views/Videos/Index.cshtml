@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model V4mvc.Presentation.Areas.Mandante.Controllers.VideosController.ViewModelVideos
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ul class="breadcrumb_links">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Mandante" })">Dashboard</a></li>
+            <li class="active">@Mandante.Videos.Index.Lbl_Titulo</li>
+        </ul>
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading" id="table-data-container">
+    <div class="col-lg-12" style="overflow-x: auto;">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>
+                    <ol class="breadcrumb">
+                        <li><h2><strong>@Mandante.Videos.Index.Lbl_Titulo</strong></h2></li>
+                        <li><small>@Mandante.Videos.Index.Lbl_NombreModulo</small></li>
+                    </ol>
+                </h5>
+                <div class="ibox-tools">
+                    <a class="btn btn-primary" onclick="CrearEditar(this, { 'MODO': 'NEW'})"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-striped table-hover" id="table-data">
+                    <thead>
+                        <tr>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Id</th>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Modulo</th>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Descripcion</th>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Version</th>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Ver</th>
+                            <th>@Mandante.Videos.Index.Tblh_Listado_Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:entries">
+                        <tr>
+                            <td data-bind="text:ID"></td>
+                            <td data-bind="text:MODULO"></td>
+                            <td data-bind="text:DESCRIPCION"></td>
+                            <td data-bind="text:VERSION"></td>
+                            <td class="text-center">
+                                <div>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#VisualizadorVids" data-bind="attr: {'data-modal-video-id': ID }"><i class='fa fa-file-video-o'></i>&nbsp;@Mandante.Videos.Index.Tblb_Listado_Btn_Ver</button>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div>
+                                    <button type="button" data-bind="click:function(data,event){CrearEditar(event.target, {'MODO': 'EDI', 'ID': ID})}" class="btn btn-info btn-sm"><i class='fa fa-pencil'></i>&nbsp;@Mandante.Videos.Index.Tblb_Listado_Btn_Editar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="sch">@Mandante.Videos.Index.Tblf_Listado_Id</th>
+                            <th class="sch">@Mandante.Videos.Index.Tblf_Listado_Modulo</th>
+                            <th class="sch">@Mandante.Videos.Index.Tblf_Listado_Descripcion</th>
+                            <th class="sch">@Mandante.Videos.Index.Tblf_Listado_Version</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/sweetAlert")
+
+<script>
+
+        function CrearEditar(element, args) {
+
+            var ACCION = args.MODO;
+            var ID_VIDEO = '';
+
+            if (args.MODO == 'EDI') {
+
+                ID_VIDEO = args.ID;
+            }
+
+            var url = '@Html.Raw(Url.Action("CrearEditar","Videos",new { Area = "Mandante", ACCION = "param-id", ID_VIDEO = "param2-id" }))';
+
+            url = url.replace("param-id", ACCION);
+            url = url.replace("param2-id", ID_VIDEO);
+
+            window.location = url;
+        }
+
+</script>
+
+<script>
+
+    function IndexViewModel(model) {
+
+        function Entry(data) {
+            var self = this;
+
+            self.ID = data.ID;
+            self.MODULO = data.MODULO;
+            self.DESCRIPCION = data.DESCRIPCION;
+            self.VERSION = data.VERSION;
+
+        }
+
+        var self = this;
+        self.entries = [];
+
+        for (var key in model.videos) {
+            self.entries.push(new Entry(model.videos[key]));
+        }
+    }
+
+    $(document).ready(function () {
+        var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(vm, $('#table-data-container')[0]);
+
+        $('.sch').each(function () {
+            var title = $('#table-data thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" class="form-control input-sm" placeholder="' + title + '" style="width:100%;"  />');
+        });
+
+        var oTable = $('#table-data').DataTable({
+            "oLanguage": {
+                "sInfo": '@Html.Raw(Resources.DataTable.RecordsQuantity)',
+                "sLengthMenu": '@Html.Raw(Resources.DataTable.RecordsQuantityShow)',
+                "sSearch": '@Html.Raw(Resources.DataTable.Search)',
+                "oPaginate": {
+                    "sNext": '@Html.Raw(Resources.DataTable.Next)',
+                    "sPrevious": '@Html.Raw(Resources.DataTable.Previous)'
+                }
+            },
+            "bFilter": true,
+            "sDom": "lrtip",
+            "columnDefs": [
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": true
+                }
+            ],
+            "order": [[0, "desc"]]
+        });
+        oTable.columns().every(function () {
+            var that = this;
+
+            $('input,select', this.footer()).on('keyup change', function () {
+                that
+                    .search(this.value)
+                    .draw();
+                $(this).blur();
+                $(this).focus();
+            });
+        });
+
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
+    });
+
+</script>
+}

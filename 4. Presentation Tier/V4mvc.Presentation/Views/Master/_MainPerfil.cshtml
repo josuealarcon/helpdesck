@@ -1,0 +1,59 @@
+﻿@using V4mvc.Presentation.Areas.Contratista.Controllers
+@model DashBoardController.ViewModelAdmin
+
+<aside class="user-menu">
+
+    <!-- Tabs -->
+    <div class="tabs-offcanvas">
+        <br />
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#userbar-one" data-toggle="tab"><span class="text-white">Perfil</span></a></li>
+        </ul>
+        @if (@Model.colab_usuario != null)
+        {
+            <div class="tab-content">
+                <br />
+                <br />
+                <div class="main-info">
+                    <div class="user-img">
+                        <img src="http://placehold.it/150x150" alt="User Picture" />
+                        <br />
+                        <br />
+                    </div>
+                    <h6 class="text-white">@Model.colab_usuario.NOMBRES @Model.colab_usuario.APELLIDOS<small><span class="text-white">@Model.colab_usuario.TipoUsuario</span></small></h6>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><i class="fa fa-flask"></i><span class="text-white">RUT Empresa: </span><span class="text-white">@Model.colab_usuario.IDEMPRESA</span></a>
+                    <a href="#" class="list-group-item"><i class="fa fa-flask"></i><span class="text-white">Acronimo: </span><span class="text-white">@Model.colab_usuario.ACRONIMO</span></a>
+                    <a href="#" class="list-group-item"><i class="fa fa-flask"></i><span class="text-white">Empresa:</span></a>
+                    <a href="#" class="list-group-item"><span class="text-white">@Model.colab_usuario.NOMBRE</span></a>        
+                    <a data-toggle="modal" href="@Url.Action("LogOff", "Login")" class="list-group-item goaway"><i class="fa fa-power-off"></i><span class="text-danger"> Cerrar Sesión </span></a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="tab-content">
+                <br />
+                <br />
+                <div class="main-info">
+                    <div class="user-img">
+                        <img src="http://placehold.it/150x150" alt="User Picture" />
+                        <br />
+                        <br />
+                    </div>
+                    <h6 class="text-marine">@Model.admin.NOMBRES @Model.admin.APELLIDOS<small><span class="text-white">@Model.admin.ADMTIPO</span></small></h6>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><i class="fa fa-flask"></i><span class="text-white">PERMISOS: </span><span class="text-white">@Model.admin.ADMRUTVER</span></a>
+                    <a href="#" class="list-group-item"><i class="fa fa-flask"></i><span class="text-white">OPERACIONES: </span></a>
+                    <a href="#" class="list-group-item"><span class="text-white">@Model.admin.ADMDIVISION</span></a>
+                    <a data-toggle="modal" href="@Url.Action("LogOff", "Login")" class="list-group-item goaway"><i class="fa fa-power-off"></i><span class="text-danger">Cerrar Sesión</span></a>
+                </div>
+            </div>
+        }
+
+    </div>
+    <!-- /tabs -->
+
+</aside>

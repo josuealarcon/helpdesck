@@ -1,0 +1,185 @@
+CREATE PROCEDURE [dbo].[V4MVC_DOCS_OST_PREVENCIONISTA_SELECT_ONE_V2_CONTRATOST_CTTA]
+(
+  @NUM_SOLICITUD  INT
+) AS
+BEGIN
+	DECLARE @CS_EMAILS NVARCHAR(MAX) = ''
+	DECLARE @SEP NVARCHAR(2) = ''
+	DECLARE @PERFIL NVARCHAR(500) = ''
+	DECLARE @ADMEMAIL NVARCHAR(50) = ''
+	SELECT
+		TOP 1
+		@PERFIL = Valor1
+	FROM PARAMETROS_V2
+	WHERE DESCRIPCION = 'Validacion Docs Prevencionistas'
+
+	DECLARE cursor_mails CURSOR
+	FOR
+	SELECT ADMEMAIL
+	FROM ADMIN
+	WHERE ADMTIPO = @PERFIL
+
+	OPEN cursor_mails
+
+	FETCH NEXT FROM cursor_mails INTO 
+		@ADMEMAIL
+
+	WHILE @@FETCH_STATUS = 0
+		BEGIN
+			
+			SET @CS_EMAILS = CONCAT(@CS_EMAILS, @SEP, @ADMEMAIL)
+			SET @SEP = ';'
+
+			FETCH NEXT FROM cursor_mails INTO 
+				@ADMEMAIL
+		END
+
+	CLOSE cursor_mails
+
+	DEALLOCATE cursor_mails
+
+	SELECT
+		@CS_EMAILS AS CS_EMAILS,
+		DOP.OST,
+		DOP.MADRE,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							E1.ACRONIMO
+						FROM  ENTERPRISE E1
+						WHERE E1.IDEMPRESA = DOP.MADRE
+					)
+		, '') AS MADRE_ACRONIMO,
+		DOP.EMPRESA,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							E2.ACRONIMO
+						FROM  ENTERPRISE E2
+						WHERE E2.IDEMPRESA = DOP.EMPRESA
+					)
+		, '') AS EMPRESA_ACRONIMO,
+		DOP.RUT_PREVENCIONISTA,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							CONCAT(W0.NOMBRES, ' ', W0.APELLIDOS) AS FNAME
+						FROM  WORKERS W0
+						WHERE W0.RUT = DOP.RUT_PREVENCIONISTA
+					)
+		, '') AS NOMBRES_PREVENCIONISTA,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							OS.FINICIO
+						FROM OST O
+						INNER JOIN OSTARBOL OS
+							ON OS.OST = O.NROOST
+						WHERE
+							O.NROOST = DOP.OST AND
+							OS.EMPRESA = DOP.EMPRESA AND
+							OS.MADRE = DOP.MADRE 
+					)
+		,'') AS OST_FECINICIO,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							OS.FTERMINO
+						FROM OST O
+						INNER JOIN OSTARBOL OS
+							ON OS.OST = O.NROOST
+						WHERE
+							O.NROOST = DOP.OST AND
+							OS.EMPRESA = DOP.EMPRESA AND
+							OS.MADRE = DOP.MADRE 
+					)
+		,'') AS OST_FECTERM,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							O.DESCRIPOST
+						FROM OST O
+						INNER JOIN OSTARBOL OS
+							ON OS.OST = O.NROOST
+						WHERE
+							O.NROOST = DOP.OST AND
+							OS.EMPRESA = DOP.EMPRESA AND
+							OS.MADRE = DOP.MADRE 
+					)
+		,'') AS OST_DESCRIPOST,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							O.DOTTRANS
+						FROM OST O
+						INNER JOIN OSTARBOL OS
+							ON OS.OST = O.NROOST
+						WHERE
+							O.NROOST = DOP.OST AND
+							OS.EMPRESA = DOP.EMPRESA AND
+							OS.MADRE = DOP.MADRE 
+					)
+		,'') AS OST_DOTTRANS,
+		COALESCE(
+					(
+						SELECT
+							TOP 1
+							O.DOTACION
+						FROM OST O
+						INNER JOIN OSTARBOL OS
+							ON OS.OST = O.NROOST
+						WHERE
+							O.NROOST = DOP.OST AND
+							OS.EMPRESA = DOP.EMPRESA AND
+							OS.MADRE = DOP.MADRE 
+					)
+		,'') AS OST_DOTACION,
+		(CASE
+			WHEN
+				DOP.RUT_PREVENCIONISTA IS NOT NULL AND
+				DOP.RUT_PREVENCIONISTA <> '' THEN
+												COALESCE(
+															(
+																SELECT
+																	D.FONO
+																FROM WORKERS W1
+																LEFT JOIN DIRECCION D
+																	ON W1.RUT = D.RUT
+																WHERE
+																	W1.RUT = DOP.RUT_PREVENCIONISTA
+															)
+												, '')			
+			ELSE ''
+			END 
+		) AS FONO,
+		(CASE
+			WHEN
+				DOP.RUT_PREVENCIONISTA IS NOT NULL AND
+				DOP.RUT_PREVENCIONISTA <> '' THEN
+												COALESCE(
+															(
+																SELECT
+																	D.EMAIL
+																FROM WORKERS W2
+																LEFT JOIN DIRECCION D
+																	ON W2.RUT = D.RUT
+																WHERE
+																	W2.RUT = DOP.RUT_PREVENCIONISTA
+															)
+												, '')			
+			ELSE ''
+			END 
+		) AS EMAIL
+
+	FROM DOCS_OST_PREVENCIONISTA DOP
+	WHERE DOP.ID = @NUM_SOLICITUD
+
+END
+

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Msg_GuardarInformacionError" xml:space="preserve">
+    <value>Ha ocurrido un error</value>
+  </data>
+  <data name="Msg_GuardarInformacionOK" xml:space="preserve">
+    <value>Datos guardados correctamente</value>
+  </data>
+  <data name="Lbl_Curso" xml:space="preserve">
+    <value>N° Curso</value>
+  </data>
+  <data name="Lbl_Glosa" xml:space="preserve">
+    <value>Glosa</value>
+  </data>
+  <data name="Lbl_TipoCurso" xml:space="preserve">
+    <value>Tipo Curso</value>
+  </data>
+  <data name="Lbl_Duracion" xml:space="preserve">
+    <value>Duración</value>
+  </data>
+  <data name="Lbl_Lugar" xml:space="preserve">
+    <value>Lugar</value>
+  </data>
+  <data name="Lbl_FechaCurso" xml:space="preserve">
+    <value>Fecha Curso</value>
+  </data>
+  <data name="Lbl_Sala" xml:space="preserve">
+    <value>Sala</value>
+  </data>
+  <data name="Lbl_Reservas" xml:space="preserve">
+    <value>Reservas</value>
+  </data>
+  <data name="Lbl_CuposLibres" xml:space="preserve">
+    <value>Cupos Libres</value>
+  </data>
+  <data name="Lbl_Ubicacion" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Lgn_ReservasCupoFuncionario" xml:space="preserve">
+    <value>Reservar Cupo a Funcionario</value>
+  </data>
+  <data name="Lbl_Funcionario" xml:space="preserve">
+    <value>Funcionario</value>
+  </data>
+  <data name="Lgn_ListaReservas" xml:space="preserve">
+    <value>Lista de Participantes</value>
+  </data>
+  <data name="Lbl_LimiteCapacidad" xml:space="preserve">
+    <value>El curso ha alcanzado el limite de capacidad de reservas.</value>
+  </data>
+  <data name="Lbl_ListaReservas" xml:space="preserve">
+    <value>Lista de Participantes</value>
+  </data>
+  <data name="Tblh_Eliminar" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Tblh_Empresa" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="Tblh_FechaReserva" xml:space="preserve">
+    <value>Fecha Reserva</value>
+  </data>
+  <data name="Tblh_Hora" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Tblh_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Tblh_NombreCompleto" xml:space="preserve">
+    <value>Nombres</value>
+  </data>
+  <data name="Tblh_Seq" xml:space="preserve">
+    <value>Nro.</value>
+  </data>
+  <data name="Btn_Eliminar" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Btn_Guardar" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Btn_Cancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Lbl_Titulo" xml:space="preserve">
+    <value>Cursos - Reserva de Cupo</value>
+  </data>
+  <data name="Lbl_Hora" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Lbl_Informacion" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="Lbl_InformacionObligatoria" xml:space="preserve">
+    <value>Los campos marcados con un (*) son obligatorios</value>
+  </data>
+  <data name="Msg_NoPuedoReservar" xml:space="preserve">
+    <value>No puede Reservar , tiene que completar Anexo 4 y RDP Anexo 5.</value>
+  </data>
+  <data name="Msg_YaTieneReserva" xml:space="preserve">
+    <value>Ya tiene Reserva Anterior en misma charla, No puede reservar nuevamente</value>
+  </data>
+  <data name="Msg_AceptadaReserva" xml:space="preserve">
+    <value>Aceptada su Reserva</value>
+  </data>
+  <data name="Msg_ConFecha" xml:space="preserve">
+    <value>con Fecha</value>
+  </data>
+  <data name="Msg_yHora" xml:space="preserve">
+    <value>y Hora</value>
+  </data>
+  <data name="Val_ID" xml:space="preserve">
+    <value>ID es Requerido</value>
+  </data>
+  <data name="Val_Nombres" xml:space="preserve">
+    <value>Nombres es Requerido</value>
+  </data>
+  <data name="Val_Apellidos" xml:space="preserve">
+    <value>Apellidos es Requerido</value>
+  </data>
+  <data name="Val_Empresa" xml:space="preserve">
+    <value>Empresa es Requerido</value>
+  </data>
+  <data name="Msg_ElCursohaAlcansado" xml:space="preserve">
+    <value>. El curso ha alcanzado el limite de capacidad de reservas.</value>
+  </data>
+  <data name="Msg_LaReservaNoAceptada" xml:space="preserve">
+    <value>La Reserva no fue aceptada.</value>
+  </data>
+  <data name="Msg_Reserva" xml:space="preserve">
+    <value>Reserva</value>
+  </data>
+  <data name="Msg_YaExisteFecha" xml:space="preserve">
+    <value>ya existe, con fecha</value>
+  </data>
+  <data name="Msg_NoHayReservaparaProg" xml:space="preserve">
+    <value>No Hay Participantes para este Curso.</value>
+  </data>
+  <data name="Msg_ELFuncionarioRUT" xml:space="preserve">
+    <value>El funcionario con Rut : </value>
+  </data>
+  <data name="Msg_NoPuedoAñadirPersonaNueva" xml:space="preserve">
+    <value> no puede ser añadido en la lista, tiene los documentos faltantes: PERSONA NUEVA</value>
+  </data>
+  <data name="Msg_NoPuedoAñadirA1Riesgos" xml:space="preserve">
+    <value> no puede ser añadido en la lista, tiene los documentos faltantes: A1RIESGOS.</value>
+  </data>
+  <data name="Lbl_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Msg_NoesVigente" xml:space="preserve">
+    <value>no esta vigente,</value>
+  </data>
+  <data name="Msg_NoesCargada" xml:space="preserve">
+    <value>no esta cargada,</value>
+  </data>
+  <data name="Msg_NoestaValidado" xml:space="preserve">
+    <value>no esta validado,</value>
+  </data>
+  <data name="Msg_ElDocumento" xml:space="preserve">
+    <value>El documento </value>
+  </data>
+  <data name="Lbl_Horas" xml:space="preserve">
+    <value>Horas</value>
+  </data>
+  <data name="Lbl_Documento" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="Lbl_CalificarOrador" xml:space="preserve">
+    <value>Calificar Orador</value>
+  </data>
+  <data name="Lbl_Orador" xml:space="preserve">
+    <value>Orador</value>
+  </data>
+  <data name="Lbl_Observacion" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="Tblh_Asistio" xml:space="preserve">
+    <value>Asistio</value>
+  </data>
+  <data name="Tblh_Nota" xml:space="preserve">
+    <value>Nota</value>
+  </data>
+  <data name="Tblh_Observaciones" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="Tblh_Aprobado" xml:space="preserve">
+    <value>Aprobado</value>
+  </data>
+  <data name="Tblh_Calificacion" xml:space="preserve">
+    <value>Calificación</value>
+  </data>
+  <data name="Val_LongitudMax500" xml:space="preserve">
+    <value>Longitud máxima 500 caracteres.</value>
+  </data>
+  <data name="Msg_EstimadoContratista_1" xml:space="preserve">
+    <value>Estimado(a):   Si usted es contratista, por favor recordar que para realizar reservas de este curso es necesario contar con:  - Induccion Persona Nueva (Presencial o E-Learning) VALIDA y VIGENTE.</value>
+  </data>
+  <data name="Msg_ElCursoCerrado" xml:space="preserve">
+    <value>El curso esta cerrado.</value>
+  </data>
+  <data name="Msg_ParaCalificarCursoDebeasignarOrador" xml:space="preserve">
+    <value>Para Calificar el Curso Debe asignar el orador.</value>
+  </data>
+  <data name="Msg_SoloOradorpuedeCalificar" xml:space="preserve">
+    <value>Solo el orador puede Calificar.</value>
+  </data>
+  <data name="Btn_AbrirCurso" xml:space="preserve">
+    <value>Abrir Curso</value>
+  </data>
+  <data name="Btn_GuardaryFinalizarCurso" xml:space="preserve">
+    <value>Guardar y Finalizar Curso</value>
+  </data>
+  <data name="Msg_EstimadoContratista_2" xml:space="preserve">
+    <value>Estimdo(a):  Si usted es contratista, por favor recordar que para realizar reservas de este curso es necesario contar con: - Contrato Laboral y Anexos VALIDADOS y VIGENTES. - Examen de Alcohol y Drogas VALIDADO y VIGENTE. - Examen Pre Ocupacional VALIDADO y VIGENTE. - Examen de Gran Altura Geografica VALIDADO y VIGENTE (Solo para operacion Los Bronces).</value>
+  </data>
+</root>

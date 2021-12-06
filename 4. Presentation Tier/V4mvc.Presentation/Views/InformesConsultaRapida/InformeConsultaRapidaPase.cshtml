@@ -1,0 +1,198 @@
+﻿@model V4mvc.Presentation.Controllers.InformesConsultaRapidaController.ViewModel_InformeConsultaRapida
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="if: $root.datosInformePase != null">
+    <div class="col-md-6" data-bind="with:datosInformePase">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_Numero</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_Operacion</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_Contrato</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_Administrador</strong></th>
+                </tr>
+            </thead>
+            <tr>
+                <td data-bind="text:LOTENUM"></td>
+                <td data-bind="text:DIVISION"></td>
+                <td data-bind="text:OSTLT"></td>
+                <td data-bind="text:ADMINISTRADOR"></td>
+            </tr>
+            <thead>
+                <tr>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_Empresa</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_TipoDePase</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_FechaInicio</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_FechaTermino</strong></th>
+                </tr>
+            </thead>
+            <tr>
+                <td data-bind="text:APELLIDOSLT"></td>
+                <td data-bind="text:TIPOLT"></td>
+                <td data-bind="text:LOTEFINICIO_LETRA"></td>
+                <td data-bind="text:LOTEFFINAL_LETRA"></td>
+            </tr>
+            <thead>
+                <tr>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_EstadoPase</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_FechaAutorizacion</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_FechaCreación</strong></th>
+                    <th><strong>@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_Datos_SolicitadoPor</strong></th>
+                </tr>
+            </thead>
+            <tr>
+                <td data-bind="text:ESTADO_LOTE"></td>
+                <td data-bind="text:LOTEFECPROCESO_LETRA+' '+LOTEHORPROCESO"></td>
+                <td data-bind="text:LOTEFECHA_LETRA"></td>
+                <td data-bind="text:NOMLOTEUSUARIO"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 invoice-details" data-bind="with:datosInformePase">
+        <h1 class="invoice-id">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Lbl_BúsquedaNumeroPase</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+<div class="row" data-bind="if: $root.funcionarios.length > 0">
+    <div class="col-md-12 bootstrap-grid" data-bind="if: $root.datosInformePase != null">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="TablaInformeConsultaRapidaFuncionarios">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_ID</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_Nombres</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_Apellidos</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_Empresa</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_CumpleDocumentacion</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_SolConduc</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_PuedeConducir</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_SolAlim</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_SolHotel</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridFuncionarios_SolicitudAprobada</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:$root.funcionarios">
+                    <tr>
+                        <td class="text-center">
+                            <u><a data-bind="text:RUTLOTE_FORMATO,click:function(data,event){VerFichaFuncionario(RUTLOTE)}"></a></u>
+                        </td>
+                        <td class="text-left" data-bind="text:NOMBRESLT"></td>
+                        <td class="text-left" data-bind="text:APELLIDOSLT"></td>
+                        <td class="text-center">
+                            <div data-bind="if:ACRONIMO">
+                                <u><a data-bind="text:ACRONIMO,click:function(data,event){VerFichaEmpresa(EMPRESALT)}"></a></u>
+                            </div>
+                            <div data-bind="ifnot:ACRONIMO">
+                                <a>Sin Empresa</a>
+                            </div>
+
+                        </td>
+                        <td class="text-center">
+                            <div data-bind="if:CERT==0">
+                                <a class="label label-danger">NO</a>
+                            </div>
+                            <div data-bind="if:CERT>0">
+                                <a class="label label-success">SI</a>
+                            </div>
+                        </td>
+                        <td class="text-center" data-bind="text:LICONDLT"></td>
+                        <td class="text-center">
+                            <div data-bind="if:CONDUC==0">
+                                <a class="label label-danger">NO</a>
+                            </div>
+                            <div data-bind="if:CONDUC>0">
+                                <a class="label label-success">SI</a>
+                            </div>
+                        </td>
+                        <td class="text-center" data-bind="text:CASINOLT"></td>
+                        <td class="text-center" data-bind="text:ALOJAMIENTOLT"></td>
+                        <td class="text-center" data-bind="text:SINOLT"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row" data-bind="if: $root.vehiculos.length > 0">
+    <div class="col-md-12 bootstrap-grid" data-bind="if: $root.datosInformePase != null">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="TablaInformeConsultaRapidaVehiculos">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_Patente</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_Marca</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_Modelo</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_CumpleDocumentacion</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_Año</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_Tipo</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaPase.Tblh_GridVehiculos_SolicitudAprobada</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:$root.vehiculos">
+                    <tr>
+                        <td class="text-center" data-bind="text:RUTLOTE_FORMATO"></td>
+                        <td class="text-left" data-bind="text:NOMBRESLT"></td>
+                        <td class="text-left" data-bind="text:APELLIDOSLT"></td>
+                        <td class="text-center">
+                            <div data-bind="if:CERT==0">
+                                <a>NO</a>
+                            </div>
+                            <div data-bind="if:CERT>0">
+                                <a>SI</a>
+                            </div>
+                        </td>
+                        <td class="text-center" data-bind="text:FNACIMLT"></td>
+                        <td class="text-center" data-bind="text:TIPOLT"></td>
+                        <td class="text-center" data-bind="text:SINOLT"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12" data-bind="if: $root.datosInformePase == null" ">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>No hay coincidencias de la búsqueda</span>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12" data-bind="if: $root.funcionarios.length == 0 && $root.datosInformePase != null" ">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>Sin funcionarios en pase</span>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12" data-bind="if: $root.vehiculos.length == 0 && $root.datosInformePase != null ">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>Sin vehículos en pase</span>
+        </div>
+    </div>
+</div>
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    <script>
+        function IndexViewModel(model) {
+            var self = this;
+            self.funcionarios = model.funcionarios;
+            self.vehiculos = model.vehiculos;
+            self.datosInformePase = model.datosInformePase;
+        }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}
+
+

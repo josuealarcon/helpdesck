@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acronym" xml:space="preserve">
+    <value>Acronym</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="ButtonAddPayroll" xml:space="preserve">
+    <value>Add to Payroll</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ButtonNew" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ButtonNewDispute" xml:space="preserve">
+    <value>New DIspute</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Yes Delete</value>
+  </data>
+  <data name="ConfirmErrorDelete" xml:space="preserve">
+    <value>An error has occurred try again</value>
+  </data>
+  <data name="ConfirmMsgDelete" xml:space="preserve">
+    <value>Do you want to remove the selected vehicle from your payroll ?</value>
+  </data>
+  <data name="DateVehicles" xml:space="preserve">
+    <value>Vehicles Date</value>
+  </data>
+  <data name="DatosCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DatosData" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="DatosMessageInformation" xml:space="preserve">
+    <value>The fields marked with an asterisk are obligatory</value>
+  </data>
+  <data name="DatosOwner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="DatosOwnerFName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="DatosOwnerLName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="DatosPatent" xml:space="preserve">
+    <value>Patent</value>
+  </data>
+  <data name="DatosPerson" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="DatosSavingData" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DatostitleInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="DatosType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="DatosVehicleData" xml:space="preserve">
+    <value>Data of Vehicle</value>
+  </data>
+  <data name="DocumentationAccreditationOfVehicle" xml:space="preserve">
+    <value>Accreditation of the Vehicle</value>
+  </data>
+  <data name="DocumentationAcronym" xml:space="preserve">
+    <value>Acronym</value>
+  </data>
+  <data name="DocumentationBrand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="DocumentationBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="DocumentationColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DocumentationCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DocumentationComply" xml:space="preserve">
+    <value>Comply</value>
+  </data>
+  <data name="DocumentationComplyCertification" xml:space="preserve">
+    <value>Comply Certification</value>
+  </data>
+  <data name="DocumentationContract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="DocumentationCylinderCapacity" xml:space="preserve">
+    <value>Cylinder Capacity</value>
+  </data>
+  <data name="DocumentationDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DocumentationDates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="DocumentationDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DocumentationDispute" xml:space="preserve">
+    <value>Dispute</value>
+  </data>
+  <data name="DocumentationDivision" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="DocumentationDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="DocumentationDOCUMENTATION" xml:space="preserve">
+    <value>DOCUMENTATION</value>
+  </data>
+  <data name="DocumentationDocuments" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="DocumentationDocumentStatus" xml:space="preserve">
+    <value>Document Status</value>
+  </data>
+  <data name="DocumentationEndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="DocumentationEquipmentADAS" xml:space="preserve">
+    <value>ADAS Equipment</value>
+  </data>
+  <data name="DocumentationFilesData" xml:space="preserve">
+    <value>Files  / Data</value>
+  </data>
+  <data name="DocumentationFilesStored" xml:space="preserve">
+    <value>Files Stored</value>
+  </data>
+  <data name="DocumentationFor" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="DocumentationFuel" xml:space="preserve">
+    <value>Fuel</value>
+  </data>
+  <data name="DocumentationHere" xml:space="preserve">
+    <value>Here</value>
+  </data>
+  <data name="DocumentationHour" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="DocumentationIncludeAnFile" xml:space="preserve">
+    <value>Include an File</value>
+  </data>
+  <data name="DocumentationModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="DocumentationOB" xml:space="preserve">
+    <value>OB</value>
+  </data>
+  <data name="DocumentationOwner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="DocumentationOwnertype" xml:space="preserve">
+    <value>Owner Type</value>
+  </data>
+  <data name="DocumentationPassNro" xml:space="preserve">
+    <value>Pass Nº</value>
+  </data>
+  <data name="DocumentationPatent" xml:space="preserve">
+    <value>Patent</value>
+  </data>
+  <data name="DocumentationPerson" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="DocumentationPleaseseetherequirements" xml:space="preserve">
+    <value>Please see the requirements validation of documents</value>
+  </data>
+  <data name="DocumentationPower" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="DocumentationRut" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="DocumentationSeeDocument" xml:space="preserve">
+    <value>See Document</value>
+  </data>
+  <data name="DocumentationStartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="DocumentationState" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="DocumentationTraction" xml:space="preserve">
+    <value>Traction</value>
+  </data>
+  <data name="DocumentationType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="DocumentationTypePass" xml:space="preserve">
+    <value>TypePass</value>
+  </data>
+  <data name="DocumentationUploadFiles" xml:space="preserve">
+    <value>Upload Files</value>
+  </data>
+  <data name="DocumentationValidatedDocumentsFirst" xml:space="preserve">
+    <value>you can be no reload document , the following documents must be validated in order to load</value>
+  </data>
+  <data name="DocumentationVerificationDocumentsVehicles" xml:space="preserve">
+    <value>Verification of Documents</value>
+  </data>
+  <data name="DocumentationWatch" xml:space="preserve">
+    <value>Watch</value>
+  </data>
+  <data name="DocumentationYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="HeaderLink" xml:space="preserve">
+    <value>List of Vehicles</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>VEHICLES</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LinkTitle" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="ModalButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ModalButtonNew" xml:space="preserve">
+    <value>New Vehicle</value>
+  </data>
+  <data name="ModalDisputaLenMaxOBS" xml:space="preserve">
+    <value>Comments must have a maximum of 500 characters</value>
+  </data>
+  <data name="ModalDisputaLenMinOBS" xml:space="preserve">
+    <value>Comments must have a Minimum of 10 characters</value>
+  </data>
+  <data name="ModalDisputasOBS" xml:space="preserve">
+    <value>Observations are mandatory</value>
+  </data>
+  <data name="ModalMsgPayroll" xml:space="preserve">
+    <value>This vehicle is registered with another company</value>
+  </data>
+  <data name="ModalNewDescription" xml:space="preserve">
+    <value>Patent must be entered in full, without periods or hyphen</value>
+  </data>
+  <data name="ModalNewPlate" xml:space="preserve">
+    <value>Plate</value>
+  </data>
+  <data name="ModalNewTitle" xml:space="preserve">
+    <value>New Vehicle</value>
+  </data>
+  <data name="ModalNewValidationLettersOnly" xml:space="preserve">
+    <value>Only numbers, letters and no blanks</value>
+  </data>
+  <data name="ModalNewValidationMaxLength" xml:space="preserve">
+    <value>Patent must have a maximum of 10 characters</value>
+  </data>
+  <data name="ModalNewValidationMinLength" xml:space="preserve">
+    <value>Patent must have a minimum of 5 characters</value>
+  </data>
+  <data name="ModalNewValidationRemote" xml:space="preserve">
+    <value>Existing patent</value>
+  </data>
+  <data name="ModalNewValidationRequired" xml:space="preserve">
+    <value>Enter patent of vehicle</value>
+  </data>
+  <data name="ModalQuestionPayroll" xml:space="preserve">
+    <value>Add vehicle to Payroll ?</value>
+  </data>
+  <data name="ModalValidationRequitements" xml:space="preserve">
+    <value>Validation requirements of</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MsgError" xml:space="preserve">
+    <value>An error has occurred</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NoFile" xml:space="preserve">
+    <value>No File</value>
+  </data>
+  <data name="RUT" xml:space="preserve">
+    <value>RUT</value>
+  </data>
+  <data name="SelectTraction" xml:space="preserve">
+    <value>Traction</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>SELECT TYPE</value>
+  </data>
+  <data name="SelectTypeFuel" xml:space="preserve">
+    <value>SELECT TYPE FUEL</value>
+  </data>
+  <data name="SelectTypeTraction" xml:space="preserve">
+    <value>SELECT TYPE TRACTION</value>
+  </data>
+  <data name="TableHeaderBrand" xml:space="preserve">
+    <value>BRAND</value>
+  </data>
+  <data name="TableHeaderDelete" xml:space="preserve">
+    <value>DELETE</value>
+  </data>
+  <data name="TableHeaderEdit" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="TableHeaderEnterprise" xml:space="preserve">
+    <value>ENTERPRISE</value>
+  </data>
+  <data name="TableHeaderModel" xml:space="preserve">
+    <value>MODEL</value>
+  </data>
+  <data name="TableHeaderPlate" xml:space="preserve">
+    <value>PATENT</value>
+  </data>
+  <data name="ValidationDatosLenLName" xml:space="preserve">
+    <value>Last name must be 50 characters in length at most</value>
+  </data>
+  <data name="ValidationDatosLenRUT" xml:space="preserve">
+    <value>RUT must be 50 characters in length at most</value>
+  </data>
+  <data name="ValidationDatosLenYear" xml:space="preserve">
+    <value>Year must be 4 characters in length at most</value>
+  </data>
+  <data name="ValidationDatosNumYear" xml:space="preserve">
+    <value>Year must be an integer number</value>
+  </data>
+  <data name="ValidationDatosReqAcron" xml:space="preserve">
+    <value>Acronym is required</value>
+  </data>
+  <data name="ValidationDatosReqBrand" xml:space="preserve">
+    <value>Brand is required</value>
+  </data>
+  <data name="ValidationDatosReqColor" xml:space="preserve">
+    <value>Color is required</value>
+  </data>
+  <data name="ValidationDatosReqFName" xml:space="preserve">
+    <value>First name is required</value>
+  </data>
+  <data name="ValidationDatosReqLName" xml:space="preserve">
+    <value>Last name is required</value>
+  </data>
+  <data name="ValidationDatosReqModel" xml:space="preserve">
+    <value>Model is required</value>
+  </data>
+  <data name="ValidationDatosReqOwnerType" xml:space="preserve">
+    <value>Owner Type is required</value>
+  </data>
+  <data name="ValidationDatosReqRUT" xml:space="preserve">
+    <value>RUT is required</value>
+  </data>
+  <data name="ValidationDatosReqType" xml:space="preserve">
+    <value>Select type</value>
+  </data>
+  <data name="ValidationDatosReqYear" xml:space="preserve">
+    <value>Year is required</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+</root>

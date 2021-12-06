@@ -1,0 +1,287 @@
+﻿<style>
+    .cellred {
+        color: red;
+    }
+
+    .cellgreen {
+        color: green;
+    }
+</style>
+<div id="modal_acreditacion_func" class="modal inmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h4 class="modal-title">@Mandante.Home._ModalAcreditacionFuncionario.Lgn_DatosAcreditacion </h4>
+            </div>
+            <div class="modal-body" id="body-acreditacion">
+                <div class="form-horizontal">
+                    <table class="table" data-bind="with:funcionario">
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_ID</strong></td>
+                            <td data-bind="text:RUT_FORMATO"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_Nombres</strong></td>
+                            <td data-bind="text:NOMBRES + ' ' + APELLIDOS"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_Division</strong></td>
+                            <td data-bind="text:DIVISION_NOMBRE"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_Empresa</strong></td>
+                            <td data-bind="text:ACRONIMO"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_TipoPase</strong></td>
+                            <td data-bind="text:$root.TIPOPASE"></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <fieldset>
+                        <legend>@Mandante.Home._ModalAcreditacionFuncionario.Lgn_Documentos</legend>
+                        <table class="table table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_Documentos_Obligatorio</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_Documentos_Nombre</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_Documentos_Existe</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_Documentos_Fecha</th>
+                                </tr>
+                            </thead>
+                            <!-- ko ifnot: documentos().length > 0 -->
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">@Mandante.Home._ModalAcreditacionFuncionario.Tblb_Documentos_Msg_SinRegistros</td>
+                                </tr>
+                            </tbody>
+                            <!-- /ko -->
+                            <!-- ko if: documentos().length > 0 -->
+
+                            <tbody data-bind="foreach:documentos">
+                                <tr>
+                                    <td class="text-black">
+                                        <!-- ko if: SOLICITADO == 1 -->
+                                        *
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: SOLICITADO == 1 -->
+                                        &nbsp;
+                                        <!-- /ko -->
+                                    </td>
+                                    <td><span data-bind="text:NOMBRE"></span></td>
+                                    <td class="text-black">
+                                        <!-- ko if: SUBEDOC == 'SI' -->
+                                        <!-- ko if: DOCUMENTO_ID != null -->
+                                        <a data-bind="attr:{href:'@Url.Action("DownLoadFile","Home", new { Area = "Contratista" })?id=' + DOCUMENTO_ID}">
+                                            @Mandante.Home._ModalAcreditacionFuncionario.Tblb_Documentos_Lbl_Ver&nbsp;<img src="~/images/verde.gif" alt="@Mandante.Home._ModalAcreditacionFuncionario.Tblb_Documentos_Phl_VerAprobado" width="18" height="18" />
+                                        </a>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: DOCUMENTO_ID != null -->
+                                        &nbsp;<img src="~/images/rojo.gif" alt="@Mandante.Home._ModalAcreditacionFuncionario.Tblb_Documentos_Phl_VerSinValidar" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                    </td>
+                                    <td>
+                                        <table width="100%">
+                                            <tbody data-bind="foreach:LISTA_FECHAS">
+                                                <tr>
+                                                    <td class="text-black">
+                                                        <!-- ko if: EXISTE_SOLICITADOFECHA == 1 -->
+                                                        *
+                                                        <!-- /ko -->
+                                                        &nbsp;
+                                                    </td>
+                                                    <td class="text-black" data-bind="text:NOMBRE"></td>
+                                                    <td class="pull-right">
+                                                        <strong><span data-bind="text:FECHA_REGISTRADA_GM, css: { cellgreen: TIPO_FECHA <= 0 || FECHA_REGISTRADA >= FECHA_HOY, cellred: TIPO_FECHA > 0 && FECHA_REGISTRADA < FECHA_HOY }"></span></strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <!-- /ko -->
+                        </table>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>@Mandante.Home._ModalAcreditacionFuncionario.Lgn_Documentos_Conduccion</legend>
+                        <!-- ko if: $root.funcionario.CONDUCE_DIVISION == 1 -->
+                        <table class="table table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_DocumentosConduccion_Obligatorio</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_DocumentosConduccion_Nombre</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_DocumentosConduccion_Existe</th>
+                                    <th>@Mandante.Home._ModalAcreditacionFuncionario.Tblh_DocumentosConduccion_Fecha</th>
+                                </tr>
+                            </thead>
+                            <!-- ko ifnot: documentosConduccion().length > 0 -->
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">@Mandante.Home._ModalAcreditacionFuncionario.Tblb_DocumentosConduccion_Msg_SinRegistros</td>
+                                </tr>
+                            </tbody>
+                            <!-- /ko -->
+                            <!-- ko if: documentosConduccion().length > 0 -->
+                            <tbody data-bind="foreach:documentosConduccion">
+                                <tr>
+                                    <td class="text-black">
+                                        <!-- ko if: SOLICITADO == 1 -->
+                                        *
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: SOLICITADO == 1 -->
+                                        &nbsp;
+                                        <!-- /ko -->
+                                    </td>
+                                    <td><span data-bind="text:NOMBRE"></span></td>
+                                    <td class="text-black">
+                                        <!-- ko if: SUBEDOC == 'SI' -->
+                                        <!-- ko if: DOCUMENTO_ID != null -->
+                                        <a data-bind="attr:{href:'@Url.Action("DownLoadFile","Home", new { Area = "Contratista" })?id=' + DOCUMENTO_ID}">
+                                            Ver&nbsp;<img src="~/images/verde.gif" alt="@Mandante.Home._ModalAcreditacionFuncionario.Tblb_DocumentosConduccion_Phl_VerAprobado" width="18" height="18" />
+                                        </a>
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: DOCUMENTO_ID != null -->
+                                        &nbsp;<img src="~/images/rojo.gif" alt="@Mandante.Home._ModalAcreditacionFuncionario.Tblb_DocumentosConduccion_Phl_VerSinValidar" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                    </td>
+                                    <td>
+                                        <table width="100%">
+                                            <tbody data-bind="foreach:LISTA_FECHAS">
+                                                <tr>
+                                                    <td class="text-black">
+                                                        <!-- ko if: EXISTE_SOLICITADOFECHA == 1 -->
+                                                        *
+                                                        <!-- /ko -->
+                                                        <!-- ko ifnot: EXISTE_SOLICITADOFECHA == 1 -->
+                                                        &nbsp;
+                                                        <!-- /ko -->
+                                                    </td>
+                                                    <td class="text-black" data-bind="text:NOMBRE"></td>
+                                                    <td class="pull-right">
+                                                        <strong><span data-bind="text:FECHA_REGISTRADA_GM, css: { cellgreen: FECHA_REGISTRADA > FECHA_HOY, cellred: FECHA_REGISTRADA <= FECHA_HOY }"></span></strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- /ko -->
+                        </table>
+                        <!-- /ko -->
+                        <!-- ko ifnot: $root.funcionario.CONDUCE_DIVISION == 1 -->
+                        <div class="callout callout-info">
+                            <h4>@Mandante.Home._ModalAcreditacionFuncionario.Lbl_Informacion</h4>
+                            <ul>
+                                <li>@Mandante.Home._ModalAcreditacionFuncionario.Msg_NoPaseAprobadoConduccion</li>
+                            </ul>
+                        </div>
+                        <!-- /ko -->
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check-circle"></i>&nbsp;@Mandante.Home._ModalAcreditacionFuncionario.Btn_Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/knockoutJS")
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var vmAcredFuncionario = null;
+
+    function loadAcreditacionFuncionario(data) {
+
+        function AcredFuncionarioModel(data) {
+            var self = this;
+            self.TIPOPASE = ko.observable();
+            self.funcionario = ko.observable();
+            self.documentos = ko.observableArray();
+            self.documentosConduccion = ko.observableArray();
+
+            self.loadAcreditacionInfo = function (params) {
+                return $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '@Url.Action("GetDetalleAcreditacionFuncionario", "Home", new { Area = "Mandante" })',
+                    data: JSON.stringify(params)
+                });
+            }
+
+            self.reload = function (params) {
+                $.when(self.loadAcreditacionInfo(params)).then(function (resp) {
+                    if (resp) {
+                        self.TIPOPASE(params.TIPOPASE);
+                        self.funcionario(resp.funcionario);
+                        self.documentos(resp.documentos);
+                        self.documentosConduccion(resp.documentosConduccion);
+                        self.onSuccessReload();
+                    }
+                    else {
+                        swal({
+                            title: "@Html.Raw(Mandante.Home._ModalAcreditacionFuncionario.Msg_Ocurrio_Error)",
+                            timer: 3000,
+                            type: "error",
+                            showConfirmButton: true,
+                        });
+                    }
+
+                }).fail(function (err) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Home._ModalAcreditacionFuncionario.Msg_Ocurrio_Error)",
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    });
+                });
+            }
+
+            self.onSuccessReload = function () {
+                ko.cleanNode($('#body-acreditacion')[0]);
+                ko.applyBindings(self, $('#body-acreditacion')[0]);
+            }
+
+            self.reload(data);
+        }
+
+        vmAcredFuncionario = new AcredFuncionarioModel(data);
+
+    }
+
+
+    $(document).ready(function () {
+        $("#modal_acreditacion_func").on("shown.bs.modal", function (e) {
+            var modal = $(e.relatedTarget);
+            var params = {
+                RUT: modal.data('modal-rut'),
+                DIVCOD: modal.data('modal-divcod'),
+                IDEMPRESA: modal.data('modal-idempresa'),
+                TIPOPASE: modal.data('modal-tipopase')
+            };
+
+            console.log(params);
+
+            if (vmAcredFuncionario != null) {
+                vmAcredFuncionario.reload(params);
+            }
+            else {
+                loadAcreditacionFuncionario(params);
+            }
+        });
+
+    });
+</script>
+
+

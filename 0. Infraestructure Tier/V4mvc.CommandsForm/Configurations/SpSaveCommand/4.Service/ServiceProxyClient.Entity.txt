@@ -1,0 +1,90 @@
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Unity;
+
+using V4mvc.BusinessLogic;
+using V4mvc.Entities;
+
+namespace V4mvc
+{
+	public partial class ServiceProxyClient : IServiceProxyClient
+	{
+
+		#region [ Propiedades ]
+
+		[Dependency]
+		public IBL$0 BL_$1 { get; set; }
+
+		#endregion
+
+		#region [ Constructor]
+
+		public ServiceProxyClient(IBL$2 BL_$3)
+		{
+			this.BL_$4 = BL_$5;
+		}
+
+		#endregion
+
+		#region [ Consultas ]
+
+		public ObservableCollection<$6> GetAll$7()
+		{
+			try
+			{
+				return this.BL_$8.GetAll();
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
+
+		public $9 GetOne$10($11)
+		{
+			try
+			{
+				return this.BL_$12.GetOne($13);
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
+
+		#endregion
+		
+		#region [ Metodos ]
+
+		public bool Save$14(ref $15 item)
+		{
+			try
+			{
+				return this.BL_$16.Save(ref item);
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
+
+		public bool Delete$17(ref $18 item)
+		{
+			try
+			{
+				return this.BL_$19.Delete(ref item);
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
+
+		public bool Save$20(ref ObservableCollection<$21> items)
+		{
+			try
+			{
+				return this.BL_$22.Save(ref items);
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
+
+		#endregion
+	}
+}

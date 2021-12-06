@@ -1,0 +1,33 @@
+CREATE PROCEDURE [dbo].[V4MVC_WORKERSLOCAL_UPDATE_LABORALES_CTTA]
+( @RUT                nvarchar(10) = NULL
+, @EMPRESA            nvarchar(50) = NULL
+, @DIVISION			   nvarchar(4) = NULL	) AS 
+BEGIN
+	IF EXISTS(SELECT RUT FROM WORKERSLOCAL 
+				WHERE RUT = @RUT AND 
+				DIVISION = @DIVISION 
+				AND LOTE = 0 
+				AND EMPRESA = @EMPRESA)
+		BEGIN
+			UPDATE WORKERSLOCAL SET TIPOPASE = 'TRABAJO'
+								  , FINIPASE = [dbo].[hoy](GETDATE())
+								  , FFINPASE = [dbo].[hoy](DATEADD(MONTH,120,GETDATE()))
+								  , AUTOR = 'NO'
+								  , OST = 'NOMINA' 
+			WHERE RUT = @RUT AND 
+				  DIVISION = @DIVISION 
+				  AND LOTE = 0 
+				  AND EMPRESA = @EMPRESA
+		END
+	ELSE
+		BEGIN
+			INSERT INTO WORKERSLOCAL (RUT, EMPRESA, DIVISION, TIPOPASE
+									, FINIPASE, FFINPASE, AUTOR, LOTE
+									, OST) 
+							VALUES (@RUT,@EMPRESA,@DIVISION,'TRABAJO'
+									,[dbo].[hoy](GETDATE()),[dbo].[hoy](DATEADD(MONTH,120,GETDATE())),'NO', 0
+									,'NOMINA')
+		END
+
+END
+

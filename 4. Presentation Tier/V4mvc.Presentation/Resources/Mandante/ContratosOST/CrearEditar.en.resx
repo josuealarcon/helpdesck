@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Lnk_Listado_Ordenes_Servicio_Contratos" xml:space="preserve">
+    <value>List of service orders contracts</value>
+  </data>
+  <data name="Lbl_NUEVO" xml:space="preserve">
+    <value>NEW</value>
+  </data>
+  <data name="Lbl_EDITAR" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="Lbl_CodigoContrato" xml:space="preserve">
+    <value>Contract code</value>
+  </data>
+  <data name="Lbl_EmpresaMandante" xml:space="preserve">
+    <value>Enterprise principal</value>
+  </data>
+  <data name="Lbl_EmpresaContratista" xml:space="preserve">
+    <value>Enterprise Contractor</value>
+  </data>
+  <data name="Lbl_NuevoSubContratista" xml:space="preserve">
+    <value>New SubContractor</value>
+  </data>
+  <data name="Lbl_Nivel" xml:space="preserve">
+    <value>Level 1</value>
+  </data>
+  <data name="Lbl_PermitirSolicitarPase" xml:space="preserve">
+    <value>Allow request pass directly by the contractor</value>
+  </data>
+  <data name="Lbl_TipoContrato" xml:space="preserve">
+    <value>Type Contract</value>
+  </data>
+  <data name="Lbl_EmpresaResponsableCAMO" xml:space="preserve">
+    <value>Responsible company CAMO</value>
+  </data>
+  <data name="Lbl_ConfigurarPeriodosPase" xml:space="preserve">
+    <value>To configure the pass click</value>
+  </data>
+  <data name="Lgn_AgregarEditarAdministradorContrato" xml:space="preserve">
+    <value>Add / Edit Operational Contract Administration</value>
+  </data>
+  <data name="Lbl_Operacion" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="Lbl_AdministradorMandante" xml:space="preserve">
+    <value>Administrator Principal</value>
+  </data>
+  <data name="Phl_IDAdministradoMandante" xml:space="preserve">
+    <value>ID Administrator Principal</value>
+  </data>
+  <data name="Lbl_NombresAdministradorMandante" xml:space="preserve">
+    <value>Names administrator principal</value>
+  </data>
+  <data name="Lbl_ApellidosAdministradorMandante" xml:space="preserve">
+    <value>LastNames administrator principal</value>
+  </data>
+  <data name="Phl_ApellidosAdministradorMandante" xml:space="preserve">
+    <value>Enter lastnames administrator principal</value>
+  </data>
+  <data name="Phl_NombresAdministradorMandante" xml:space="preserve">
+    <value>Enter names administrator principal</value>
+  </data>
+  <data name="Lbl_AdministradorContratista" xml:space="preserve">
+    <value>Administrator Contractor</value>
+  </data>
+  <data name="Phl_IDAdministradorContratista" xml:space="preserve">
+    <value>Enter ID administrator contractor</value>
+  </data>
+  <data name="Lbl_NombresAdministradorContratista" xml:space="preserve">
+    <value>Names administrator contractor</value>
+  </data>
+  <data name="Phl_NombresAdministradorContratista" xml:space="preserve">
+    <value>Enter name administrator contractor</value>
+  </data>
+  <data name="Lbl_ApellidosAdministradorContratista" xml:space="preserve">
+    <value>LastNames administrator contractor</value>
+  </data>
+  <data name="Phl_ApellidosAdministradorContratista" xml:space="preserve">
+    <value>Enter lastname administrator contractor</value>
+  </data>
+  <data name="Btn_AddAdministrador" xml:space="preserve">
+    <value>Add / Edit administrator</value>
+  </data>
+  <data name="Btn_ClearAdministrador" xml:space="preserve">
+    <value>Clear / Cancel</value>
+  </data>
+  <data name="Lgn_AdministradorContrato" xml:space="preserve">
+    <value>Administrator Contract</value>
+  </data>
+  <data name="Tblh_Administrador_Operacion" xml:space="preserve">
+    <value>OPERATION</value>
+  </data>
+  <data name="Tblh_Administrador_Mandante" xml:space="preserve">
+    <value>ADMINISTRATOR CONTRACT PRINCIPAL</value>
+  </data>
+  <data name="Tblh_Administrador_Contratista" xml:space="preserve">
+    <value>ADMINISTRATOR CONTRACTOR</value>
+  </data>
+  <data name="Tblh_Administrador_EditarEliminar" xml:space="preserve">
+    <value>EDIT / DELETE</value>
+  </data>
+  <data name="Tblb_Administrador_Btn_Editar" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Tblb_Administrador_Btn_Eliminar" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Lbl_SI" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="Lbl_NO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="Lbl_SolicitarPase" xml:space="preserve">
+    <value>Allow request pass</value>
+  </data>
+  <data name="Lgn_AgregarDelegadosContrato" xml:space="preserve">
+    <value>Add operational contract delegates</value>
+  </data>
+  <data name="Phl_Operacion" xml:space="preserve">
+    <value>Select operation</value>
+  </data>
+  <data name="Lbl_Delegado" xml:space="preserve">
+    <value>Delegate</value>
+  </data>
+  <data name="Lgn_DotacionServicios" xml:space="preserve">
+    <value>Provision of services</value>
+  </data>
+  <data name="Btn_GuardarDatos" xml:space="preserve">
+    <value>Save Data</value>
+  </data>
+  <data name="Btn_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Lgn_DotacionPermanenteEsporadico" xml:space="preserve">
+    <value>Sporadic permanent endowment</value>
+  </data>
+  <data name="Phl_OpcionesInstalacion" xml:space="preserve">
+    <value>SELECT OPTION INSTALLATION JOB</value>
+  </data>
+  <data name="Lgn_DatosContractuales" xml:space="preserve">
+    <value>Contractual Data</value>
+  </data>
+  <data name="Lbl_OpcionesInstalacion" xml:space="preserve">
+    <value>Options of installation</value>
+  </data>
+  <data name="Lbl_DotacionAccesoPermanentes" xml:space="preserve">
+    <value>Permanent access provision</value>
+  </data>
+  <data name="Lbl_DotacionAccesoEsporadicos" xml:space="preserve">
+    <value>Sporadic access provision</value>
+  </data>
+  <data name="Lbl_DotacionAccesoEsporadicoSeisMeses" xml:space="preserve">
+    <value>Endowment sporadic access less than 6 months</value>
+  </data>
+  <data name="Lbl_DotacionBusesPermanentes" xml:space="preserve">
+    <value>Permanent bus endowment</value>
+  </data>
+  <data name="Lbl_DotacionBusesEsporadicos" xml:space="preserve">
+    <value>Sporadic bus endowment</value>
+  </data>
+  <data name="Lgn_InstalacionFaena" xml:space="preserve">
+    <value>Site Installation</value>
+  </data>
+  <data name="Lbl_FechaInicio" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Lbl_FechaTermino" xml:space="preserve">
+    <value>Finish date</value>
+  </data>
+  <data name="Lbl_FechaCierre" xml:space="preserve">
+    <value>Closing date</value>
+  </data>
+  <data name="Lbl_FechaAvisoEECC" xml:space="preserve">
+    <value>Date EECC notice</value>
+  </data>
+  <data name="Lbl_HoraAvisoEECC" xml:space="preserve">
+    <value>Time EECC notice</value>
+  </data>
+  <data name="Lbl_Dotacion" xml:space="preserve">
+    <value>Endowment</value>
+  </data>
+  <data name="Lbl_DotacionVehiculos" xml:space="preserve">
+    <value>Vehicle endowment</value>
+  </data>
+  <data name="Lbl_Departamento" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Phl_Departamento" xml:space="preserve">
+    <value>SELECT DEPARTMENT</value>
+  </data>
+  <data name="Lbl_Sector" xml:space="preserve">
+    <value>Sector</value>
+  </data>
+  <data name="Phl_Sector" xml:space="preserve">
+    <value>SELECT SECTOR</value>
+  </data>
+  <data name="Lbl_TipoSector" xml:space="preserve">
+    <value>Type sector</value>
+  </data>
+  <data name="Phl_TipoSector" xml:space="preserve">
+    <value>SELECT TYPE SECTOR</value>
+  </data>
+  <data name="Lbl_Alojamiento" xml:space="preserve">
+    <value>Accommodation</value>
+  </data>
+  <data name="Phl_Alojamiento" xml:space="preserve">
+    <value>SELECT</value>
+  </data>
+  <data name="Lbl_Transporte" xml:space="preserve">
+    <value>Transport</value>
+  </data>
+  <data name="Phl_Transporte" xml:space="preserve">
+    <value>SELECT</value>
+  </data>
+  <data name="Lbl_Alimentacion" xml:space="preserve">
+    <value>Alimentation</value>
+  </data>
+  <data name="Phl_Alimentacion" xml:space="preserve">
+    <value>SELECT</value>
+  </data>
+  <data name="Lbl_Combustible" xml:space="preserve">
+    <value>Fuel</value>
+  </data>
+  <data name="Phl_Combustible" xml:space="preserve">
+    <value>SELECT</value>
+  </data>
+  <data name="Lbl_DotacionAlimentacion" xml:space="preserve">
+    <value>Dot C/Alimentation</value>
+  </data>
+  <data name="Lbl_DotacionAlojamiento" xml:space="preserve">
+    <value>Dot C/Accommodation</value>
+  </data>
+  <data name="Lbl_DotacionMaxFaena" xml:space="preserve">
+    <value>Dot Max. Task</value>
+  </data>
+  <data name="Lbl_DotacionHolguraMaxAcreditada" xml:space="preserve">
+    <value>Dot Max. Clearance credited</value>
+  </data>
+  <data name="Lbl_Titulo" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Lbl_Descripcion" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Lbl_UltimaModificacion" xml:space="preserve">
+    <value>Last modification</value>
+  </data>
+  <data name="Lbl_ModificadoPor" xml:space="preserve">
+    <value>Modified by</value>
+  </data>
+  <data name="Lgn_DelegadosContrato" xml:space="preserve">
+    <value>Delegates of Contract</value>
+  </data>
+  <data name="Tblh_Delegado_Operacion" xml:space="preserve">
+    <value>OPERATION</value>
+  </data>
+  <data name="Tblh_Delegado_Mandante" xml:space="preserve">
+    <value>ADMINISTRATOR CONTRACT PRINCIPAL</value>
+  </data>
+  <data name="Tblh_Delegado_Delegado" xml:space="preserve">
+    <value>DELEGATE</value>
+  </data>
+  <data name="Tblh_Delegado_Activo" xml:space="preserve">
+    <value>ACTIVE</value>
+  </data>
+  <data name="Tblh_Delegado_ActivarEliminar" xml:space="preserve">
+    <value>ACTIVE / DELETE</value>
+  </data>
+  <data name="Tblb_Delegado_Btn_Activar" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="Tblb_Delegado_Btn_Eliminar" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Lbl_OrdenServicio_Contrato_Trabajo" xml:space="preserve">
+    <value>Order of service - contract - work</value>
+  </data>
+  <data name="Lbl_Permanente" xml:space="preserve">
+    <value>PERMANENT</value>
+  </data>
+  <data name="Lbl_Esporadico" xml:space="preserve">
+    <value>SPORADIC</value>
+  </data>
+  <data name="Lbl_NoIncluye" xml:space="preserve">
+    <value>NO, INCLUDES</value>
+  </data>
+  <data name="Lbl_SiIncluye" xml:space="preserve">
+    <value>YES, IT IINCLUDES</value>
+  </data>
+  <data name="Msg_EliminarAdministrador" xml:space="preserve">
+    <value>Do you want to remove contract manager ?</value>
+  </data>
+  <data name="Swal_Btn_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Swal_Btn_Eliminar" xml:space="preserve">
+    <value>Yes, Delete</value>
+  </data>
+  <data name="Msg_ActivarDelegado" xml:space="preserve">
+    <value>Do you want to activate delegate ?</value>
+  </data>
+  <data name="Msg_EliminarDelegado" xml:space="preserve">
+    <value>Do you want to remove contract delegate ?</value>
+  </data>
+  <data name="Msg_ErrorGuardado" xml:space="preserve">
+    <value>An error has ocurred, please try again later</value>
+  </data>
+  <data name="Val_Required_Alojamiento" xml:space="preserve">
+    <value>SELECT INCLUDES ACCOMMODATION</value>
+  </data>
+  <data name="Val_Required_Transporte" xml:space="preserve">
+    <value>SELECT INCLUDES TRANSPORTATION</value>
+  </data>
+  <data name="Val_Required_Alimentacion" xml:space="preserve">
+    <value>SELECT INCLUDES FOOD</value>
+  </data>
+  <data name="Val_Required_Combustible" xml:space="preserve">
+    <value>SELECT INCLUDES FUEL</value>
+  </data>
+  <data name="Val_Required_FechaInicio" xml:space="preserve">
+    <value>Select start date</value>
+  </data>
+  <data name="Val_Required_FechaTermino" xml:space="preserve">
+    <value>Select end date</value>
+  </data>
+  <data name="Val_Required_Titulo" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="Val_Min_Dotacion" xml:space="preserve">
+    <value>Endowment must be greater than 0</value>
+  </data>
+  <data name="Val_Required_TipoContrato" xml:space="preserve">
+    <value>SELECT TYPE CONTRACT</value>
+  </data>
+  <data name="Val_Required_Operacion" xml:space="preserve">
+    <value>SELECT OPERATION</value>
+  </data>
+  <data name="Val_Required_ValidateOperacion" xml:space="preserve">
+    <value>Operation is registered</value>
+  </data>
+  <data name="Val_Required_IDAdministrador" xml:space="preserve">
+    <value>ID Administrator is required</value>
+  </data>
+  <data name="Val_Required_NombresAdministrador" xml:space="preserve">
+    <value>Names administrator is required</value>
+  </data>
+  <data name="Val_Required_ApellidosAdministrador" xml:space="preserve">
+    <value>LastNames administrator is required</value>
+  </data>
+  <data name="Val_Required_IDDelegado" xml:space="preserve">
+    <value>ID Delegate is required</value>
+  </data>
+  <data name="Val_Required_NombresDelegado" xml:space="preserve">
+    <value>Names is required</value>
+  </data>
+  <data name="Val_Required_ApellidosDelegado" xml:space="preserve">
+    <value>LastNames is required</value>
+  </data>
+  <data name="Msg_OST" xml:space="preserve">
+    <value>OST</value>
+  </data>
+  <data name="Msg_DatosGuardadosCorrectamente" xml:space="preserve">
+    <value>Data saved correctly</value>
+  </data>
+  <data name="Msg_ActualizadaConFechaInicio" xml:space="preserve">
+    <value>updated with start date</value>
+  </data>
+  <data name="Msg_AnteriormenteActivada" xml:space="preserve">
+    <value>previously activated as a subcontract of</value>
+  </data>
+  <data name="Msg_ComoSubcontratoDe" xml:space="preserve">
+    <value>as a subcontract of</value>
+  </data>
+  <data name="Msg_CreadaConFechaInicio" xml:space="preserve">
+    <value>created with start date</value>
+  </data>
+  <data name="Msg_EmpresaMadreNoTieneOST" xml:space="preserve">
+    <value>Parent company does not have OST</value>
+  </data>
+  <data name="Msg_EmpresaTieneOST" xml:space="preserve">
+    <value>Company has OST</value>
+  </data>
+  <data name="Msg_FechaFinal" xml:space="preserve">
+    <value>final date</value>
+  </data>
+  <data name="Lbl_InformeRecepcion" xml:space="preserve">
+    <value>reception report</value>
+  </data>
+  <data name="Lbl_Edificio" xml:space="preserve">
+    <value>Edifice</value>
+  </data>
+  <data name="Lbl_FormularioInstalacionFaena" xml:space="preserve">
+    <value>Site installation form</value>
+  </data>
+  <data name="Phl_CodigoContrato" xml:space="preserve">
+    <value>Enter contract code</value>
+  </data>
+  <data name="Phl_Nivel" xml:space="preserve">
+    <value>Enter level</value>
+  </data>
+  <data name="Phl_IDEmpresaMandante" xml:space="preserve">
+    <value>Enter ID enterprise administrator</value>
+  </data>
+  <data name="Phl_AcronimoEmpresaMandante" xml:space="preserve">
+    <value>Enter acronym administrator</value>
+  </data>
+  <data name="Phl_IDEmpresaContratista" xml:space="preserve">
+    <value>Enter ID enterprise contractor</value>
+  </data>
+  <data name="Phl_AcronimoEmpresaContratista" xml:space="preserve">
+    <value>Enter acronym contractor company</value>
+  </data>
+  <data name="Phl_NuevoSubContratista" xml:space="preserve">
+    <value>Enter new subcontractor ID</value>
+  </data>
+  <data name="Phl_AcronimoNuevoSubContratista" xml:space="preserve">
+    <value>Enter acronym subcontractor</value>
+  </data>
+  <data name="Btn_AgregarDelegado" xml:space="preserve">
+    <value>Add delegate</value>
+  </data>
+  <data name="Lbl_Informacion" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Lbl_InformacionMensaje" xml:space="preserve">
+    <value>Select OPERATION / MANAGER CONTRACT MANAGER, to add delegate(s).</value>
+  </data>
+</root>

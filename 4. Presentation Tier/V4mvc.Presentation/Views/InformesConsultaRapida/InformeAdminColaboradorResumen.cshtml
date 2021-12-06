@@ -1,0 +1,65 @@
+﻿@model V4mvc.Presentation.Controllers.InformesConsultaRapidaController.ViewModel_InformeConsultaRapida
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="with:datosInformeID">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <td class="text-left tituloTabla"><strong>@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Tblb_Datos_Empresa</strong></td>
+                <td data-bind="text:ACRONIMO"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Lbl_InformesOstContratos</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 bootstrap-grid">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="TablaInformeConsultaRapidaFichaVehiculo">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Tblh_Grid_ID</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Tblh_Grid_Nombres</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Tblh_Grid_Apellidos</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Tblh_Grid_Email</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: $root.workers">
+                    <tr>
+                        <td class="text-left" data-bind="text:RUT"></td>
+                        <td class="text-left" data-bind="text:NOMBRES"></td>
+                        <td class="text-left" data-bind="text:APELLIDOS"></td>
+                        <td class="text-left" data-bind="text:CORREO_ELECTRONICO"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="notices">
+    <div>@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Msg_Nota</div>
+    <div class="notice">@Contratista.InformesConsultaRapida.InformeAdminColaboradorResumen.Msg_NotaMensaje</div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    <script>
+    function IndexViewModel(model) {
+        var self = this;
+        self.workers = model.workers;
+        self.datosInformeID = model.datosInformeID;
+    }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}

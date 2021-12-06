@@ -1,0 +1,47 @@
+﻿@using V4mvc.Presentation.Areas.Contratista.Controllers
+@model DashBoardController.ViewModelAdmin
+
+@if (@Model.admin != null)
+{
+    <div class="btn-group hidden-xs small">
+        <dl class="dl-horizontal">
+            <dt class="text-dark-blue">USUARIO:</dt>
+            <dd class="text-marine">@Model.admin.NOMBRES @Model.admin.APELLIDOS</dd>
+            <dt class="text-dark-blue">NIVEL USUARIO:</dt>
+            <dd class="text-marine">@Model.admin.ADMTIPO</dd>
+        </dl>
+    </div>
+    <div class="btn-group hidden-xs small">
+        <dl class="dl-horizontal">
+            <dt class="text-dark-blue">PERMISOS:</dt>
+            <dd class="text-marine">@Model.admin.ADMRUTVER</dd>
+            <dt class="text-dark-blue">DIVISIONES:</dt>
+            <dd class="text-marine">@Model.admin.ADMDIVISION</dd>
+        </dl>
+    </div>
+}
+else
+{
+    <div class="btn-group hidden-xs small">
+        <dl class="dl-horizontal">
+            <dt class="text-dark-blue">USUARIO:</dt>
+            <dd class="text-marine">@Model.colab_usuario.NOMBRES @Model.colab_usuario.APELLIDOS</dd>
+            <dt class="text-dark-blue">NIVEL USUARIO:</dt>
+            <dd class="text-marine">@Model.colab_usuario.TipoUsuario</dd>
+        </dl>
+    </div>
+    <div class="btn-group hidden-xs small">
+        <dl class="dl-horizontal">
+            <dt class="text-dark-blue">RUT Empresa:</dt>
+            <dd class="text-marine">@Model.colab_usuario.IDEMPRESA</dd>
+            <dt class="text-dark-blue">Acronimo:</dt>
+            <dd class="text-marine">@Model.colab_usuario.ACRONIMO</dd>
+        </dl>
+    </div>
+    <div class="btn-group hidden-xs small">
+        <dl class="dl-horizontal">
+            <dt class="text-dark-blue">Empresa:</dt>
+            <dd class="text-marine">@Model.colab_usuario.NOMBRE</dd>
+        </dl>
+    </div>
+}

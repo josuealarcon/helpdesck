@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HELP-DESK</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <style>
+        body {
+            /* Full height */
+            width:100%;
+            /* Center and scale the image nicely */
+            background-repeat: no-repeat;
+            background-size: auto;
+            position: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="gray-bg" background="~/images/img_2.jpg">
+    <div class="colorful-page-wrapper">
+
+
+        <div class="center-block center-ie9 animated fadeInDown">
+            <div class="login-block">
+                <div class="login-width">
+                    @RenderBody()
+                </div>
+                <div class="row">
+                    <div class="pull-right">
+                        <p class="m-t"> <small> HelpDesk &copy; 2021</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/bundles/knockoutJS")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

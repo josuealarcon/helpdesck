@@ -1,0 +1,239 @@
+﻿@using System.Configuration;
+@model V4mvc.Entities.Admin
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="col-md-12">
+            <img src="~/images/flaticons/help-desk.png" alt="flag" class="img-responsive">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form action="#" class="m-t form-valide-form" method="post" data-bind="with:login">
+            <div data-bind="if: $root.showMensaje()">
+                <div data-bind="attr: { class: 'callout callout-' + $root.classMensaje() }">
+                    <h4 data-bind="text: $root.titleMensaje"></h4>
+                    <span data-bind="text: $root.mensaje"></span>
+                </div>
+            </div>
+            <fieldset>
+                <legend class="text-center">@General.Login.Lbl_AccesoUsuarios</legend>
+                <div class="form-group">
+                    <select id="ddlTipoUsuario" name="TIPOUSUARIO" class="form-control" data-bind="options: $root.typeUsers,optionsText:'name',optionsValue:'id',value:$root.typeID">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" data-bind="value:'10714408939',visible:$root.enterprise()" id="txtEmpresa" name="ADMRUTEMPRESA" placeholder="@General.Login.Phl_IDEmpresa">
+                    @*<input type="text" class="form-control hide" data-bind="value:'1071440893',visible:$root.enterprise()" id="txtEmpresa" name="ADMRUTEMPRESA" placeholder="@General.Login.Phl_IDEmpresa">*@
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" data-bind="value:ADMRUT" id="txtUsuario" name="ADMRUT" placeholder="@General.Login.Phl_IDUsuario">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" data-bind="value:ADMCLAVE" id="txtPassword" name="ADMCLAVE" placeholder="@General.Login.Phl_Contraseña">
+                </div>
+                <button type="button" id="btnLogin" class="btn btn-primary block full-width m-b" data-bind="click:$root.saveForm">@General.Login.Btn_Ingreso</button>
+                <div class="form-group">
+                    <a href="@Url.Action("RecoverPassword", "Login")"><small>@General.Login.Lnk_OlvidoContraseña</small></a>
+                </div>
+                <a class="btn btn-sm btn-success btn-block" href="@Url.Action("NewEnterpriseCtta", "Login")">@General.Login.Lnk_NuevaEmpresa</a>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+
+    function listItem(name, id) {
+        return {
+            isSelected: ko.observable(false),
+            name: ko.observable(name),
+            id: ko.observable(id)
+        };
+    }
+
+    function ViewModelLogin(model) {
+        var self = this;
+        self.login = model;
+        self.typeUsers = ko.observableArray([new listItem('USUARIO', "USER"), new listItem('MESA DE AYUDA', "ADMIN")]);
+        self.typeID = ko.observable();
+        self.enterprise = ko.observable(true);
+        self.titleMensaje = ko.observable();
+        self.classMensaje = ko.observable();
+        self.showMensaje = ko.observable(false);
+        self.mensaje = ko.observable();
+        self.ID_ACREDITACION = ko.observable();
+        self.ID_AUDITORIA = ko.observable();
+
+
+        self.saveData = function (data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: '@Url.Action("Login", "Login")',
+                data: data
+            });
+
+        }
+
+        self.saveForm = function () {
+            if ($('.form-valide-form').valid()) {
+
+                var data = JSON.stringify({
+                    ADMRUT: $("#txtUsuario").val(),
+                    ADMCLAVE: $("#txtPassword").val(),
+                    ADMRUTEMPRESA: $("#txtEmpresa").val(),
+                    TIPOUSUARIO: $("#ddlTipoUsuario").val(),
+                });
+
+                $.when(self.saveData(data)).then(function (response) {
+                    debugger;
+                    if (response.Key == 'Admin')
+                        window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Admin" })';
+                    else if (response.Key == "Usuario")
+                        window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Usuario" })';
+                    else if (response.Key == "CambioClave") {
+                        window.location.href = '@Url.Action("CambioClave", "Login")';
+                        var url = '@Html.Raw(Url.Action("CambioClave","Login",new { TIPOUSUARIO = "tipousuario" }))';
+                        url = url.replace("tipousuario", response.Value);
+                        window.location = url;
+                    }
+                    else if (response.Key == "URL")
+                        window.location.href = response.Value;
+                    else {
+                        self.showMensaje(true);
+                        self.classMensaje('danger');
+                        self.titleMensaje(response.Key);
+                        self.mensaje(response.Value);
+                    }
+                }).fail(function (err) {
+                    self.showMensaje(true);
+                    self.classMensaje('danger');
+                    self.titleMensaje('Error');
+                    self.mensaje(err);
+                });
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        var vm = new ViewModelLogin(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(vm);
+
+        vm.typeID.subscribe(function (value) {
+            if (value != undefined) {
+                if (value == "USER") {
+                    $("#txtEmpresa").val("");
+                    $("#txtEmpresa").parent().removeClass("state-success").addClass("state-error");
+                    $(".section-enterprise").fadeIn(500);
+                    vm.enterprise(true);
+                }
+                else {
+                    $("#txtEmpresa").val("999999999");
+                    $("#txtEmpresa").parent().removeClass("state-error").addClass("state-success");
+                    $(".section-enterprise").fadeOut(500);
+                    vm.enterprise(false);
+                }
+            }
+            else {
+                $("#txtEmpresa").val("999999999");
+                $("#txtEmpresa").parent().removeClass("state-error").addClass("state-success");
+            }
+        });
+    });
+
+    $(document).keyup(function (e) {
+        if (e.keyCode == 13) {
+            $("#btnLogin").click();
+        }
+    });
+
+
+    </script>
+
+    <script>
+
+        var form_validationForm = function () {
+            var f = function () {
+                jQuery(".form-valide-form").validate({
+                    rules: {
+                        "ADMRUT": {
+                            required: !0,
+                            minlength: 8,
+                            maxlength: 20,
+                            remote: {
+                                url: '@Url.Action("ValidarRUT","Login")',
+                                type: "POST",
+                                data: {
+                                  RUT: function() {
+                                    return $("#txtUsuario").val();
+                                  }
+                                }
+                              }
+                        },
+                        "ADMCLAVE": {
+                            required: !0,
+                            minlength: 8,
+                            maxlength: 20,
+                        },
+                        "ADMRUTEMPRESA": {
+                            required: !0,
+                            minlength: 3,
+                            maxlength: 20,
+                        },
+                        "TIPOUSUARIO": {
+                            required: !0,
+                        },
+                    },
+                    messages: {
+                        "ADMRUT": {
+                            required: "@General.Login.Val_Required_ID",
+                            minlength: "@General.Login.Val_MinLength_ID",
+                            maxlength: "@General.Login.Val_MaxLength_ID",
+                            remote : "@General.Login.Val_Remote_ID"
+
+                        },
+                        "ADMCLAVE": {
+                            required: "@General.Login.Val_Required_Contrasenia",
+                            minlength: "@General.Login.Val_MinLength_Contrasenia",
+                            maxlength: "@General.Login.Val_MaxLength_Contrasenia",
+                        },
+                        "ADMRUTEMPRESA": {
+                            required: "@General.Login.Val_Required_Empresa",
+                            minlength: "@General.Login.Val_MinLength_Empresa",
+                            maxlength: "@General.Login.Val_MaxLength_Empresa",
+                        },
+                        "TIPOUSUARIO": {
+                            required: "@General.Login.Val_Required_TipoUsuario",
+                        },
+                    }
+                })
+            }
+            return {
+                init: function () {
+                    f(), jQuery(".js-select1").on("change", function () {
+                        jQuery(this).valid()
+                    })
+                }
+            }
+            }();
+
+        jQuery(function () {
+            form_validationForm.init()
+        });
+
+    </script>
+
+}
+

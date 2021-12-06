@@ -1,0 +1,225 @@
+﻿<!--pop_admin_todos.asp-->
+<div class="modal inmodal" id="searcher-workers" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content  animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">@Html.Raw(Mandante.Home.General.Lbl_BusquedaFuncionarios)</h5>
+            </div>
+            <div class="modal-body" id="modal-searcher-workers">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Mostrar</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control input-sm" data-bind="options:$root.listLength,value:length">
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Registros</label>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover table-striped dataTable small" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-bind="click:function(data,event){order('0',this)}">
+                                @Mandante.Home.General.Lbl_ID
+                                <div class="pull-right"><i data-bind="visible: sort() == 0,css: sort() == 0 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('1',this)}">
+                                @Mandante.Home.General.Lbl_Nombres
+                                <div class="pull-right"><i data-bind="visible: sort() == 1,css: sort() == 1 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('2',this)}">
+                                @Mandante.Home.General.Lbl_Apellidos
+                                <div class="pull-right"><i data-bind="visible: sort() == 2,css: sort() == 2 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('3',this)}">
+                                @Mandante.Home.General.Lbl_Acronimo
+                                <div class="pull-right"><i data-bind="visible: sort() == 3,css: sort() == 3 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: listWorkers">
+                        <tr data-bind="click:function(data,event){$root.selectItem($data)}">
+                            <td data-bind="text: RUT_FORMATO"></td>
+                            <td data-bind="text: NOMBRES"></td>
+                            <td data-bind="text: APELLIDOS"></td>
+                            <td data-bind="text: ACRONIMO"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th><input class="form-control input-sm" type="text" placeholder="@Mandante.Home.General.Phl_ID" data-bind="textInput: id" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="@Mandante.Home.General.Phl_Nombres" data-bind="textInput: nombres" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="@Mandante.Home.General.Phl_Apellidos" data-bind="textInput: apellidos" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="@Mandante.Home.General.Phl_Acronimo" data-bind="textInput: acronimo" /></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row">
+                    <div class="pull-right">
+                        <ul id="pagination-workers" class="pagination"></ul>
+                    </div>
+                    <div class="pull-left">
+                        @Mandante.Home.Tabla.Lbl_Mostrando <span data-bind="text: (start() + 1)"></span> @Mandante.Home.Tabla.Lbl_A <span data-bind="text: registros()"></span> @Mandante.Home.Tabla.Lbl_De <span data-bind="text: count()"></span> @Mandante.Home.Tabla.Lbl_Registros
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> &nbsp;@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/knockoutJS")
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var modelWorkers = null;
+
+    function loadSearcherWorkers(idModal) {
+
+        function WorkersViewModel() {
+            ko.cleanNode($('#modal-searcher-workers')[0]);
+            var self = this;
+            self.idModal = ko.observable(idModal);
+            self.listWorkers = ko.observableArray();
+            self.active = ko.observable(true);
+            self.activate = ko.observable(false);
+            self.page = ko.observable();
+            self.start = ko.observable(0);
+            self.listLength = ko.observableArray([10, 25, 50, 100]);
+            self.length = ko.observable(10);
+            self.sort = ko.observable("0");
+            self.ordering = ko.observable("asc");
+            self.count = ko.observable(0);
+            self.registros = ko.observable(self.length());
+            self.id = ko.observable().extend({ throttle: 1000 });
+            self.nombres = ko.observable().extend({ throttle: 1000 });
+            self.apellidos = ko.observable().extend({ throttle: 1000 });
+            self.acronimo = ko.observable().extend({ throttle: 1000 });
+
+            self.addWorker = function (data) { for (var key in data) { self.listWorkers.push(ko.toJS(data[key])); } }
+
+            self.page.subscribe(function (value) {
+                self.registros(value * self.length());
+                var pag = ((value * self.length()) - self.length());
+                self.start(pag);
+            });
+
+            self.order = function (value) {
+                self.sort(value);
+                self.start(0);
+                self.ordering() == 'asc' ? self.ordering('desc') : self.ordering('asc');
+            }
+
+            self.length.subscribe(function () {
+                self.init();
+                self.registros(self.length());
+            });
+
+            self.restart = function (value) {
+                if (value.length > 2) { self.init() };
+                if (value.length == 0 && self.activate()) { self.init() };
+            }
+
+            self.ordering.subscribe(function () { self.init() });
+            self.id.subscribe(function (value) { self.restart(value) });
+            self.nombres.subscribe(function (value) { self.restart(value) });
+            self.apellidos.subscribe(function (value) { self.restart(value) });
+            self.acronimo.subscribe(function (value) { self.restart(value) });
+
+            self.init = function () {
+                self.activate(true)
+                if (self.active()) {
+                    var data = {
+                        START: self.start,
+                        LENGTH: self.length,
+                        COLUMN: self.sort,
+                        DIRECTION: self.ordering,
+                        RUT: self.id,
+                        NOMBRES: self.nombres,
+                        APELLIDOS: self.apellidos,
+                        ACRONIMO: self.acronimo
+                    };
+
+                    $('#pagination-workers').pagination({
+                        ajax: function (options, refresh, $target) {
+                            self.page(options.current),
+                                $.ajax({
+                                    global: false,
+                                    url: '@Url.Action("_SearcherWorkers", "Home", new { Area = "Mandante" })',
+                                    data: data,
+                                    dataType: 'json'
+                                }).done(function (res) {
+                                    self.listWorkers.removeAll();
+                                    self.addWorker(res.data);
+                                    self.count(res.COUNT);
+                                    refresh({
+                                        total: res.COUNT,
+                                        length: self.length()
+                                    });
+                                }).fail(function (error) { console.log('error'); });
+                        },
+                        prev: "@Mandante.Home.Tabla.Lbl_Anterior",
+                        next: "@Mandante.Home.Tabla.Lbl_Siguiente"
+                    });
+                }
+            }
+
+            self.clear = function () {
+                self.active(false);
+                self.length(10);
+                self.sort('0');
+                self.ordering('asc');
+                self.id('');
+                self.nombres('');
+                self.apellidos('');
+                self.acronimo('');
+            }
+
+            self.selectItem = function (data) {
+                switch (self.idModal()) {
+                    case 1:
+                        $('#txtID').val(data.RUT).trigger('change');
+                        $('#txtNOMBRES').val(data.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS').val(data.APELLIDOS).trigger('change');
+                        break;
+                    case 2:
+                        $('#txtID2').val(data.RUT).trigger('change');
+                        $('#txtNOMBRES2').val(data.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS2').val(data.APELLIDOS).trigger('change');
+                        break;
+                    case 3:
+                        $('#txtID3').val(data.RUT).trigger('change');
+                        $('#txtNOMBRES3').val(data.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS3').val(data.APELLIDOS).trigger('change');
+                        $('#ddlSEXO3').val(data.SEXO).trigger('change');
+                        $('#txtFECHNACIM3').val(data.FECHNACIM_G).trigger('change');
+                        break;
+                    case 4:
+                        $('#txtID4').val(data.RUT).trigger('change');
+                        break;
+                }
+                self.clear();
+                $('#searcher-workers').modal('hide');
+            }
+        }
+
+        var vmWorkers = new WorkersViewModel();
+        vmWorkers.init();
+        modelWorkers = vmWorkers;
+        ko.applyBindings(vmWorkers, $('#modal-searcher-workers')[0]);
+
+    }
+
+</script>
+
+

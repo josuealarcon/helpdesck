@@ -1,0 +1,12 @@
+CREATE PROCEDURE [dbo].[V4MVC_DOCS_WORKERS_MUTUAL_INSERT]
+( @ID		uniqueidentifier = NULL
+, @IDMUTUAL int = NULL ) AS 
+BEGIN
+
+   INSERT INTO [DOCS_WORKERS_MUTUAL]
+        ( ID , IDMUTUAL )
+   VALUES
+        ( @ID , @IDMUTUAL )
+
+END
+

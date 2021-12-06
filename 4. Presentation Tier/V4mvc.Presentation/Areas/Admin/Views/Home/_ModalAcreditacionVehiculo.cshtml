@@ -1,0 +1,224 @@
+﻿<style>
+    .cellred {
+        color: red;
+    }
+    .cellgreen {
+        color: green;
+    }
+</style>
+<div id="modal_acreditacion_veh" class="modal inmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h4 class="modal-title">@Mandante.Home._ModalAcreditacionVehiculo.Lgn_DatosAcreditacion</h4>
+            </div>
+            <div class="modal-body" id="body-acreditacion-veh">
+                <div class="form-horizontal">
+                    <table class="table" data-bind="with:vehiculo">
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Patente</strong></td>
+                            <td data-bind="text:PATENTE_FORMATO"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Marca</strong></td>
+                            <td data-bind="text:MARCA"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Tipo</strong></td>
+                            <td data-bind="text:TIPO_TRANSPORTE_LETRAS"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Modelo</strong></td>
+                            <td data-bind="text:MODELO"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Empresa</strong></td>
+                            <td data-bind="text:NOMBRE_EMPRESA"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Color</strong></td>
+                            <td data-bind="text:COLOR"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Anio</strong></td>
+                            <td data-bind="text:ANOFAB"></td>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_CumpleCertificacion</strong></td>
+                            <td>
+                                <!-- ko if: CERTIFICACION == 1 -->
+                                <img src="~/images/verde.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Phl_CertificacionAprobado" width="18" height="18" />
+                                <!-- /ko -->
+                                <!-- ko ifnot: CERTIFICACION == 1 -->
+                                &nbsp;<img src="~/images/rojo.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Phl_CertificacionSinValidar" width="18" height="18" />
+                                <!-- /ko -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>@Mandante.Home._ModalAcreditacionVehiculo.Lbl_Division</strong></td>
+                            <td data-bind="text:DIVISION_NOMBRE"></td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <fieldset>
+                        <legend>@Mandante.Home._ModalAcreditacionVehiculo.Lgn_Documentos</legend>
+                        <table class="table table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <th>@Mandante.Home._ModalAcreditacionVehiculo.Tblh_Documentos_Obligatorio</th>
+                                    <th>@Mandante.Home._ModalAcreditacionVehiculo.Tblh_Documentos_Nombre</th>
+                                    <th>@Mandante.Home._ModalAcreditacionVehiculo.Tblh_Documentos_Existe</th>
+                                    <th>@Mandante.Home._ModalAcreditacionVehiculo.Tblh_Documentos_Fecha</th>
+                                </tr>
+                            </thead>
+                            <!-- ko ifnot: documentos().length > 0 -->
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Msg_SinRegistros</td>
+                                </tr>
+                            </tbody>
+                            <!-- /ko -->
+                            <!-- ko if: documentos().length > 0 -->
+
+                            <tbody data-bind="foreach:documentos">
+                                <tr>
+                                    <td class="text-black">
+                                        <!-- ko if: ID_DOC_OPCION == 1 -->
+                                        *
+                                        <!-- /ko -->
+                                        <!-- ko ifnot: ID_DOC_OPCION == 1 -->
+                                        &nbsp;
+                                        <!-- /ko -->
+                                    </td>
+                                    <td><span data-bind="text:NOMBRE"></span></td>
+                                    <td class="text-black">
+                                        <!-- ko if: SUBEDOC == 'SI' -->
+                                        <!-- ko if: ESTADO_DOCUMENTO == 'NO' -->
+                                        <img src="~/images/amarillo.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Phl_SinValidar" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- ko if: ESTADO_DOCUMENTO == 'SI' -->
+                                        <img src="~/images/verde.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Phl_Aprobado" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- ko if: ESTADO_DOCUMENTO == 'RE' -->
+                                        <img src="~/images/rojo.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Phl_Rechazado" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- ko if: ESTADO_DOCUMENTO == 'EC' -->
+                                        <img src="~/images/amarillo.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Phl_EnConsulta" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- ko if: ESTADO_DOCUMENTO == '' -->
+                                        @Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Lbl_SinArchivo&nbsp;<img src="~/images/rojo.gif" alt="@Mandante.Home._ModalAcreditacionVehiculo.Tblb_Documentos_Phl_SinArchivo" width="18" height="18" />
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                    </td>
+                                    <td>
+                                        <table width="100%">
+                                            <tbody data-bind="foreach:LISTA_FECHAS">
+                                                <tr>
+                                                    <td class="text-black" data-bind="text:NOMBRE"></td>
+                                                    <td class="pull-right">
+                                                        <strong><span data-bind="text:FECHA_REGISTRADA_GM, css: { cellgreen: TIPO_FECHA <= 0 || FECHA_REGISTRADA >= FECHA_HOY, cellred: TIPO_FECHA > 0 && FECHA_REGISTRADA < FECHA_HOY }"></span></strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <!-- /ko -->
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check-circle"></i>&nbsp;@Mandante.Home._ModalAcreditacionVehiculo.Btn_Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/knockoutJS")
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var vmAcredVehiculo = null;
+
+    function loadAcreditacionVehiculo(data) {
+
+        function AcredVehiculoModel(data) {
+            var self = this;
+            self.TIPOPASE = ko.observable();
+            self.vehiculo = ko.observable();
+            self.documentos = ko.observableArray();
+
+            self.loadAcreditacionInfo = function (params) {
+                return $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '@Url.Action("GetDetalleAcreditacionVehiculo", "Home", new { Area = "Mandante" })',
+                    data: JSON.stringify(params)
+                });
+            }
+
+            self.reload = function (params) {
+                $.when(self.loadAcreditacionInfo(params)).then(function (resp) {
+                    if (resp) {
+                        self.TIPOPASE(params.TIPOPASE);
+                        self.vehiculo(resp.vehiculo);
+                        self.documentos(resp.documentos);
+                        self.onSuccessReload();
+                    }
+                    else {
+                        swal({
+                            title: "@Html.Raw(Mandante.Home._ModalAcreditacionVehiculo.Msg_Ocurrio_Error)",
+                            timer: 3000,
+                            type: "error",
+                            showConfirmButton: true,
+                        });
+                    }
+
+                }).fail(function (err) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Home._ModalAcreditacionVehiculo.Msg_Ocurrio_Error)",
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    });
+                });
+            }
+
+            self.onSuccessReload = function () {
+                ko.cleanNode($('#body-acreditacion-veh')[0]);
+                ko.applyBindings(self, $('#body-acreditacion-veh')[0]);
+            }
+
+            self.reload(data);
+        }
+
+        vmAcredVehiculo = new AcredVehiculoModel(data);
+
+    }
+
+
+    $(document).ready(function () {
+        $("#modal_acreditacion_veh").on("shown.bs.modal", function (e) {
+            var modal = $(e.relatedTarget);
+            var params = {
+                PATENTE: modal.data('modal-patente'),
+                DIVCOD: modal.data('modal-divcod'),
+                IDEMPRESA: modal.data('modal-idempresa'),
+                TIPO_VEHICULO: modal.data('modal-tipopase')
+            };
+
+            if (vmAcredVehiculo != null) {
+                vmAcredVehiculo.reload(params);
+            }
+            else {
+                loadAcreditacionVehiculo(params);
+            }
+        });
+
+    });
+</script>
+
+

@@ -1,0 +1,272 @@
+﻿@{
+    ViewBag.Title = "CambioClave";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <img src="~/Images/webcontrol_logo_chico.png" alt="flag" class="img-responsive">
+        <div class="callout callout-info">
+            <p>@General.CambioClave.Lbl_Procedimiento</p>
+            <ul>
+                <li>@General.CambioClave.Lbl_DigiteActualClave</li>
+                <li>@General.CambioClave.Lbl_VuelvaDigitarClave</li>
+            </ul>
+            <ol>
+                <li>@General.CambioClave.Lbl_Extension8y10</li>
+                <li>@General.CambioClave.Lbl_IncluirMayusculaMIniscula</li>
+                <li>@General.CambioClave.Lbl_NoDebeRepetir5UltimosContraseñas</li>
+                <li>@General.CambioClave.Lbl_RenovarCada3Meses</li>
+            </ol>
+            <ul>
+                <li>@General.CambioClave.Lbl_LuegoPresioneCambiarClave</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form id="form-cambio-clave" name="form-cambio-clave" autocomplete="off">
+            <fieldset>
+                <legend class="text-center">@General.CambioClave.Lgn_ClaveWebControl</legend>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="txtCLAVE" name="CLAVE" placeholder="@General.CambioClave.Phl_IngreseClaveActual">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="txtNUEVACLAVE" data-bind="value: nueva_clave" name="NUEVACLAVE" placeholder="@General.CambioClave.Phl_IngreseClaveNueva">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="Seguridad" readonly>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="txtREITERECLAVE" name="REITERECLAVE" placeholder="@General.CambioClave.Phl_ReteireClaveNueva">
+                </div>
+                <button data-bind="click: Save" class="btn btn-primary block full-width m-b">@General.CambioClave.Btn_CambiarClave</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+        var strPassword;
+	    var charPassword;
+	    var complexity = $("#complexity");
+	    var minPasswordLength = 8;
+	    var baseScore = 0, score = 0;
+
+	    var num = {};
+	    num.Excess = 0;
+	    num.Upper = 0;
+	    num.Numbers = 0;
+	    num.Symbols = 0;
+
+	    var bonus = {};
+	    bonus.Excess = 3;
+	    bonus.Upper = 4;
+	    bonus.Numbers = 5;
+	    bonus.Symbols = 5;
+	    bonus.Combo = 0;
+	    bonus.FlatLower = 0;
+        bonus.FlatNumber = 0;
+
+        outputResult();
+
+        $("#txtNUEVACLAVE").bind("keyup", checkVal);
+
+        function checkVal()
+        {
+	        init();
+	        if (charPassword.length >= minPasswordLength)
+	        {
+		        baseScore = 50;
+		        analyzeString();
+		        calcComplexity();
+	        }
+	        else
+	        {
+		        baseScore = 0;
+	        }
+	        outputResult();
+        }
+
+        function init()
+        {
+            strPassword = $("#txtNUEVACLAVE").val();
+	        charPassword = strPassword.split("");
+	        num.Excess = 0;
+	        num.Upper = 0;
+	        num.Numbers = 0;
+	        num.Symbols = 0;
+	        bonus.Combo = 0;
+	        bonus.FlatLower = 0;
+	        bonus.FlatNumber = 0;
+	        baseScore = 0;
+	        score =0;
+        }
+
+        function analyzeString ()
+        {
+	        for (i=0; i<charPassword.length;i++)
+	        {
+		        if (charPassword[i].match(/[A-Z]/g)) {num.Upper++;}
+		        if (charPassword[i].match(/[0-9]/g)) {num.Numbers++;}
+		        if (charPassword[i].match(/(.*[!,#,$,%,^,&,*,?,_,~,.,+,¡])/)) {num.Symbols++;}
+	        }
+	        num.Excess = charPassword.length - minPasswordLength;
+	        if (num.Upper && num.Numbers && num.Symbols)
+	        {
+		        bonus.Combo = 25;
+	        }
+	        else if ((num.Upper && num.Numbers) || (num.Upper && num.Symbols) || (num.Numbers && num.Symbols))
+	        {
+		        bonus.Combo = 15;
+	        }
+	        if (strPassword.match(/^[\sa-z]+$/))
+	        {
+		        bonus.FlatLower = -15;
+	        }
+	        if (strPassword.match(/^[\s0-9]+$/))
+	        {
+		        bonus.FlatNumber = -35;
+	        }
+        }
+
+        function calcComplexity()
+        {
+	        score = baseScore + (num.Excess*bonus.Excess) + (num.Upper*bonus.Upper) + (num.Numbers*bonus.Numbers) + (num.Symbols*bonus.Symbols) + bonus.Combo + bonus.FlatLower + bonus.FlatNumber;
+        }
+
+        function outputResult() {
+            if ($("#txtNUEVACLAVE").val() == "") {
+                $("#Seguridad").val('@Html.Raw(@General.CambioClave.Msg_IngreseClave)');
+            }
+            else if (charPassword.length < minPasswordLength) {
+                $("#Seguridad").val('@Html.Raw(General.CambioClave.Msg_LargoMinimo)' + ' ' + minPasswordLength + ' ' + '@Html.Raw(General.CambioClave.Msg_Caracteres)');
+            }
+            else if (score < 100) {
+                $("#Seguridad").val('@Html.Raw(@General.CambioClave.Msg_Insegura)');
+            }
+            else if (score >= 100) {
+                $("#Seguridad").val('@Html.Raw(@General.CambioClave.Msg_Segura)');
+            }
+        }
+    </script>
+
+    <script>
+        function ViewModelCambioClave() {
+            var self = this;
+            self.nueva_clave = ko.observable();
+
+            self.send_data = {
+                NUEVACLAVE: self.nueva_clave
+            }
+
+            self.Save = function () {
+                if ($('#form-cambio-clave').valid()) {
+                    var data = ko.toJSON(self.send_data);
+                    $.ajax({
+                        contentType: "application/json",
+                        type: 'POST',
+                        url: '@Url.Action("CambioClaveTipoUsuario", "Login")',
+                        data: data,
+                        success: function (response) {
+                            if (response.Key == 'Mandante')
+                                window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Mandante" })';
+                            else if (response.Key == "Contratista")
+                                window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Contratista" })';
+                            else if (response.Key == "CambioClave")
+                                window.location.href = '@Url.Action("CambioClave", "Login")';
+                            else if (response.Key == "URL")
+                                window.location.href = response.Value;
+                            else {
+                                swal({
+                                    title: response,
+                                    timer: 3000,
+                                    type: "error",
+                                    showConfirmButton: true,
+                                }, function () {
+                                    swal.close();
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        var vm = new ViewModelCambioClave();
+        ko.applyBindings(vm);
+
+        jQuery.validator.addMethod("isSafe", function (value, element) {
+            return score >= 100 ? true : false;
+        });
+
+        $("#form-cambio-clave").validate({
+            rules: {
+                "CLAVE": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 20,
+                    remote: {
+                        url: '@Url.Action("ValidarClave", "Login")',
+                        type: "POST",
+                        data: {
+                            CLAVE: function () {
+                                return $("#txtCLAVE").val();
+                            }
+                        }
+                    }
+                },
+                "NUEVACLAVE": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 20,
+                    isSafe: true,
+                    remote: {
+                        url: '@Url.Action("ValidarClaveHistorico", "Login")',
+                        type: "POST",
+                        data: {
+                            CLAVE: function () {
+                                return $("#txtNUEVACLAVE").val();
+                            }
+                        }
+                    }
+                },
+                "REITERECLAVE": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 20,
+                    equalTo: "#txtNUEVACLAVE",
+                    isSafe: true,
+                },
+            },
+            messages: {
+                "CLAVE": {
+                    required: '@Html.Raw(General.CambioClave.Val_ClaveRequerida)',
+                    minlength: '@Html.Raw(General.CambioClave.Val_LongitudMinima8Caracteres)',
+                    maxlength: '@Html.Raw(General.CambioClave.Val_LongitudMaxima20Caracteres)',
+                    remote: '@Html.Raw(General.CambioClave.Val_ClaveActualNoCorresponde)',
+                },
+                "NUEVACLAVE": {
+                    required: '@Html.Raw(General.CambioClave.Val_NuevaClaveRequerida)',
+                    minlength: '@Html.Raw(General.CambioClave.Val_LongitudMinima8Caracteres)',
+                    maxlength: '@Html.Raw(General.CambioClave.Val_LongitudMaxima20Caracteres)',
+                    isSafe: '@Html.Raw(General.CambioClave.Val_ClaveEsInsegura)',
+                    remote: '@Html.Raw(General.CambioClave.Val_ClaveRepite5Anteriores)',
+                },
+                "REITERECLAVE": {
+                    required: '@Html.Raw(General.CambioClave.Val_RepitaNuevaClave)',
+                    maxlength: '@Html.Raw(General.CambioClave.Val_LongitudMaxima20Caracteres)',
+                    equalTo: '@Html.Raw(General.CambioClave.Val_IngreseClaveIgualNuevaClave)',
+                    isSafe: '@Html.Raw(General.CambioClave.Val_ClaveEsInsegura)'
+                },
+            }
+        });
+
+    </script>
+
+}
+

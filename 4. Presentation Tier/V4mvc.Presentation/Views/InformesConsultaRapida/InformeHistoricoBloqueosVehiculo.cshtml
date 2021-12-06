@@ -1,0 +1,86 @@
+﻿@model V4mvc.Presentation.Controllers.InformesConsultaRapidaController.ViewModel_InformeConsultaRapida
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="with:datosInformeBloqueos">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><strong>Filtros del Informe</strong></th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="tituloTabla"><strong>Patente</strong></td>
+                        <td data-bind="text:PATENTE_FORMATO"></td>
+                    </tr>
+                    <tr>
+                        <td class="tituloTabla"><strong>División</strong></td>
+                        <td data-bind="text:DIVISION"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">Historico de bloqueos - Vehiculos</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+<div class="row" id="powerwidgets">
+    <div class="col-md-12 bootstrap-grid" style="overflow-x:auto;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Patente</th>
+                    <th class="text-center">Division</th>
+                    <th class="text-center">Bloquea</th>
+                    <th class="text-center">Observación</th>
+                    <th class="text-center">Archivo Sustento</th>
+                    <th class="text-center">Usuario Bloquea</th>
+                    <th class="text-center">Fecha Bloquea</th>
+                    <th class="text-center">Hora Bloquea</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: $root.bloqueos">
+                <tr>
+                    <td class="text-center" data-bind="text:PATENTE_FORMATO"></td>
+                    <td class="text-center" data-bind="text:DIVISION"></td>
+                    <td class="text-center" data-bind="text:BLOQUEA"></td>
+                    <td class="text-left" data-bind="text:OBSERVACION"></td>
+                    <td class="text-left">
+                        <u><a data-bind="text:NOMBRE,attr:{href:'@Url.Action("DownLoadFile","Home", new { Area = "Contratista" })?id=' + ID}"></a></u>
+                    </td>
+                    <td class="text-center" data-bind="text:USRBLOQUEA_FORMATO"></td>
+                    <td class="text-center" data-bind="text:FECBLOQUEA"></td>
+                    <td class="text-center" data-bind="text:HORABLOQUEA"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="notices">
+    <div>@Contratista.InformesAccesoFaena.InformeDiarioControlAccesoDiaTotal.Msg_Nota</div>
+    <div class="notice">@Contratista.InformesAccesoFaena.InformeDiarioControlAccesoDiaTotal.Msg_DatosReporteFechaActualParteSuperiorInforme</div>
+</div>
+@section Scripts {
+    <script>
+        function IndexViewModel(model) {
+            var self = this;
+            self.bloqueos = model.bloqueos;
+            self.datosInformeBloqueos = model.datosInformeBloqueos;
+        }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}
+
+
+
+

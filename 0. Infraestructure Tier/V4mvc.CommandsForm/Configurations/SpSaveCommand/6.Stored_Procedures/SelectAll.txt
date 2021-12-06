@@ -1,0 +1,28 @@
+﻿
+GO
+
+USE $0
+
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[$1]') AND type IN (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[$2]
+
+GO
+
+-- =========================================================
+-- Autor - Fecha Crea  : TiersGenerateCommand - $3
+-- Descripcion         : Procedimiento de Selección de la tabla $4
+-- Autor - Fecha Modif : 
+-- Descripcion         : 
+-- =========================================================
+CREATE PROCEDURE [dbo].[$5]
+AS
+BEGIN
+
+	SELECT
+		$6
+	FROM [$7]
+END
+
+GO

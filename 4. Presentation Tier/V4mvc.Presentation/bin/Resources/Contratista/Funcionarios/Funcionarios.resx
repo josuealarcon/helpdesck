@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DocumentationStartDate" xml:space="preserve">
+    <value>Fecha Inicio</value>
+  </data>
+  <data name="DocumentationWatch" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="FuncionariosAdditionalContractData" xml:space="preserve">
+    <value>Datos Adicionales Contrato</value>
+  </data>
+  <data name="FuncionariosAddress" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="FuncionariosAlert" xml:space="preserve">
+    <value>Alerta</value>
+  </data>
+  <data name="FuncionariosBaseSalary" xml:space="preserve">
+    <value>Sueldo Base</value>
+  </data>
+  <data name="FuncionariosBloodType" xml:space="preserve">
+    <value>Grupo Sanguineo</value>
+  </data>
+  <data name="FuncionariosBloq" xml:space="preserve">
+    <value>Bloq</value>
+  </data>
+  <data name="FuncionariosBondIP" xml:space="preserve">
+    <value>Bono IP</value>
+  </data>
+  <data name="FuncionariosBondIS" xml:space="preserve">
+    <value>Bono IS</value>
+  </data>
+  <data name="FuncionariosBrowse" xml:space="preserve">
+    <value>Examinar</value>
+  </data>
+  <data name="FuncionariosBUSINESS" xml:space="preserve">
+    <value>EMPRESAS</value>
+  </data>
+  <data name="FuncionariosCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FuncionariosCellular" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="FuncionariosCert" xml:space="preserve">
+    <value>Cert</value>
+  </data>
+  <data name="FuncionariosCity" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="FuncionariosClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="FuncionariosCommune" xml:space="preserve">
+    <value>Comuna</value>
+  </data>
+  <data name="FuncionariosCompany" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="FuncionariosCOMPLIESDRIVING" xml:space="preserve">
+    <value>CUMPLE CONDUCCIÓN</value>
+  </data>
+  <data name="FuncionariosContract" xml:space="preserve">
+    <value>Contrato</value>
+  </data>
+  <data name="FuncionariosContractType" xml:space="preserve">
+    <value>Tipo Contrato</value>
+  </data>
+  <data name="FuncionariosCostCenter" xml:space="preserve">
+    <value>Centro de Costo</value>
+  </data>
+  <data name="FuncionariosCountry" xml:space="preserve">
+    <value>Pais</value>
+  </data>
+  <data name="FuncionariosDate" xml:space="preserve">
+    <value>FECHAS</value>
+  </data>
+  <data name="FuncionariosDateEnd" xml:space="preserve">
+    <value>Fecha Fin</value>
+  </data>
+  <data name="FuncionariosDateM" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="FuncionariosDateMin" xml:space="preserve">
+    <value>Fechas</value>
+  </data>
+  <data name="FuncionariosDateOfBirth" xml:space="preserve">
+    <value>Fecha Nacimiento</value>
+  </data>
+  <data name="FuncionariosDays" xml:space="preserve">
+    <value>Cant. Dias</value>
+  </data>
+  <data name="FuncionariosDele" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="FuncionariosDelete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="FuncionariosDispute" xml:space="preserve">
+    <value>DISPUTA</value>
+  </data>
+  <data name="FuncionariosDivicionesMinuscula" xml:space="preserve">
+    <value>Divisiones</value>
+  </data>
+  <data name="FuncionariosDivision" xml:space="preserve">
+    <value>División</value>
+  </data>
+  <data name="FuncionariosDIVISIONS" xml:space="preserve">
+    <value>DIVISIONES</value>
+  </data>
+  <data name="FuncionariosDocument" xml:space="preserve">
+    <value>DOCUMENTO</value>
+  </data>
+  <data name="FuncionariosDocumentation" xml:space="preserve">
+    <value>Documentación</value>
+  </data>
+  <data name="FuncionariosDocumentDispute" xml:space="preserve">
+    <value>Disputa de Documento</value>
+  </data>
+  <data name="FuncionariosDocumentMin" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="FuncionariosDocuments" xml:space="preserve">
+    <value>Documentos</value>
+  </data>
+  <data name="FuncionariosDocumentStatus" xml:space="preserve">
+    <value>Estado del Documento</value>
+  </data>
+  <data name="FuncionariosDrive" xml:space="preserve">
+    <value>Conduce</value>
+  </data>
+  <data name="FuncionariosDriverData" xml:space="preserve">
+    <value>Datos Conductor de</value>
+  </data>
+  <data name="FuncionariosDrivers" xml:space="preserve">
+    <value>Conductores</value>
+  </data>
+  <data name="FuncionariosDrivingDocuments" xml:space="preserve">
+    <value>Documentos Conducción</value>
+  </data>
+  <data name="FuncionariosDrivingPassRequest" xml:space="preserve">
+    <value>SOLICITUD DE PASE DE CONDUCCIÓN</value>
+  </data>
+  <data name="FuncionariosEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="FuncionariosEditSettlement" xml:space="preserve">
+    <value>Editar Liquidación</value>
+  </data>
+  <data name="FuncionariosEmail" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="FuncionariosEmergencyPhone" xml:space="preserve">
+    <value>Teléfono Emg.</value>
+  </data>
+  <data name="FuncionariosEnd" xml:space="preserve">
+    <value>Termino</value>
+  </data>
+  <data name="FuncionariosEndDate" xml:space="preserve">
+    <value>Fecha Término</value>
+  </data>
+  <data name="FuncionariosEnterDispute" xml:space="preserve">
+    <value>Ingresar Disputa</value>
+  </data>
+  <data name="FuncionariosEntity" xml:space="preserve">
+    <value>Entidad</value>
+  </data>
+  <data name="FuncionariosExhibit" xml:space="preserve">
+    <value>Mostrando</value>
+  </data>
+  <data name="FuncionariosFEMALE" xml:space="preserve">
+    <value>FEMENINO</value>
+  </data>
+  <data name="FuncionariosFilesData" xml:space="preserve">
+    <value>Archivos / Datos</value>
+  </data>
+  <data name="FuncionariosFor" xml:space="preserve">
+    <value>Por</value>
+  </data>
+  <data name="FuncionariosGender" xml:space="preserve">
+    <value>Genero</value>
+  </data>
+  <data name="FuncionariosHereM" xml:space="preserve">
+    <value>Aqui</value>
+  </data>
+  <data name="FuncionariosHour" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="FuncionariosIDLoading" xml:space="preserve">
+    <value>RUT Carga</value>
+  </data>
+  <data name="FuncionariosIDOfficials" xml:space="preserve">
+    <value>RUT Funcionario</value>
+  </data>
+  <data name="FuncionariosIncludeFile" xml:space="preserve">
+    <value>Incluya un archivo</value>
+  </data>
+  <data name="FuncionariosInformation" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="FuncionariosIPBonusRequired" xml:space="preserve">
+    <value>El Bono IP es requerido</value>
+  </data>
+  <data name="FuncionariosISBonusRequired" xml:space="preserve">
+    <value>El Bono IS es requerido</value>
+  </data>
+  <data name="FuncionariosLaborDocuments" xml:space="preserve">
+    <value>Documentos C. Laboral</value>
+  </data>
+  <data name="FuncionariosLastName" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="FuncionariosLicenseClasses" xml:space="preserve">
+    <value>Clases Licencia</value>
+  </data>
+  <data name="FuncionariosLiquid" xml:space="preserve">
+    <value>Liquido</value>
+  </data>
+  <data name="FuncionariosLiquidAmount" xml:space="preserve">
+    <value>Monto Liquido</value>
+  </data>
+  <data name="FuncionariosMALE" xml:space="preserve">
+    <value>MASCULINO</value>
+  </data>
+  <data name="FuncionariosMDelete" xml:space="preserve">
+    <value>ELIMINAR</value>
+  </data>
+  <data name="FuncionariosMDispute" xml:space="preserve">
+    <value>Disputa</value>
+  </data>
+  <data name="FuncionariosMedicalLicense" xml:space="preserve">
+    <value>Licencia Medica</value>
+  </data>
+  <data name="FuncionariosMEdit" xml:space="preserve">
+    <value>EDITAR</value>
+  </data>
+  <data name="FuncionariosMLASTNAME" xml:space="preserve">
+    <value>APELLIDOS</value>
+  </data>
+  <data name="FuncionariosMNAME" xml:space="preserve">
+    <value>NOMBRES</value>
+  </data>
+  <data name="FuncionariosMNames" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="FuncionariosMsgFieldsAsteriskObligatory" xml:space="preserve">
+    <value>Los campos marcados con * son obligatorios</value>
+  </data>
+  <data name="FuncionariosMsgRequestedEnterRut" xml:space="preserve">
+    <value>se solicita digitar el Rut de el Integrante del Pase</value>
+  </data>
+  <data name="FuncionariosMsgRutTypedFull" xml:space="preserve">
+    <value>El Rut debe digitarse completo, sin puntos ni guión</value>
+  </data>
+  <data name="FuncionariosMsgThisTaskDoesNotRequireLicenses" xml:space="preserve">
+    <value>Esta Faena no requiere permisos de conducción</value>
+  </data>
+  <data name="FuncionariosMsgValidateData" xml:space="preserve">
+    <value>Con el fin de validar sus datos y llenar los campos automáticamente si existieran</value>
+  </data>
+  <data name="FuncionariosName" xml:space="preserve">
+    <value>Nombres</value>
+  </data>
+  <data name="FuncionariosNetAmountRequired" xml:space="preserve">
+    <value>El Monto Liquido es requerido</value>
+  </data>
+  <data name="FuncionariosNetSalary" xml:space="preserve">
+    <value>Salario Bruto</value>
+  </data>
+  <data name="FuncionariosNew" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="FuncionariosNewOfficial" xml:space="preserve">
+    <value>Nuevo Funcionario</value>
+  </data>
+  <data name="FuncionariosNext" xml:space="preserve">
+    <value>Sig</value>
+  </data>
+  <data name="FuncionariosNO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="FuncionariosOB" xml:space="preserve">
+    <value>OB</value>
+  </data>
+  <data name="FuncionariosOBMin" xml:space="preserve">
+    <value>Ob</value>
+  </data>
+  <data name="FuncionariosObservationRequired" xml:space="preserve">
+    <value>La Observación es requerida</value>
+  </data>
+  <data name="FuncionariosObservations" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="FuncionariosObservationsValidator" xml:space="preserve">
+    <value>Observaciones Validador</value>
+  </data>
+  <data name="FuncionariosOfficials" xml:space="preserve">
+    <value>Funcionarios</value>
+  </data>
+  <data name="FuncionariosOpenNewDispute" xml:space="preserve">
+    <value>Abrir nueva disputa</value>
+  </data>
+  <data name="FuncionariosPass" xml:space="preserve">
+    <value>Pase</value>
+  </data>
+  <data name="FuncionariosPassRequest" xml:space="preserve">
+    <value>PETICIÓN PASE</value>
+  </data>
+  <data name="FuncionariosPassType" xml:space="preserve">
+    <value>Tipo Pase</value>
+  </data>
+  <data name="FuncionariosPayment" xml:space="preserve">
+    <value>Permiso sin Goce de Sueldo</value>
+  </data>
+  <data name="FuncionariosPayroll" xml:space="preserve">
+    <value>Nómina</value>
+  </data>
+  <data name="FuncionariosPayrollOfficials" xml:space="preserve">
+    <value>Nómina Funcionarios</value>
+  </data>
+  <data name="FuncionariosPayrollOfOfficials" xml:space="preserve">
+    <value>Nomina de Funcionarios</value>
+  </data>
+  <data name="FuncionariosPeriod" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="FuncionariosPeriodRequired" xml:space="preserve">
+    <value>El periodo es requerido</value>
+  </data>
+  <data name="FuncionariosPersonal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="FuncionariosPersonalData" xml:space="preserve">
+    <value>Datos Personales</value>
+  </data>
+  <data name="FuncionariosPersonalDataNew" xml:space="preserve">
+    <value>Datos Personales Funcionario Nuevo</value>
+  </data>
+  <data name="FuncionariosPhone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="FuncionariosPleaseseetherequirements" xml:space="preserve">
+    <value>Puede ver los requisitos de validación del documento</value>
+  </data>
+  <data name="FuncionariosPosition" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="FuncionariosPrevious" xml:space="preserve">
+    <value>Ant</value>
+  </data>
+  <data name="FuncionariosReasonsForRejection" xml:space="preserve">
+    <value>Motivos de Rechazo</value>
+  </data>
+  <data name="FuncionariosRecords" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="FuncionariosRegion" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="FuncionariosResidential" xml:space="preserve">
+    <value>Residenciales</value>
+  </data>
+  <data name="FuncionariosResidentialData" xml:space="preserve">
+    <value>Datos Residenciales de</value>
+  </data>
+  <data name="FuncionariosRoles" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="FuncionariosRut" xml:space="preserve">
+    <value>RUT</value>
+  </data>
+  <data name="FuncionariosSalary" xml:space="preserve">
+    <value>Liquidación y Comprobante de Sueldo</value>
+  </data>
+  <data name="FuncionariosSalaryOnly" xml:space="preserve">
+    <value>Salario</value>
+  </data>
+  <data name="FuncionariosSalarySettlements" xml:space="preserve">
+    <value>Liquidaciones de Sueldo</value>
+  </data>
+  <data name="FuncionariosSave" xml:space="preserve">
+    <value>Guardar Datos</value>
+  </data>
+  <data name="FuncionariosSaveChanges" xml:space="preserve">
+    <value>Guardar Cambios</value>
+  </data>
+  <data name="FuncionariosSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="FuncionariosSeeDocument" xml:space="preserve">
+    <value>Ver Documento</value>
+  </data>
+  <data name="FuncionariosSelectFile" xml:space="preserve">
+    <value>Seleccione Archivo</value>
+  </data>
+  <data name="FuncionariosSex" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="FuncionariosStart" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="FuncionariosStartDate" xml:space="preserve">
+    <value>Fecha Inicio</value>
+  </data>
+  <data name="FuncionariosState" xml:space="preserve">
+    <value>ESTADO</value>
+  </data>
+  <data name="FuncionariosStateMin" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="FuncionariosStoredDocuments" xml:space="preserve">
+    <value>Documentos Almacenados</value>
+  </data>
+  <data name="FuncionariosSubeDocCargoReq" xml:space="preserve">
+    <value>Cargo requerido</value>
+  </data>
+  <data name="FuncionariosSubeDocContractTypeReq" xml:space="preserve">
+    <value>El tipo de contrato es obligatorio</value>
+  </data>
+  <data name="FuncionariosSubeDocDatesORMDateReq" xml:space="preserve">
+    <value>Una o mas fechas requerida</value>
+  </data>
+  <data name="FuncionariosSubeDocDivsORMDivReq" xml:space="preserve">
+    <value>Una o mas divisiones requerida</value>
+  </data>
+  <data name="FuncionariosSubeDocFNameLenExceeded" xml:space="preserve">
+    <value>El tamaño maximo del nombre de archivo es de 30 caracteres</value>
+  </data>
+  <data name="FuncionariosSubeDocFNameReq" xml:space="preserve">
+    <value>Nombre de archivo requerido</value>
+  </data>
+  <data name="FuncionariosSubeDocOSTReq" xml:space="preserve">
+    <value>OST requerido</value>
+  </data>
+  <data name="FuncionariosSubeDocSalarioMoney" xml:space="preserve">
+    <value>El salario debe ser un numero</value>
+  </data>
+  <data name="FuncionariosSubeDocSalarioReq" xml:space="preserve">
+    <value>Salario requerido</value>
+  </data>
+  <data name="FuncionariosSubeDocSueldoBMoney" xml:space="preserve">
+    <value>El sueldo basico debe ser un numero</value>
+  </data>
+  <data name="FuncionariosSubeDocSueldoBReq" xml:space="preserve">
+    <value>Sueldo basico requerido</value>
+  </data>
+  <data name="FuncionariosSubeDocTurnoReq" xml:space="preserve">
+    <value>Turno requerido</value>
+  </data>
+  <data name="FuncionariosTaxable" xml:space="preserve">
+    <value>Imponible</value>
+  </data>
+  <data name="FuncionariosTaxableAmount" xml:space="preserve">
+    <value>Monto Imponible</value>
+  </data>
+  <data name="FuncionariosTaxableAmountRequired" xml:space="preserve">
+    <value>El Monto Imponible es requerido</value>
+  </data>
+  <data name="FuncionariosToShow" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="FuncionariosTransferAmount" xml:space="preserve">
+    <value>Monto Transferencia</value>
+  </data>
+  <data name="FuncionariosTransferAmountRequired" xml:space="preserve">
+    <value>El Monto Transferencia es requerido</value>
+  </data>
+  <data name="FuncionariosTransferred" xml:space="preserve">
+    <value>Transferido</value>
+  </data>
+  <data name="FuncionariosTurn" xml:space="preserve">
+    <value>Turno</value>
+  </data>
+  <data name="FuncionariosUpgradeDriving" xml:space="preserve">
+    <value>Actualiza Conducción</value>
+  </data>
+  <data name="FuncionariosUploadDate" xml:space="preserve">
+    <value>Fecha Carga</value>
+  </data>
+  <data name="FuncionariosUploadFiles" xml:space="preserve">
+    <value>Subir Archivo</value>
+  </data>
+  <data name="FuncionariosUploadSalary" xml:space="preserve">
+    <value>Subir Liquidación y Comprobante de Sueldo</value>
+  </data>
+  <data name="FuncionariosUserLoad" xml:space="preserve">
+    <value>Usuario Carga</value>
+  </data>
+  <data name="FuncionariosWatch" xml:space="preserve">
+    <value>Ver</value>
+  </data>
+  <data name="FuncionariosWorkDocuments" xml:space="preserve">
+    <value>Documentos C.Laboral</value>
+  </data>
+  <data name="FuncionariosWorking" xml:space="preserve">
+    <value>Laborales</value>
+  </data>
+  <data name="FuncionariosYES" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="FuniconariosDispute" xml:space="preserve">
+    <value>Disputa</value>
+  </data>
+  <data name="FuniconariosDriverDocuments" xml:space="preserve">
+    <value>Documentos de Manejo</value>
+  </data>
+  <data name="FuniconariosLaborDocuments" xml:space="preserve">
+    <value>Documentos Laborales</value>
+  </data>
+  <data name="FuniconariosPersonalDocuments" xml:space="preserve">
+    <value>Documentos Personales</value>
+  </data>
+  <data name="MsgSettlementEnteredCorrectly" xml:space="preserve">
+    <value>Liquidacion registrada correctamente</value>
+  </data>
+  <data name="MsgSettlementUpdateCorrectly" xml:space="preserve">
+    <value>Liquidacion actualizada correctamente</value>
+  </data>
+  <data name="TitleControlLiquidacionUpload" xml:space="preserve">
+    <value>Documento: Liquidación Mensual y Comprobante de Pago</value>
+  </data>
+  <data name="Val_MaxLength_Nombres" xml:space="preserve">
+    <value>Nombres deben tener 40 caracteres como maximo</value>
+  </data>
+</root>

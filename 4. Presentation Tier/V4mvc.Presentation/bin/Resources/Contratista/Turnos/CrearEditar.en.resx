@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Btn_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Btn_Guardar" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Chk_EmpiezaNocheA" xml:space="preserve">
+    <value>Night begins (A)</value>
+  </data>
+  <data name="Chk_EmpiezaNocheB" xml:space="preserve">
+    <value>Night begins (B)</value>
+  </data>
+  <data name="Item_Aprobado" xml:space="preserve">
+    <value>APPROVED</value>
+  </data>
+  <data name="Item_Bisemanal" xml:space="preserve">
+    <value>BIWEEKLY</value>
+  </data>
+  <data name="Item_Claseturno" xml:space="preserve">
+    <value>SHIFT CLASS</value>
+  </data>
+  <data name="Item_EnTramite" xml:space="preserve">
+    <value>IN PROCESS</value>
+  </data>
+  <data name="Item_Especial" xml:space="preserve">
+    <value>SPECIAL</value>
+  </data>
+  <data name="Item_EstadoTurno" xml:space="preserve">
+    <value>SHIFT STATUS</value>
+  </data>
+  <data name="Item_Mensual" xml:space="preserve">
+    <value>MONTHLY</value>
+  </data>
+  <data name="Item_Otro" xml:space="preserve">
+    <value>OTHER</value>
+  </data>
+  <data name="Item_Pendiente" xml:space="preserve">
+    <value>PENDING</value>
+  </data>
+  <data name="Item_Rechazado" xml:space="preserve">
+    <value>REJECTED</value>
+  </data>
+  <data name="Item_Semanal" xml:space="preserve">
+    <value>WEEKLY</value>
+  </data>
+  <data name="Lbl_DiasDiurno" xml:space="preserve">
+    <value>Day Days</value>
+  </data>
+  <data name="Lbl_DiasNocturno" xml:space="preserve">
+    <value>Night Days</value>
+  </data>
+  <data name="Lbl_EditarTurno" xml:space="preserve">
+    <value>Edit Shift</value>
+  </data>
+  <data name="Lbl_NuevoTurno" xml:space="preserve">
+    <value>New Shift</value>
+  </data>
+  <data name="Lbl_Turnos" xml:space="preserve">
+    <value>Turnos</value>
+  </data>
+  <data name="Lbl_VerTurno" xml:space="preserve">
+    <value>Watch Shift</value>
+  </data>
+  <data name="Lnk_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Lnk_ListaTurnos" xml:space="preserve">
+    <value>Shift List</value>
+  </data>
+  <data name="MsgDisputeSavedSuccessfully" xml:space="preserve">
+    <value>Shift dispute saved successfully</value>
+  </data>
+  <data name="Msg_CertJornadaExcepcional" xml:space="preserve">
+    <value>Cert. Exceptional Day</value>
+  </data>
+  <data name="Msg_ClaseTurno" xml:space="preserve">
+    <value>Shift Class</value>
+  </data>
+  <data name="Msg_DescripcionTurno" xml:space="preserve">
+    <value>Shift Description</value>
+  </data>
+  <data name="Msg_DiasTrabajo" xml:space="preserve">
+    <value>Working Days</value>
+  </data>
+  <data name="Msg_DotacionTurno" xml:space="preserve">
+    <value>Crew Shift</value>
+  </data>
+  <data name="Msg_DíasDescanso" xml:space="preserve">
+    <value>Rest days</value>
+  </data>
+  <data name="Msg_EstadoDocumento" xml:space="preserve">
+    <value>Document Status</value>
+  </data>
+  <data name="Msg_FechaDeVencimiento" xml:space="preserve">
+    <value>Due date</value>
+  </data>
+  <data name="Msg_FechaInicio" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Msg_HoraIngresoPactada" xml:space="preserve">
+    <value>Agreed Income Time</value>
+  </data>
+  <data name="Msg_HorarioDiurno" xml:space="preserve">
+    <value>DAY TIME</value>
+  </data>
+  <data name="Msg_HorarioNocturno" xml:space="preserve">
+    <value>NIGHT HOURS</value>
+  </data>
+  <data name="Msg_HoraSalidaPactada" xml:space="preserve">
+    <value>Agreed Departure Time</value>
+  </data>
+  <data name="Msg_HoraUltimoDia" xml:space="preserve">
+    <value>Last Day Time</value>
+  </data>
+  <data name="Msg_InformacionDescripcion_AsteriscosObligatorio" xml:space="preserve">
+    <value>The fields marked with (*) are required</value>
+  </data>
+  <data name="Msg_InformacionTitulo" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Msg_ObservacionesTurno" xml:space="preserve">
+    <value>Shift Observations</value>
+  </data>
+  <data name="Msg_Turno" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="Msg_TurnoGuardadoCorrectamente" xml:space="preserve">
+    <value>Shift Saved Successfully</value>
+  </data>
+  <data name="Phl_Diurno" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Phl_IngreseDescripcionTurno" xml:space="preserve">
+    <value>Enter Shift Description</value>
+  </data>
+  <data name="Phl_IngreseDiasDescanso" xml:space="preserve">
+    <value>Enter Days Rest</value>
+  </data>
+  <data name="Phl_IngreseDiasTrabajo" xml:space="preserve">
+    <value>Enter Work Days</value>
+  </data>
+  <data name="Phl_IngreseDotacionTurno" xml:space="preserve">
+    <value>Enter Endowment Shift</value>
+  </data>
+  <data name="Phl_IngreseFechaInicio" xml:space="preserve">
+    <value>Enter Start Date</value>
+  </data>
+  <data name="Phl_IngreseFechaVencimiento" xml:space="preserve">
+    <value>Enter Expiration Date</value>
+  </data>
+  <data name="Phl_IngreseHoraIngresoPactada" xml:space="preserve">
+    <value>Enter Agreed Entry Time</value>
+  </data>
+  <data name="Phl_IngreseHoraSalidaPactada" xml:space="preserve">
+    <value>Enter Agreed Departure Time</value>
+  </data>
+  <data name="Phl_IngreseHoraUltimoDia" xml:space="preserve">
+    <value>Enter Time Last Day</value>
+  </data>
+  <data name="Phl_IngreseObservacionTurno" xml:space="preserve">
+    <value>Enter Shift Observation</value>
+  </data>
+  <data name="Phl_IngreseTurno" xml:space="preserve">
+    <value>Enter Shift</value>
+  </data>
+  <data name="Phl_Nocturno" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="Rdo_DiaYNoche" xml:space="preserve">
+    <value>Day and night (*)</value>
+  </data>
+  <data name="Rdo_EmpiezaA" xml:space="preserve">
+    <value>Begins A</value>
+  </data>
+  <data name="Rdo_EmpiezaB" xml:space="preserve">
+    <value>Begins B</value>
+  </data>
+  <data name="Rdo_Especial" xml:space="preserve">
+    <value>Special (*)</value>
+  </data>
+  <data name="Rdo_SoloDia" xml:space="preserve">
+    <value>Only day</value>
+  </data>
+  <data name="Rdo_SoloNoche" xml:space="preserve">
+    <value>Only night</value>
+  </data>
+  <data name="Val_ArchivoEsRequerido" xml:space="preserve">
+    <value>File is Required</value>
+  </data>
+  <data name="Val_DebeIngresarPorLoMenosHoraIngresoPactada" xml:space="preserve">
+    <value>The Agreed Income Time is Required</value>
+  </data>
+  <data name="Val_DebeIngresarPorLoMenosHoraSalidaPactada" xml:space="preserve">
+    <value>The Agreed Departure Time is Required</value>
+  </data>
+  <data name="Val_DiaDescansoRango" xml:space="preserve">
+    <value>Rest Day must be greater than 1 and less than 31</value>
+  </data>
+  <data name="Val_DiaTrabajoRango" xml:space="preserve">
+    <value>Work Day must be greater than 1 and less than 31</value>
+  </data>
+  <data name="Val_ElCampoConElNombreDelArchivoNoDebeExcederLos30Caracteres" xml:space="preserve">
+    <value>Field containing file name is less or equals to 30 characters in length</value>
+  </data>
+  <data name="Val_HoraIngresoPactada" xml:space="preserve">
+    <value>Agreed Arrival Time must not be greater than or equal to the Agreed Departure Time</value>
+  </data>
+  <data name="Val_LaClaseDeTurnoSonRequeridos" xml:space="preserve">
+    <value>Shift Class are Required</value>
+  </data>
+  <data name="Val_LaDescripcionEsRequerida" xml:space="preserve">
+    <value>Description is Required</value>
+  </data>
+  <data name="Val_LaDotacionTurnoEsRequerida" xml:space="preserve">
+    <value>Shift Crew is Required</value>
+  </data>
+  <data name="Val_LaFechaDeInicioEsRequerida" xml:space="preserve">
+    <value>Start date is Required</value>
+  </data>
+  <data name="Val_LaFechaDeVigenciaEsRequerida" xml:space="preserve">
+    <value>The expiration date is Required</value>
+  </data>
+  <data name="Val_LaOSTEsRequerida" xml:space="preserve">
+    <value>OST is Required</value>
+  </data>
+  <data name="Val_LaTurnoEsRequeridos" xml:space="preserve">
+    <value>Turn is Required</value>
+  </data>
+  <data name="Val_LosDiasDescansoSonRequeridos" xml:space="preserve">
+    <value>Rest Days are Required</value>
+  </data>
+  <data name="Val_LosDiasTrabajoSonRequeridos" xml:space="preserve">
+    <value>Work Days are Required</value>
+  </data>
+  <data name="Msg_MaximoCaracteres" xml:space="preserve">
+    <value>Could not be loaded. The file name exceeds the maximum allowed character of 45 characters</value>
+  </data>
+  <data name="Msg_ExedeTamaño" xml:space="preserve">
+    <value>El tamaño del archivo que ha subido supera los 4MB permitidos,debería de realizar un proceso de compresión mayor</value>
+  </data>
+  <data name="Msg_TipoFormato" xml:space="preserve">
+    <value>The type of file extension format is not allowed in the selected document type</value>
+  </data>
+  <data name="Lbl_EstadoTurno" xml:space="preserve">
+    <value>Status Shift</value>
+  </data>
+  <data name="Lbl_APROBADO" xml:space="preserve">
+    <value>APPROVED</value>
+  </data>
+  <data name="Lbl_PENDIENTE" xml:space="preserve">
+    <value>PENDING</value>
+  </data>
+  <data name="Lbl_RECHAZADO" xml:space="preserve">
+    <value>REJECTED</value>
+  </data>
+  <data name="Phl_SELECCIONEOST" xml:space="preserve">
+    <value>SELECT OST</value>
+  </data>
+  <data name="Val_Method_MonthDays" xml:space="preserve">
+    <value>The numbers of days is invalid</value>
+  </data>
+  <data name="Val_Method_HoraIngreso" xml:space="preserve">
+    <value>Agreed entry time must not be greater than or equal to the agreed departure time</value>
+  </data>
+  <data name="Lbl_Nuevo" xml:space="preserve">
+    <value>NEW</value>
+  </data>
+  <data name="Lbl_Editar" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="Lbl_Ver" xml:space="preserve">
+    <value>VIEW</value>
+  </data>
+</root>

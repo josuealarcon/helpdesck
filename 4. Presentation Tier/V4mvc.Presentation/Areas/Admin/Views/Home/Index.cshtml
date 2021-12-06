@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="_index">
+    <hr />
+    <div class="ibox-content">
+        <div class="row">
+            <h4 class="text-center"><strong>BUSCADORES</strong></h4>
+        </div>
+
+        <h5>WORKERS</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input id="txtID" class="form-control btn-sm" placeholder="ID" data-bind="value: ID" readonly />
+                    <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-workers" data-modal-id="1">
+                        <i class="icon fa fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input id="txtNOMBRES" class="form-control btn-sm" placeholder="Nombres" data-bind="value: Nombres" readonly />
+            </div>
+            <div class="col-md-3">
+                <input id="txtAPELLIDOS" class="form-control btn-sm" placeholder="Apellidos" data-bind="value: Apellidos" readonly />
+            </div>
+        </div>
+
+        <h5>WORKERS 2</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input id="txtID2" class="form-control btn-sm" placeholder="ID" readonly />
+                    <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-workers" data-modal-id="2">
+                        <i class="icon fa fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input id="txtNOMBRES2" class="form-control btn-sm" placeholder="Nombres" readonly />
+            </div>
+            <div class="col-md-3">
+                <input id="txtAPELLIDOS2" class="form-control btn-sm" placeholder="Apellidos" readonly />
+            </div>
+        </div>
+
+        <hr />
+
+        <h5>TRANSPORT</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input id="txtPATENTE" class="form-control btn-sm" placeholder="PATENTE" data-bind="value: PATENTE" readonly />
+                    <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-transports" data-modal-id="1">
+                        <i class="icon fa fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <h5>ENTERPRISE CTTA</h5>
+        <div class="input-group col-sm-3">
+            <input id="txtIDEMPRESACTTA" class="form-control btn-sm" placeholder="IDEMPRESA" readonly />
+            <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-enterprisectta">
+                <i class="icon fa fa-search"></i>
+            </div>
+        </div>
+
+        <h5>ENTERPRISE MDTE</h5>
+        <div class="input-group col-sm-3">
+            <input id="txtIDEMPRESAMDTE" class="form-control btn-sm" placeholder="IDEMPRESA" readonly />
+            <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-enterprisemdte">
+                <i class="icon fa fa-search"></i>
+            </div>
+        </div>
+
+        <hr />
+
+        <h5>ADMINISTRADOR CTTA</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input id="txtIDCTTA" class="form-control btn-sm" placeholder="ID" readonly />
+                    <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-workersctta">
+                        <i class="icon fa fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input id="txtNOMBRESCTTA" class="form-control btn-sm" placeholder="Nombres" readonly />
+            </div>
+            <div class="col-md-3">
+                <input id="txtAPELLIDOSCTTA" class="form-control btn-sm" placeholder="Apellidos" readonly />
+            </div>
+        </div>
+
+        <h5>ADMINISTRADOR MDTE</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input id="txtIDMDTE" class="form-control btn-sm" placeholder="ID" readonly />
+                    <div class="input-group-addon btn" data-toggle="modal" data-target="#searcher-workersmdte">
+                        <i class="icon fa fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input id="txtNOMBRESMDTE" class="form-control btn-sm" placeholder="Nombres" readonly />
+            </div>
+            <div class="col-md-3">
+                <input id="txtAPELLIDOSMDTE" class="form-control btn-sm" placeholder="Apellidos" readonly />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@Html.Partial("../Home/_SearcherWorkers")
+@Html.Partial("../Home/_SearcherTransports")
+@Html.Partial("../Home/_SearcherEnterprisesCtta")
+@Html.Partial("../Home/_SearcherEnterprisesMdte")
+@Html.Partial("../Home/_SearcherWorkersCtta")
+@Html.Partial("../Home/_SearcherWorkersMdte")
+
+@section Scripts {
+    @Scripts.Render("~/plugins/pagination")
+
+    <script>
+        function mainViewModel() {
+            ko.cleanNode($('#_index')[0]);
+            var self = this;
+            self.ID = ko.observable();
+            self.PATENTE = ko.observable();
+            self.Nombres = ko.observable();
+            self.Apellidos = ko.observable();
+            self.activate = ko.observable(true);
+
+            self.ID.subscribe(function (value) { console.log(value) });
+            self.PATENTE.subscribe(function (value) { console.log(value) });
+            self.Nombres.subscribe(function (value) { console.log(value) });
+            self.Apellidos.subscribe(function (value) { console.log(value) });
+        }
+
+        $(document).ready(function () {
+            var vm = new mainViewModel();
+            ko.applyBindings(vm, $('#_index')[0]);
+
+            $("#searcher-workers").on("shown.bs.modal", function (e) {
+                modalId = $(e.relatedTarget).data('modal-id');
+                if (modelWorkers != null) {
+                    modelWorkers.active(true);
+                    modelWorkers.init();
+                    modelWorkers.idModal(modalId);
+                    $('#searcher-workers').modal('show');
+                }
+                else {
+                    loadSearcherWorkers(modalId);
+                }
+            });
+            $("#searcher-workers").on('hide.bs.modal', function () {
+                modelWorkers.clear();
+            });
+
+            $("#searcher-transports").on("shown.bs.modal", function (e) {
+                modalId = $(e.relatedTarget).data('modal-id');
+                if (modelTransport != null) {
+                    modelTransport.active(true);
+                    modelTransport.init();
+                    $('#searcher-transport').modal('show');
+                }
+                else {
+                    loadSearcherTransports(modalId);
+                }
+            });
+            $("#searcher-transports").on('hide.bs.modal', function () {
+                modelTransport.clear();
+            });
+
+            $("#searcher-enterprisectta").on("shown.bs.modal", function () {
+                if (modelEnterpriseCtta != null) {
+                    modelEnterpriseCtta.active(true);
+                    modelEnterpriseCtta.init();
+                    $('#searcher-enterprisectta').modal('show');
+                }
+                else {
+                    loadSearcherEnterpriseCtta();
+                }
+            });
+            $("#searcher-enterprisectta").on('hide.bs.modal', function () {
+                modelEnterpriseCtta.clear();
+            });
+
+            $("#searcher-enterprisemdte").on("shown.bs.modal", function () {
+                if (modelEnterpriseMdte != null) {
+                    modelEnterpriseMdte.active(true);
+                    modelEnterpriseMdte.init();
+                    $('#searcher-enterprisemdte').modal('show');
+                }
+                else {
+                    loadSearcherEnterpriseMdte();
+                }
+            });
+            $("#searcher-enterprisemdte").on('hide.bs.modal', function () {
+                modelEnterpriseMdte.clear();
+            });
+
+            $("#searcher-workersctta").on("shown.bs.modal", function () {
+                if (modelWorkersCtta != null) {
+                    modelWorkersCtta.active(true);
+                    modelWorkersCtta.init();
+                    $('#searcher-workersctta').modal('show');
+                }
+                else {
+                    loadSearcherWorkersCtta();
+                }
+            });
+            $("#searcher-workersctta").on('hide.bs.modal', function () {
+                modelWorkersCtta.clear();
+            });
+
+            $("#searcher-workersmdte").on("shown.bs.modal", function () {
+                if (modelWorkersMdte != null) {
+                    modelWorkersMdte.active(true);
+                    modelWorkersMdte.init();
+                    $('#searcher-workersmdte').modal('show');
+                }
+                else {
+                    loadSearcherWorkersMdte();
+                }
+            });
+            $("#searcher-workersmdte").on('hide.bs.modal', function () {
+                modelWorkersMdte.clear();
+            });
+
+        });
+
+    </script>
+}

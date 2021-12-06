@@ -1,0 +1,143 @@
+﻿@model V4mvc.Presentation.Controllers.InformesEmpresasController.ViewModel_InformeEmpresas
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div data-bind="if: datosInformeFichaEmpresa != null">
+    <div class="row contacts" data-bind="with:datosInformeFichaEmpresa">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_ID</strong></td>
+                    <td data-bind="text:IDEMPRESA_FORMATO"></td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Acronimo</strong></td>
+                    <td data-bind="text:ACRONIMO"></td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_RazonSocial</strong></td>
+                    <td data-bind="text:NOMBRE"></td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Giro</strong></td>
+                    <td data-bind="text:RUBRO"></td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Direccion</strong></td>
+                    <td>
+                        <span data-bind="text:DIRECCCION"></span>  <span data-bind="text:REGION"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Telefonos</strong></td>
+                    <td>
+                        <span data-bind="text:TELEFONO"></span>  <span data-bind="text:FAX"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Email</strong></td>
+                    <td data-bind="text:ADMINEMAIL"></td>
+                </tr>
+                <tr>
+                    <td class="text-left tituloTabla"><strong>@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblb_Datos_Colaboradores</strong></td>
+                    <td>
+                        <u><a data-bind="click:function(data,event){VerInformeAdminColaboradorResumen(IDEMPRESA)}">@Contratista.InformesEmpresas.InformeFichaEmpresa.Lnk_VerUsuarios</a></u>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6 invoice-details">
+            <h1 class="invoice-id">@Contratista.InformesEmpresas.InformeFichaEmpresa.Lbl_FichaEmpresa</h1>
+            <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 bootstrap-grid">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="TablaInformeConsultaRapidaFichaVehiculo">
+                    <thead>
+                        <tr>
+                            <th class="text-center">@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblh_Grid_Operacion</th>
+                            <th class="text-center">@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblh_Grid_FuncionariosEnNomina</th>
+                            <th class="text-center">@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblh_Grid_FuncionariosAutorizadosyAcreditados</th>
+                            <th class="text-center">@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblh_Grid_Vehículos</th>
+                            <th class="text-center">@Contratista.InformesEmpresas.InformeFichaEmpresa.Tblh_Grid_ContratosActivos</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: $root.divisiones">
+                        <tr>
+                            <td class="text-center" data-bind="text:DIVISION"></td>
+                            <td class="text-right">
+                                <div data-bind="if:FUNCIONARIOS_NOMINA==0">
+                                    0
+                                </div>
+                                <div data-bind="if:FUNCIONARIOS_NOMINA!=0">
+                                    <u><a data-bind="text:FUNCIONARIOS_NOMINA,click:function(data,event){VerInformeFechasFuncDiv($root.datosInformeFichaEmpresa.IDEMPRESA,DIVCOD)}"></a></u>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <div data-bind="if:FUNCIONARIOS_AUTORIZADOS==0">
+                                    0
+                                </div>
+                                <div data-bind="if:FUNCIONARIOS_AUTORIZADOS!=0">
+                                    <u><a data-bind="text:FUNCIONARIOS_AUTORIZADOS"></a></u>
+                                </div>
+
+                            </td>
+                            <td class="text-right" data-bind="text:VEHICULOS"></td>
+                            <td class="text-right">
+                                <div data-bind="if:CONTRATOS_ACTIVOS==0">
+                                    0
+                                </div>
+                                <div data-bind="if:CONTRATOS_ACTIVOS!=0">
+                                    <u><a data-bind="text:CONTRATOS_ACTIVOS,click:function(data,event){VerInformeContratosEmpresa($root.datosInformeFichaEmpresa.IDEMPRESA,DIVCOD)}">@Contratista.InformesEmpresas.InformeFichaEmpresa.Lnk_VerUsuarios</a></u>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="notices">
+        <div>@Contratista.InformesEmpresas.InformeFichaEmpresa.Msg_Nota</div>
+        <div class="notice">@Contratista.InformesEmpresas.InformeFichaEmpresa.Msg_NotaMensaje</div>
+    </div>
+</div>
+<div data-bind="if: datosInformeFichaEmpresa == null">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>No hay coincidencias para su búsqueda</span>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    <script>
+    function IndexViewModel(model) {
+        var self = this;
+        self.divisiones = model.divisiones;
+        self.datosInformeFichaEmpresa = model.datosInformeFichaEmpresa;
+        }
+    function VerInformeAdminColaboradorResumen(EMPRESA) {
+            var url = '@Url.Action("InformeAdminColaboradorResumen", "InformesConsultaRapida", new { Area = "" })?EMPRESA=' + EMPRESA;
+            window.location = url;
+        }
+    function VerInformeContratosEmpresa(EMPRESA, DIVISION) {
+        var url = '@Url.Action("InformeContratosEmpresa", "InformesEmpresas", new { Area = "" })?EMPRESA=' + EMPRESA + '&DIVISION='+DIVISION;
+            window.location = url;
+        }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}

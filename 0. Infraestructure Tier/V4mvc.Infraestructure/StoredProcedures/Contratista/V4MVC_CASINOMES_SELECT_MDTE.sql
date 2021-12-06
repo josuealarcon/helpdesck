@@ -1,0 +1,59 @@
+CREATE PROCEDURE [dbo].[V4MVC_CASINOMES_SELECT_MDTE]         
+AS      
+BEGIN   
+
+	DECLARE @MAXIMO							INT               
+	DECLARE @CONTADOR						INT				    = 1 
+	DECLARE @DATO							VARCHAR(30)  
+	DECLARE @STRING_SQL						NVARCHAR(MAX)		=''	
+	DECLARE @STRING_SQL_CONVERT				NVARCHAR(MAX)		=''
+	DECLARE @STRING_SQL_SUBSTRING			NVARCHAR(MAX)		=''
+	DECLARE @STRING_SQL_CONVERT_SUBSTRING	NVARCHAR(MAX)  
+
+	DECLARE @CASINOMES						NVARCHAR(12)		= 'CASINO' +  SUBSTRING(DBO.HOY(GETDATE()),5,2)
+	DECLARE @FECHA							NVARCHAR(8)			= DBO.HOY(GETDATE())
+    
+	CREATE TABLE #TEMP_ABC (  
+	SERVICIO VARCHAR(50)   COLLATE DATABASE_DEFAULT NOT NULL
+	)  
+  
+	INSERT INTO #TEMP_ABC   
+	EXEC V4MVC_CASINO_SELECT_MDTE
+  
+	SELECT  ROW_NUMBER() OVER(ORDER BY SERVICIO ASC) AS ID , * INTO #TEMP_SERVICIO_A FROM              
+	#TEMP_ABC        
+        
+
+	WHILE ( @CONTADOR <= (SELECT MAX(ID) FROM #TEMP_SERVICIO_A ) )               
+	BEGIN               
+		SELECT @DATO =[SERVICIO] FROM #TEMP_SERVICIO_A              
+		WHERE ID = @CONTADOR              
+              
+		SET @STRING_SQL +='['+ @DATO + '],';   
+		SET @STRING_SQL_CONVERT  += 'CONVERT(VARCHAR,[' + @DATO + '])+' + N''''+',' +N''''+'+';    
+              
+		SET @CONTADOR = @CONTADOR +1               
+	END   
+  
+	SET @STRING_SQL_SUBSTRING = SUBSTRING(@STRING_SQL, 0, LEN(@STRING_SQL))    
+	SET @STRING_SQL_CONVERT_SUBSTRING =SUBSTRING(@STRING_SQL_CONVERT, 0, LEN(@STRING_SQL_CONVERT)-4)    
+  
+	EXEC (    
+		'SELECT DIVISION,' + @STRING_SQL_SUBSTRING + ' '+' INTO #TEMP_DATA' + ' ' +  
+		'FROM (' + ' ' +  
+		'SELECT RUT,DIVISION,SERVICIO FROM (SELECT DISTINCT RUT,DIVISION,SERVICIO, HORA' + ' '+  
+		'FROM' +' '+ @CASINOMES + ' ' +        
+		'WHERE FECHA =' + N'''' +@FECHA + N'''' +' ' +     
+		'AND ISNULL(ERROR,'+ N'''' + N'''' +')'+ '=' + N'''' + N'''' + ')'+ ' ' +'AS CC' + ' ' +       
+		') src' +' '+        
+		'pivot' +        
+		'(' +        
+		'COUNT(RUT) for [SERVICIO] in (' + @STRING_SQL_SUBSTRING + ')' +        
+		') AS PIV' + ' '+  
+		'SELECT DIVISION,('+ @STRING_SQL_CONVERT_SUBSTRING +') AS DATA_GRAFIC FROM #TEMP_DATA ORDER BY DIVISION ASC' + ' '   
+		)    
+
+
+END  
+
+

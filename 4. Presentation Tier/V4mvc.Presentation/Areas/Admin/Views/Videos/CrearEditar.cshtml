@@ -1,0 +1,637 @@
+﻿@model V4mvc.Presentation.Areas.Mandante.Controllers.VideosController.ViewModel_VideoCrearEditar
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .large-modal .modal-dialog {
+        margin: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 50%;
+    }
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ul class="breadcrumb_links">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="@Url.Action("Index", "Videos", new { Area = "Mandante" })">@Mandante.Videos.CrearEditar.Lbl_ListadoTitulo</a></li>
+            <!-- ko if: $root.ACCION() == 'NEW' -->
+            <li class="active">@Mandante.Videos.CrearEditar.Lbl_Nuevo</li>
+            <!-- /ko -->
+            <!-- ko if: $root.ACCION() == 'EDI' -->
+            <li class="active">@Mandante.Videos.CrearEditar.Lbl_Editar</li>
+            <!-- /ko -->
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2>
+                        @Mandante.Videos.CrearEditar.Lbl_Titulo
+                        <!-- ko if: $root.ACCION() == 'NEW' -->
+                        (@Mandante.Videos.CrearEditar.Lbl_Nuevo)
+                        <!-- /ko -->
+                        <!-- ko if: $root.ACCION() == 'EDI' -->
+                        (@Mandante.Videos.CrearEditar.Lbl_Editar)
+                        <!-- /ko -->
+                    </h2>
+                </div>
+                <div class="panel-body">
+
+                    <div class="powerwidget cold-grey" id="power-forms-grid" data-widget-editbutton="false">
+                        <div class="inner-spacer">
+                            <div class="callout callout-info">
+                                <h4>@Mandante.Videos.CrearEditar.Lbl_Informacion</h4>
+                                <p>@Mandante.Videos.CrearEditar.Msg_CamposAsterisco</p>
+                            </div>
+                            <form id="form-valide" name="form-valide" class="form-horizontal form-valide-form-valide" method="post">
+                                <fieldset>
+                                    <legend>@Mandante.Videos.CrearEditar.Lgn_DatosUsuarioSube</legend>
+
+                                    <div class="form-group">
+                                        <p class="col-md-2"><strong>@Mandante.Videos.CrearEditar.Lbl_UsuarioID</strong></p>
+                                        <div class="col-md-4">
+                                            <span data-bind="text:$root.USUARIO_SUBE_ID"></span>
+                                        </div>
+                                        <p class="col-md-2"><strong>@Mandante.Videos.CrearEditar.Lbl_NombreUsuario</strong></p>
+                                        <div class="col-md-4">
+                                            <span data-bind="text:$root.USUARIO_SUBE_NOMBRES"></span>
+                                        </div>
+                                    </div>
+
+                                    <legend>@Mandante.Videos.CrearEditar.Lgn_DatosVideo</legend>
+
+                                    <div class="form-group">
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_ModuloV4</strong></p>
+                                        <div class="col-md-3">
+                                            <select name="MODULO_V4" class="form-control" data-bind="options: $root.modulos,optionsText:'MODULO',optionsValue:'ID',value:$root.MODULO_V4,optionsCaption:'@Mandante.Videos.CrearEditar.Phl_ModuloV4'" id="ddlMODULO_V4">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modulo-modal">
+                                                <i class="fa fa-plus"></i>&nbsp;Nuevo
+                                            </button>
+                                        </div>
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_VistaLink</strong></p>
+                                        <div class="col-md-4">
+                                            <input type="text" data-bind="value:$root.VISTA_LINK" class="form-control" name="VISTA_LINK" id="txtVISTALINK" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_Descripcion</strong></p>
+                                        <div class="col-md-4">
+                                            <input type="text" data-bind="value:$root.DESCRIPCION" class="form-control" name="DESCRIPCION" id="txtDESCRIPCION" />
+                                        </div>
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_Version</strong></p>
+                                        <div class="col-md-4">
+                                            <input type="text" data-bind="value:$root.VERSION" class="form-control" name="VERSION" id="txtVERSION" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_VideoPrivado</strong></p>
+                                        <div class="col-md-2">
+                                            <input type="radio" data-bind="iCheck:$root.PRIVADO_SI" class="radio" value="SI" name="PRIVADO" /><span>&nbsp;&nbsp;<strong>@Mandante.Videos.CrearEditar.Rdo_PrivadoSi</strong></span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="radio" data-bind="iCheck:$root.PRIVADO_NO" class="radio" value="NO" name="PRIVADO" /><span>&nbsp;&nbsp;<strong>@Mandante.Videos.CrearEditar.Rdo_PrivadoNo</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- [ARCHIVOS] -->
+
+                                    <div class="form-group">
+                                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Lbl_Documento</strong>&nbsp;<strong data-bind="text:'(' + $root.BASE_ALLOWED_EXTENSIONS + ')'"></strong></p>
+                                        <div class="col-md-4">
+                                            <div class="dropzone" id="dropzoneDiv">
+                                                <div class="fallback">
+                                                    <input type="file" id="fileDoc" name="file" />
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="ARCHIVO" id="hdArchivo" />
+                                        </div>
+                                    </div>
+
+                                    <!--  -->
+
+                                    <div class="form-group pull-right">
+                                        <div class="col-md-12">
+                                            <button id="btnGuardar" class="btn btn-success" data-bind="click:$root.save"><i class="fa fa-floppy-o"></i>&nbsp;@Mandante.Videos.CrearEditar.Btn_Guardar</button>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modulo-modal" class="modal large-modal inmodal" tabindex="-1" role="dialog" aria-hidden="true" data-bind="with:$root.nuevoModulo">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_LblNuevoModulo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="callout callout-info">
+                    <h4>@Mandante.Videos.CrearEditar.Lbl_Informacion</h4>
+                    <p>@Mandante.Videos.CrearEditar.Msg_CamposAsterisco</p>
+                </div>
+                <form id="form-valide-modulo" name="form-valide-modulo" class="form-horizontal form-valide-modulo" method="post">
+                    <div class="form-group">
+                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Mdl_NuevoModulo_LblNombreModulo</strong></p>
+                        <div class="col-md-4">
+                            <input id="txtModulo" name="NOMBRE_MODULO" data-bind="value:NOMBRE" class="form-control" placeholder="@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Phl_Modulo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Mdl_NuevoModulo_LblGlosa</strong></p>
+                        <div class="col-md-4">
+                            <input id="txtGlosa" name="GLOSA_MODULO" data-bind="value:GLOSA" class="form-control" placeholder="@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Phl_Glosa" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="col-md-2"><strong>* @Mandante.Videos.CrearEditar.Mdl_NuevoModulo_LblActivo</strong></p>
+                        <div class="col-md-2">
+                            <input type="radio" data-bind="iCheck:ACTIVO_SI" class="radio" value="SI" name="ACTIVO_MODULO" /><span>&nbsp;&nbsp;<strong>@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Rdo_PrivadoSi</strong></span>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="radio" data-bind="iCheck:ACTIVO_NO" class="radio" value="NO" name="ACTIVO_MODULO" /><span>&nbsp;&nbsp;<strong>@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Rdo_PrivadoNo</strong></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bind="click:$root.agregarModulo"><i class="fa fa-floppy-o"></i>&nbsp; @Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Btn_Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp; @Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Btn_Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/Content/plugins/dropzone/dropZoneStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/codeEditorStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/plugins/sweetAlertStyles")
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/plugins/upload")
+    @Scripts.Render("~/plugins/dropZone")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/codeEditor")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/sweetAlert")
+
+<script>
+        var curr_model = @Html.HtmlConvertToJson(Model);
+        var frm_tag = 'VideosMdteSubida';
+        var vm = null;
+        $(document).ready(function () {
+
+            vm = new ViewModel(curr_model);
+            ko.bindingHandlers.iCheck = {
+                init: function (element, valueAccessor) {
+                    $(element).iCheck({
+                        radioClass: "iradio_square-green",
+                        checkboxClass: 'icheckbox_square-green',
+                    });
+
+                    $(element).on('ifChanged', function () {
+                        var observable = valueAccessor();
+                        observable($(element)[0].checked);
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var value = ko.unwrap(valueAccessor());
+                    if (value) {
+                        $(element).iCheck('check');
+                    } else {
+                        $(element).iCheck('uncheck');
+                    }
+                }
+            };
+
+            ko.applyBindings(vm);
+
+
+            $("#form-valide").validate({
+                focusInvalid: false,
+                invalidHandler: function (form, validator) {
+                    var errors = validator.numberOfInvalids();
+                    if (errors) {
+                        validator.errorList[0].element.focus();
+                    }
+                },
+                onkeyup: false,
+                ignore: [],
+                errorPlacement: function (e, a) {
+                    e.addClass("invalid");
+                    if (jQuery(a).parent().hasClass("input-group"))
+                        jQuery(a).parent().parent().append(e);
+                    else
+                        jQuery(a).parent().append(e);
+                },
+                highlight: function (e) {
+                    if (jQuery(e).parent().hasClass("input-group"))
+                        jQuery(e).parent().parent().removeClass("state-success").addClass("state-error");
+                    else
+                        jQuery(e).parent().removeClass("state-success").addClass("state-error");
+                },
+                success: function (e) {
+                    if (jQuery(e).parent().hasClass("input-group"))
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                    else
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                },
+                rules: {
+                    "ARCHIVO": {
+                        required: true
+                    },
+                    "MODULO_V4": {
+                        required: true
+                    },
+                    "VISTA_LINK": {
+                        required: true
+                    },
+                    "DESCRIPCION": {
+                        required: true
+                    },
+                    "VERSION": {
+                        required: true
+                    },
+                    "PRIVADO": {
+                        required: true
+                    }
+                },
+                messages: {
+                    "ARCHIVO": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_Archivo',
+                    },
+                    "MODULO_V4": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_ModuloV4'
+                    },
+                    "VISTA_LINK": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_VistaLink'
+                    },
+                    "DESCRIPCION": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_Descripcion'
+                    },
+                    "VERSION": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_Version'
+                    },
+                    "PRIVADO": {
+                        required: '@Mandante.Videos.CrearEditar.Val_Required_Privado'
+                    }
+
+                }
+            });
+
+            $("#form-valide-modulo").validate({
+                focusInvalid: false,
+                invalidHandler: function (form, validator) {
+                    var errors = validator.numberOfInvalids();
+                    if (errors) {
+                        validator.errorList[0].element.focus();
+                    }
+                },
+                onkeyup: false,
+                ignore: [],
+                errorPlacement: function (e, a) {
+                    e.addClass("invalid");
+                    if (jQuery(a).parent().hasClass("input-group"))
+                        jQuery(a).parent().parent().append(e);
+                    else
+                        jQuery(a).parent().append(e);
+                },
+                highlight: function (e) {
+                    if (jQuery(e).parent().hasClass("input-group"))
+                        jQuery(e).parent().parent().removeClass("state-success").addClass("state-error");
+                    else
+                        jQuery(e).parent().removeClass("state-success").addClass("state-error");
+                },
+                success: function (e) {
+                    if (jQuery(e).parent().hasClass("input-group"))
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                    else
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                },
+                rules: {
+                    "NOMBRE_MODULO": {
+                        required: true
+                    },
+                    "GLOSA_MODULO": {
+                        required: true
+                    },
+                    "ACTIVO_MODULO": {
+                        required: true
+                    }
+                },
+                messages: {
+                    "NOMBRE_MODULO": {
+                        required: '@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Val_Required_Modulo',
+                    },
+                    "GLOSA_MODULO": {
+                        required: '@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Val_Required_Glosa',
+                    },
+                    "ACTIVO_MODULO": {
+                        required: '@Mandante.Videos.CrearEditar.Mdl_NuevoModulo_Val_Required_Activo',
+                    }
+                }
+            });
+
+            $("#modulo-modal").on("shown.bs.modal", function (e) {
+                if (not_empty(vm)) {
+                    vm.nuevoModulo.NOMBRE('');
+                    vm.nuevoModulo.GLOSA('');
+                    vm.nuevoModulo.ACTIVO = 'SI';
+                    vm.nuevoModulo.ACTIVO_SI(true);
+                    vm.nuevoModulo.ACTIVO_NO(false);
+                }
+            });
+
+        });
+
+        function boolAsText(value) {
+            var ret = 'NO';
+            if (value) {
+                ret = 'SI';
+            }
+            return ret;
+        }
+
+        function redirectToList() {
+            var url = '@Url.Action("Index", "Videos", new { Area = "Mandante" })';
+            window.location = url;
+        }
+
+        function ViewModel(model) {
+
+            var self = this;
+            //-----------------------------
+
+            self.ACCION = ko.observable(model.ACCION);
+            self.USUARIO_SUBE_ID = ko.observable(model.USUARIO_SUBE_ID);
+            self.USUARIO_SUBE_NOMBRES = ko.observable(model.USUARIO_SUBE_NOMBRES);
+            self.modulos = ko.observableArray(model.modulos);
+            self.MODULO_V4 = ko.observable(model.entry.MODULO_V4);
+            self.VISTA_LINK = ko.observable(model.entry.VISTA_LINK);
+            self.DESCRIPCION = ko.observable(model.entry.DESCRIPCION);
+            self.VERSION = ko.observable(model.entry.VERSION);
+
+            self.PRIVADO = model.entry.PRIVADO;
+            self.PRIVADO_SI = ko.observable(model.entry.PRIVADO == 'SI');
+            self.PRIVADO_NO = ko.observable(model.entry.PRIVADO == 'NO');
+
+            self.PRIVADO_SI.subscribe(function (new_value) {
+                self.PRIVADO = boolAsText(new_value);
+            });
+            self.PRIVADO_NO.subscribe(function (new_value) {
+                self.PRIVADO = boolAsText(!new_value);
+            });
+
+            self.ID = ko.observable(not_empty(model.entry.ID) ? model.entry.ID : null);
+
+            self.nuevoModulo = {
+                NOMBRE: ko.observable(''),
+                GLOSA: ko.observable(''),
+                ACTIVO: '',
+                ACTIVO_SI: ko.observable(false),
+                ACTIVO_NO: ko.observable(false)
+            };
+
+            self.nuevoModulo.ACTIVO_SI.subscribe(function (new_value) {
+                self.nuevoModulo.ACTIVO = boolAsText(new_value);
+            });
+            self.nuevoModulo.ACTIVO_NO.subscribe(function (new_value) {
+                self.nuevoModulo.ACTIVO = boolAsText(!new_value);
+            });
+
+            self.BASE_ALLOWED_EXTENSIONS = model.BASE_ALLOWED_EXTENSIONS;
+            self.ARCHIVO_ADJUNTO = '';
+
+            self.adjuntarArchivo = function (fname) {
+                self.ARCHIVO_ADJUNTO = fname;
+            }
+
+            self.successSave = function (data) {
+                if (not_empty(data) && not_empty(data.OK) && data.OK) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Videos.CrearEditar.Msg_GuardadoExitoso)",
+                        type: "success",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                        redirectToList();
+                    });
+
+                    self.ID(data.ID);
+                }
+                else if (not_empty(data) && not_empty(data.OK) && !(data.OK)) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Videos.CrearEditar.Msg_ErrorGuardado)",
+                        timer: 3000,
+                        type: "success",
+                        showConfirmButton: true,
+                    });
+                }
+                else {
+                    swal({
+                        title: "@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)",
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                    });
+
+                }
+            }
+
+            self.error = function() {
+                swal({
+                    title: "@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)",
+                    timer: 3000,
+                    type: "error",
+                    showConfirmButton: true,
+                }, function () {
+                    swal.close();
+                });
+            }
+
+            self.saveDataAjax = function(data) {
+                return $.ajax({
+                    global: true,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '@Url.Action("CrearEditar_Guardar", "Videos", new { Area = "Mandante" })',
+                    data: data
+                });
+            }
+
+            self.save = function() {
+                if ($('#form-valide').valid()) {
+
+                    var data = JSON.stringify({
+                        ACCION: self.ACCION,
+                        entry: {
+                            MODULO_V4: self.MODULO_V4(),
+                            VISTA_LINK: self.VISTA_LINK(),
+                            DESCRIPCION: self.DESCRIPCION(),
+                            VERSION: self.VERSION(),
+                            PRIVADO: self.PRIVADO,
+                            STR_ID: self.ID()
+                        },
+                        ARCHIVO_ADJUNTO: self.ARCHIVO_ADJUNTO
+                    });
+
+                    $.when(self.saveDataAjax(data))
+                        .then(self.successSave)
+                        .fail(self.error);
+                }
+            }
+
+            self.actualizarModulos = function (nuevo_elem) {
+                self.modulos.push(nuevo_elem);
+            }
+
+            self.successModuleSave = function (data) {
+                console.log(data);
+                if (not_empty(data) && not_empty(data.OK) && data.OK) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Videos.CrearEditar.Msg_GuardadoExitoso)",
+                        timer: 3000,
+                        type: "success",
+                        showConfirmButton: true,
+                    });
+                    self.actualizarModulos({ ID: data.ID, MODULO: self.nuevoModulo.NOMBRE() });
+                    $('#modulo-modal').modal('hide');
+                }
+                else if (not_empty(data) && not_empty(data.OK) && !(data.OK) && parseInt(data.RET_RESULTADO) > 0) {
+                    swal({
+                        title: "@Html.Raw(Mandante.Videos.CrearEditar.Msg_ErrorYaExisteModulo)",
+                        timer: 3000,
+                        type: "success",
+                        showConfirmButton: true,
+                    });
+                }
+                else {
+                    swal({
+                        title: "@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)",
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                    });
+
+                }
+            }
+
+
+            self.saveModuleAjax = function(data) {
+                return $.ajax({
+                    global: true,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '@Url.Action("GuardarModuloAjax", "Videos", new { Area = "Mandante" })',
+                    data: data
+                });
+            }
+
+            self.agregarModulo = function () {
+                if ($('#form-valide-modulo').valid()) {
+
+                    var data = JSON.stringify({
+                        MODULO: self.nuevoModulo.NOMBRE(),
+                        GLOSA: self.nuevoModulo.GLOSA(),
+                        ACTIVO: self.nuevoModulo.ACTIVO
+                    });
+
+                    $.when(self.saveModuleAjax(data))
+                        .then(self.successModuleSave)
+                        .fail(self.error);
+                }
+            }
+
+        }
+
+        function loadDropzone() {
+
+            $("#dropzoneDiv").dropzone({
+                url: '@Url.Content("~/helpers/UploadFiles.ashx?")',
+                maxFilesize: parseInt('@Model.MAX_FILESIZE_MB'),
+                maxFiles: parseInt('@Model.MAX_FILES'),
+                uploadMultiple: ('@Model.ALLOW_MULTIPLE_FILES.ToString()' === 'True' ? true : false),
+                acceptedFiles: '@Model.ALLOWED_EXTENSIONS',
+                addRemoveLinks: true,
+                dictRemoveFile: '@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_Quitar)',
+                dictFileTooBig: '@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_ExcedeTamanioMaximo)',
+                dictInvalidFileType: '@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_ExtensionInvalida)',
+                dictMaxFilesExceeded: '@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_CantidadArchivosExcedida)',
+                dictDefaultMessage: '@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_PorDefecto)',
+                maxfilesexceeded: function (file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+                },
+                init: function () {
+                    this.on("sending", function (file, xhr, formData) {
+                        var attached_fname = 'file,' + frm_tag;
+                        formData.append(attached_fname, file);
+                        if (not_empty(vm)) {
+                            vm.adjuntarArchivo(frm_tag);
+                        }
+                    });
+                },
+                accept: function (file, done) {
+                   var MAX_FNAME_LEN = parseInt('@Model.MAX_FILENAME_LENGTH');
+                   var msg = replaceAll('@Html.Raw(Mandante.Videos.CrearEditar.Msg_Dropzone_LongMaxExcedida)', '___MAX_LEN', MAX_FNAME_LEN);
+                   if (file.name.length > MAX_FNAME_LEN) {
+                      done(msg);
+                   }
+                   else {
+                      done();
+                      $('#hdArchivo').val(file.name);
+                   }
+                }
+            });
+
+        }
+
+        Dropzone.autoDiscover = false;
+        loadDropzone();
+
+
+</script>
+}
+
+
+
+
+
+

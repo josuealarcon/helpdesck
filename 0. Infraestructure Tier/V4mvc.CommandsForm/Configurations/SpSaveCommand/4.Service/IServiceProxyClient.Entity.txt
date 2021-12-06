@@ -1,0 +1,33 @@
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using V4mvc.BusinessLogic;
+using V4mvc.Entities;
+
+namespace V4mvc
+{
+	public partial interface IServiceProxyClient
+	{
+
+		#region [ Consultas ]
+
+		ObservableCollection<$0> GetAll$1();
+
+		$2 GetOne$3($4);
+		
+		#endregion
+
+		#region [ Metodos ]
+		
+		bool Save$5(ref $6 item);
+		
+		bool Delete$7(ref $8 item);
+		
+		bool Save$9(ref ObservableCollection<$10> items);
+		
+		#endregion
+
+	}
+}

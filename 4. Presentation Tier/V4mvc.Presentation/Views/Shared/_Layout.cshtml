@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebControl</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: true)}
+
+    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/font-awesome/css")
+    @Styles.Render("~/plugins/waitMeStyles")
+</head>
+<body>
+
+
+    @*@Html.Partial("_SkinConfig")*@
+    <div id="wrapper" class="@Html.PageClass()">
+
+        @Html.Action("_Menu", "DashBoard")
+
+        <div id="page-wrapper" class="gray-bg">
+
+            @Html.Partial("_TopNavbar")
+            @RenderBody()
+
+            @Html.Partial("_Footer")
+
+        </div>
+        @Html.Partial("_RightSidebar")
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/knockoutJS")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/plugins/waitMe")
+    @Scripts.Render("~/plugins/utils")
+    @Scripts.Render("~/plugins/global-configs")
+    @Scripts.Render("~/bundles/skinConfig")
+    @RenderSection("scripts", required: false)
+
+    @Html.Partial("_BuscadorFuncionarios")
+    @Html.Partial("_BuscadorVehiculos")
+    @Html.Partial("_BuscadorEmpresas")
+    @Html.Partial("_VisualizadorArchivo")
+    @Html.Partial("_VisualizadorVideo")
+</body>
+</html>
+
+<script>
+
+    var CONSTANTES = {
+        WAIT_ME_MSG_LOADING: '@Html.Raw(General.Shared.Msg_WaitMe_Loading)'
+    };
+
+    $(document).ready(function () {
+        if ('@Session["TIPOUSUARIO"]' === 'CTTA')
+            setCookie("URL_CTTA", window.location.href);
+        else
+            setCookie("URL_MDTE", window.location.href);
+    });
+
+    $("#form-valide-InformeConsultaRapidaID").validate({
+        errorPlacement: function (error, element) {
+            if (element.parent().hasClass('input-group')) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        rules: {
+            "RUT": {
+                required: true,
+                maxlength: 10,
+            },
+        },
+        messages: {
+            "RUT": {
+                required: 'ID es requerido',
+                maxlength: "El ID debe tener maximo 10 caracteres",
+            },
+        }
+    });
+
+    $("#form-valide-InformeConsultaRapidaPase").validate({
+        errorPlacement: function (error, element) {
+            if (element.parent().hasClass('input-group')) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        rules: {
+            "NLOTEPROC": {
+                required: true,
+                digits: true,
+                minlength: 2,
+                maxlength: 6,
+                remote: {
+                    url: '@Url.Action("ValidarNlote", "InformesConsultaRapida", new { Area = "" })',
+                    type: "POST",
+                    data: {
+                        NLOTEPROC: function () {
+                            return $("#txtNLOTEPROCVAL").val();
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            "NLOTEPROC": {
+                required: 'Pase es requerido',
+                digits: 'Solo se permiten números',
+                minlength: "El lote debe tener minimo 2 caracteres",
+                maxlength: "El lote debe tener maximo 6 caracteres",
+                remote: "Pase no existe",
+            },
+        }
+    });
+
+</script>

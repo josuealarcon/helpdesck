@@ -1,0 +1,5 @@
+﻿
+						if (Instance.DASqlCommand.Parameters["@$0"].Value != null)
+						{
+							$1 = $2(Instance.DASqlCommand.Parameters["@$3"].Value.ToString());
+						}

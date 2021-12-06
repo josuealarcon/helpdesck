@@ -1,0 +1,115 @@
+﻿@model V4mvc.Presentation.Controllers.InformesFuncionariosController.ViewModel_InformeFuncionarios
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="with:datosInformeID">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <td class="text-left tituloTabla"><strong>@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblb_Datos_Fecha</strong></td>
+                <td data-bind="text:'Mes Actual '+PERIODO_LETRA"></td>
+            </tr>
+            <tr>
+                <td class="text-left tituloTabla"><strong>@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblb_Datos_Funcionario</strong></td>
+                <td data-bind="text:NOMBRES+' '+APELLIDOS"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Lbl_ServicioDeCasinoRegistrosDetallados</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 bootstrap-grid" data-bind="if: $root.consumos.length != 0">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="Tabla">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Nro</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Operacion/th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Servicio</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Local</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_ID</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Nombres</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Apellidos</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_RutEmpresa</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Empresa</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Contrato</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Contratista</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Administrador</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Fecha</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Hora</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Cantidad</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Ccosto</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Error</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblh_Grid_Origen</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: $root.consumos">
+                    <tr>
+                        <td class="text-center" data-bind="text:$index() + 1"></td>
+                        <td class="text-center" data-bind="text:DIVISION"></td>
+                        <td class="text-center" data-bind="text:SERVICIO"></td>
+                        <td class="text-center" data-bind="text:LOCAL"></td>
+                        <td class="text-center">
+                            <u><a data-bind="text:RUT_FORMATO,click:function(data,event){VerFichaFuncionario(RUT)}"></a></u>
+                        </td>
+                        <td class="text-left" data-bind="text:NOMBRES"></td>
+                        <td class="text-left" data-bind="text:APELLIDOS"></td>
+                        <td class="text-center" data-bind="text:EMPRESA"></td>
+                        <td class="text-center">
+                            <u><a data-bind="text:ACRONIMO,click:function(data,event){VerFichaEmpresa(EMPRESA)}"></a></u>
+                        </td>
+                        <td class="text-center" data-bind="text:OST"></td>
+                        <td class="text-center" data-bind="text:CONTRATISTA"></td>
+                        <td class="text-left" data-bind="text:ADMINOSTNOM"></td>
+                        <td class="text-center" data-bind="text:FECHA_FORMATO"></td>
+                        <td class="text-center" data-bind="text:HORA"></td>
+                        <td class="text-right" data-bind="text:CANTIDAD_REPORTE"></td>
+                        <td class="text-center" data-bind="text:CCOSTO"></td>
+                        <td class="text-center" data-bind="text:ERROR"></td>
+                        <td class="text-center" data-bind="text:COD_PDA"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-left" colspan="14">@Contratista.InformesFuncionarios.InformeConsumoCasinoMesActual.Tblf_Grid_Totales</td>
+                        <td class="text-right" data-bind="text:$root.consumos.reduce((sum, value) => ( sum + value.CANTIDAD_REPORTE ), 0)"></td>
+                        <td class="text-left" colspan="3"></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div data-bind="if: $root.consumos.length == 0">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>No hay coincidencias para su búsqueda</span>
+        </div>
+    </div>
+</div>
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    <script>
+    function IndexViewModel(model) {
+        var self = this;
+        self.consumos = model.consumos;
+        self.datosInformeID = model.datosInformeID;
+    }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}

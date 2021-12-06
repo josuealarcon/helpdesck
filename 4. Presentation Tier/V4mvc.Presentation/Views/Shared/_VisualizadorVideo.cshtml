@@ -1,0 +1,132 @@
+﻿<style>
+    
+.fullscreen-modal .modal-dialog {
+    margin: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    height:90%;
+    width: 90%;
+}
+</style>
+<div class="modal fullscreen-modal inmodal" id="VisualizadorVids" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <h5 class="modal-title" id="exampleModalLabel">@General._VisualizadorVideo.Lbl_VisualizadorVideo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body" id="vidFileContent">
+                <!-- ko if: !($root.CONTENIDO_VACIO) -->
+                <video id="ctl_video" controls>
+                    <source data-bind="attr:{'src': 'data:' + $root.TIPOCONTENIDO + ';base64,' + $root.CONTENIDO_BASE64, 'type': $root.TIPOCONTENIDO}"/>
+                </video>
+                <!-- /ko -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;@General._VisualizadorVideo.Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var VIDEO_ID = null;
+    var VISOR_VIDEO_ABIERTO = false;
+
+    $("#VisualizadorVids").on('hidden.bs.modal', function () {
+        VISOR_VIDEO_ABIERTO = false;
+        //var modal_body = $('#vidFileContent');
+        $('#ctl_video > source').attr('src', '');
+        $('#ctl_video').trigger('load');
+        //ko.cleanNode(modal_body[0]);
+        
+    });
+    
+
+    $("#VisualizadorVids").on("shown.bs.modal", function (e) {
+        VISOR_VIDEO_ABIERTO = true;
+        
+        VIDEO_ID = $(e.relatedTarget).data('modal-video-id');
+        var data = JSON.stringify({
+            ID: VIDEO_ID
+        });
+        $.when(ObtenerVideo(data))
+            .then(succObtenerVideo)
+            .fail(errObtenerVideo);
+    });
+
+    function ViewModelVisualizador(model) {
+        ko.cleanNode($('#vidFileContent')[0]);
+        var self = this;
+        self.CONTENIDO_BASE64 = model.CONTENIDO_BASE64;
+        self.TIPOCONTENIDO = model.TIPO_CONTENIDO;
+        self.CONTENIDO_VACIO = is_empty(model.CONTENIDO_BASE64);
+    }
+
+    function ObtenerVideo(data) {
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: '@Url.Action("ObtenerVideo", "Master", new { Area = "" })',
+            data: data
+        });
+    }
+
+    function succObtenerVideo(data) {
+        if (data && data.OK) {
+            var vm = new ViewModelVisualizador(data.model);
+            ko.applyBindings(vm, $('#vidFileContent')[0]);
+
+            var video_tag = document.getElementById('ctl_video');
+
+            //$('#ctl_video').trigger('load');
+            //$('#ctl_video').trigger('play');
+
+            video_tag.load();
+            var play_promise = video_tag.play();
+            if (play_promise !== undefined) {
+                play_promise.then(function (args) {
+                    if (!VISOR_VIDEO_ABIERTO) {
+                        var curr_tag = document.getElementById('ctl_video');
+                        if (curr_tag) {
+                            curr_tag.pause();
+                        }
+                    }
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
+            }
+
+        }
+        else {
+            swal({
+                title: '@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)',
+                timer: 3000,
+                type: "error",
+                showConfirmButton: true,
+            }, function () {
+                swal.close();
+            });
+        }
+    }
+
+    function errObtenerVideo() {
+        console.log("errorrrrrr!!!");
+        swal({
+            title: '@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)',
+            timer: 3000,
+            type: "error",
+            showConfirmButton: true,
+        }, function () {
+            swal.close();
+        });
+    }
+
+   
+
+    
+</script>
+

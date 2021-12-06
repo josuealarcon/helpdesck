@@ -1,0 +1,188 @@
+﻿@model V4mvc.Presentation.Controllers.InformesCertificacionController.ViewModel_InformeFechaFuncDivision
+@{
+    ViewBag.Title = "InformeAccesosZonasControladas";
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<style>
+    .span_rojo {
+        color: red;
+    }
+
+    .span_verde {
+        color: green;
+    }
+</style>
+<div class="row contacts">
+    <div class="col-md-12 invoice-details">
+        <h1 class="invoice-id">@Contratista.InformesCertificacion.InformeFechaFuncDivision.Lbl_Titulo</h1>
+        <a class="date" style="color:#212529" data-bind="text:'@Contratista.InformesCertificacion.InformeFechaFuncDivision.Lbl_FechaActual: ' + $root.FECHA"></a>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered" id="filters-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><strong>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Filtros_Titulo</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko if: not_empty($root.EMPRESA) -->
+                        <tr>
+                            <td class="tituloTabla"><strong>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblb_Filtros_Empresa</strong></td>
+                            <td data-bind="text:$root.EMPRESA_ID_FORMATEADO + ' - ' + $root.EMPRESA_ACRONIMO"></td>
+                        </tr>
+                        <!-- /ko -->
+                        <!-- ko if: not_empty($root.DIVISION) -->
+                        <tr>
+                            <td class="tituloTabla"><strong>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblb_Filtros_Division</strong></td>
+                            <td data-bind="text:$root.DIVISION_NOMBRE"></td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <br>
+</div>
+<div class="row" id="powerwidgets" style="overflow-x:auto;overflow-y:auto;">
+    <div class="col-md-12 bootstrap-grid">
+        <table id="tbl-resultados" class="table table-bordered" style="width:100%; ">
+            <thead>
+                <tr>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Index</th>
+                    <!-- ko if: is_empty($root.DIVISION) -->
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Operacion</th>
+                    <!-- /ko -->
+                    <!-- ko if: is_empty($root.EMPRESA) -->
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_IDEmpresa</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Acronimo</th>
+                    <!-- /ko -->
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_ID</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Nombres</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Apellidos</th>
+                    <th>Tipo pase</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_PaseAutorizado</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_CumpleCertTrabajo</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_SolicitaConduc</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_CumpleCertConduc</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_Contrato</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_FFinContrato</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_ExPreocup</th>
+                    <th>@Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblh_Resultados_FVenceExamen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: $root.resultados -->
+                <tr>
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:$index() + 1"></span>
+                    </td>
+                    <!-- ko if: is_empty($root.DIVISION) -->
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:GLOSA"></span>
+                    </td>
+                    <!-- /ko -->
+                    <!-- ko if: is_empty($root.EMPRESA) -->
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:EMPRESA"></span>
+                    </td>
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:ACRONIMO"></span>
+                    </td>
+                    <!-- /ko -->
+                    <td style="white-space: nowrap;">
+                        <!-- ko if: !$root.SHOW_EXCEL -->
+                        <a href="#" data-bind="click:function(){ $root.abrirIFR(RUT); }"><span data-bind="text:RUT_COD"></span></a>
+                        <!-- /ko -->
+                        <!-- ko if: $root.SHOW_EXCEL -->
+                        <span data-bind="text:RUT"></span>
+                        <!-- /ko -->
+                    </td>
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:NOMBRES"></span>
+                    </td>
+                    <td style="white-space: nowrap;">
+                        <span data-bind="text:APELLIDOS"></span>
+                    </td>
+                    <td style="white-space: nowrap;">
+                        @*<span data-bind="text:APELLIDOS"></span>*@
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:PASE_AUTORIZADO, css:{span_verde: PASE_AUTORIZADO == 'SI', span_rojo: PASE_AUTORIZADO != 'SI'}"></span>
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:AUTOR_VALIDADO, css:{span_verde: AUTOR_VALIDADO == 'SI', span_rojo: AUTOR_VALIDADO != 'SI'}"></span>
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:AUTOR_CONDUCTOR, css:{span_verde: AUTOR_CONDUCTOR == 'SI', span_rojo: AUTOR_CONDUCTOR != 'SI'}"></span>
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:RESULTADO_CONDUCCION, css:{span_verde: RESULTADO_CONDUCCION == 'SI', span_rojo: RESULTADO_CONDUCCION != 'SI'}"></span>
+                    </td>
+
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:TEXTO_CONTRATO, css:{span_verde: TEXTO_CONTRATO == 'SI', span_rojo: TEXTO_CONTRATO != 'SI'}"></span>
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:FECHA_CONTRATO_GM, css:{span_verde: FECHA_CONTRATO_VERDE == 1, span_rojo: FECHA_CONTRATO_VERDE != 1}"></span>
+                    </td>
+
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:TEXTO_EXAMEN, css:{span_verde: TEXTO_EXAMEN == 'SI', span_rojo: TEXTO_EXAMEN != 'SI'}"></span>
+                    </td>
+                    <td style="white-space: nowrap;text-align:center;">
+                        <span data-bind="text:FECHA_EXAMEN_GM, css:{span_verde: FECHA_EXAMEN_VERDE == 1, span_rojo: FECHA_EXAMEN_VERDE != 1}"></span>
+                    </td>
+                </tr>
+                <!-- /ko -->
+                <!-- ko if: $root.resultados.length < 1 -->
+                <tr>
+                    <td data-bind="attr:{colspan: $root.NUM_COLS}" style="white-space: nowrap;text-align:center;">
+                        <span>
+                            @Contratista.InformesCertificacion.InformeFechaFuncDivision.Tblb_Resultados_Lbl_NoResultados
+                        </span>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script>
+
+        function IndexViewModel(model) {
+            var self = this;
+
+            self.FECHA = model.FECHA;
+            self.NUM_COLS = 12 + (!is_empty(model.DIVISION) ? 1 : 0) + (!is_empty(model.EMPRESA) ? 2 : 0);
+            self.SHOW_EXCEL = false;
+            self.EMPRESA_ACRONIMO = model.EMPRESA_ACRONIMO;
+            self.EMPRESA_ID_FORMATEADO = model.EMPRESA_ID_FORMATEADO;
+            self.EMPRESA = model.EMPRESA;
+            self.DIVISION = model.DIVISION;
+            self.DIVISION_NOMBRE = model.DIVISION_NOMBRE;
+            self.resultados = model.resultados;
+
+            self.HOY = parseInt(model.HOY);
+
+            self.abrirIFR = function (RUT) {
+                if (typeof VerFichaFuncionario != 'undefined') {
+                    VerFichaFuncionario(RUT);
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            var m_model = @Html.HtmlConvertToJson(Model);
+            var vm = new IndexViewModel(m_model);
+            ko.applyBindings(vm);
+        });
+    </script>
+}

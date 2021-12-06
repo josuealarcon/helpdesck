@@ -1,0 +1,92 @@
+﻿@model V4mvc.Presentation.Controllers.InformesFuncionariosController.ViewModel_InformeFuncionarios
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="with:datosInformeID">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <td class="text-left tituloTabla"><strong>@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblb_Datos_Funcionario</strong></td>
+                <td data-bind="text:RUT_FORMATO +' '+ NOMBRES+' '+APELLIDOS"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Lbl_InformesDeCapacitaciones</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 bootstrap-grid" data-bind="if: $root.cursos.length != 0">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="Tabla">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="8">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_CapacitacionesEnElPeríodo</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Operacion</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Curso</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Fecha</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Hora</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Calificado</th>
+                        <th class="text-center">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblh_Grid_Funcionarios</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: $root.cursos">
+                    <tr>
+                        <td class="text-left" data-bind="text:DIVISION"></td>
+                        <td class="text-left" data-bind="text:CHARLA"></td>
+                        <td class="text-center" data-bind="text:FECHA_FORMAT"></td>
+                        <td class="text-center" data-bind="text:HORA"></td>
+                        <td class="text-center" data-bind="text:FINALIZADO"></td>
+                        <td class="text-right">
+                            <u><a data-bind="text:PARTICIPANTES_REPORTE,click:function(data,event){VerCharlaDetalle(DIVCOD,CODIGO,$root.ID,FINALIZADO,FECHA)}"></a></u>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-left" colspan="5">@Contratista.InformesFuncionarios.InformeCharlasYReservas.Tblf_Grid_Totales</td>
+                        <td class="text-right">
+                            <u><a data-bind="text:$root.cursos.reduce((sum, value) => ( sum + value.PARTICIPANTES_REPORTE ), 0)"></a></u>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div data-bind="if: $root.cursos.length == 0">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>No hay coincidencias para su búsqueda</span>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    <script>
+    function IndexViewModel(model) {
+        var self = this;
+        self.cursos = model.cursos;
+        self.datosInformeID = model.datosInformeID;
+        self.ID = model.datosInformeID.RUT;
+    }
+        $(document).ready(function () {
+            var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+            ko.applyBindings(vm);
+            });
+    </script>
+}

@@ -1,0 +1,65 @@
+﻿<div id="right-sidebar">
+    <div class="sidebar-container">
+
+        <ul class="nav nav-tabs navs-3">
+
+            <li class="active">
+                <a data-toggle="tab" href="#tab-1">
+                    @General.Template.Lbl_Guias
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+        </div>
+
+    </div>
+
+
+
+</div>
+    @Styles.Render("~/plugins/sweetAlertStyles")
+
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+
+    function get_viewkey() {
+        var tokens = window.location.href.split('://');
+        var url = tokens[tokens.length - 1];
+        var ifirst_slash = (url.indexOf('/Contratista/') < 0 ? (url.indexOf('/Mandante/') < 0 ? url.indexOf('/') : url.indexOf('/Mandante/')) : url.indexOf('/Contratista/') );
+        var len = url.indexOf('?') < 0 ? url.length - ifirst_slash : url.indexOf('?') - ifirst_slash;
+        var viewkey = url.substr(ifirst_slash, len);
+        return viewkey;
+    }
+
+    function toggleBarraVideos() {
+        var right_sidebar = $('#right-sidebar');
+        var key = get_viewkey();
+        var url = '@Url.Action("_VideosVista", "Master", new {Area = ""})?KEY=' + btoa(key);
+        if (right_sidebar.hasClass('sidebar-open')) {
+            right_sidebar.removeClass('sidebar-open');
+            return;
+        }
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "html",
+            success: function (response) {
+                $('.tab-content', right_sidebar).html(response);
+                right_sidebar.addClass('sidebar-open');
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                swal({
+                    title: '@Html.Raw(Resources.General.MsgErrorOccurredTryAgainLater)',
+                    timer: 3000,
+                    type:"error",
+                    showConfirmButton: true,
+                }, function () {
+                   swal.close();
+                });
+            }
+        });
+    }
+
+    </script>

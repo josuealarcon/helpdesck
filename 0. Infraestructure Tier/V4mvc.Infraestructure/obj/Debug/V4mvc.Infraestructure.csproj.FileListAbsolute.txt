@@ -1,0 +1,5 @@
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.Infraestructure\bin\Debug\V4mvc.Infraestructure.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.Infraestructure\bin\Debug\V4mvc.Infraestructure.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.Infraestructure\obj\Debug\V4mvc.Infraestructure.csproj.CoreCompileInputs.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.Infraestructure\obj\Debug\V4mvc.Infraestructure.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.Infraestructure\obj\Debug\V4mvc.Infraestructure.pdb

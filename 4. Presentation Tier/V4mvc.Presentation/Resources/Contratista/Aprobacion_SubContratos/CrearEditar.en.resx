@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Lbl_Editar" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Lbl_Nuevo" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Lbl_Ver" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Lbl_AprobacionSolicitudes" xml:space="preserve">
+    <value>Approval of Applications </value>
+  </data>
+  <data name="Lbl_Informacion" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Lbl_InformacionObligatoria" xml:space="preserve">
+    <value>The fields marked with a (*) are required </value>
+  </data>
+  <data name="Lbl_Empresa" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
+  <data name="Lbl_Acronimo" xml:space="preserve">
+    <value>Acronym</value>
+  </data>
+  <data name="Lbl_OST" xml:space="preserve">
+    <value>OST</value>
+  </data>
+  <data name="Lbl_NivelSubContrato" xml:space="preserve">
+    <value>Subcontract level </value>
+  </data>
+  <data name="Lbl_FechaInicioContrato" xml:space="preserve">
+    <value>Contract Start Date </value>
+  </data>
+  <data name="Lbl_FechaTerminoContrato" xml:space="preserve">
+    <value>Contract End Date </value>
+  </data>
+  <data name="Lbl_Empresa_SubContratista" xml:space="preserve">
+    <value>Subcontractor Enterprise</value>
+  </data>
+  <data name="Lbl_FechaInicioSubContrato" xml:space="preserve">
+    <value>Subcontract Start Date</value>
+  </data>
+  <data name="Lbl_FechaTerminoSubContrato" xml:space="preserve">
+    <value>Subcontract End Date</value>
+  </data>
+  <data name="Lbl_Dotacion_Vehiculo" xml:space="preserve">
+    <value>Vehicle Endowment </value>
+  </data>
+  <data name="Lbl_Dotacion" xml:space="preserve">
+    <value>Endowment </value>
+  </data>
+  <data name="Lbl_Admin_Ctta_SubContrato" xml:space="preserve">
+    <value>Admin Ctta Subcontract</value>
+  </data>
+  <data name="Lbl_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Lbl_Nombres" xml:space="preserve">
+    <value>Names</value>
+  </data>
+  <data name="Lbl_Apellidos" xml:space="preserve">
+    <value>Last Names</value>
+  </data>
+  <data name="Lbl_Email_SubContratista" xml:space="preserve">
+    <value>Email Adm. Subcontractor </value>
+  </data>
+  <data name="Lbl_Telefono_SubContratista" xml:space="preserve">
+    <value>Subcontractor Phone</value>
+  </data>
+  <data name="Lbl_AprobacionLicitacion" xml:space="preserve">
+    <value>Subcontract was approved in the bidding process </value>
+  </data>
+  <data name="Lbl_Monto" xml:space="preserve">
+    <value>Amount  Subcontract</value>
+  </data>
+  <data name="Rdo_Liquidacion_No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="Rdo_Liquidacion_Si" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="Btn_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Btn_Guardar" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Tblh_Fecha" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Tblh_Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="Tblh_Estado" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Tblh_Hora" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Tblh_Observacion" xml:space="preserve">
+    <value>Observation</value>
+  </data>
+  <data name="Tblh_Validado" xml:space="preserve">
+    <value>Validated by</value>
+  </data>
+  <data name="Tblb_Admin" xml:space="preserve">
+    <value>Contract Admin AA </value>
+  </data>
+  <data name="Tblb_Supply" xml:space="preserve">
+    <value>Supply Chain</value>
+  </data>
+  <data name="Tblb_Gerencia" xml:space="preserve">
+    <value>Security Management </value>
+  </data>
+  <data name="Phl_IDEmpresa" xml:space="preserve">
+    <value>Enter ID Enterprise</value>
+  </data>
+  <data name="Phl_Acronimo" xml:space="preserve">
+    <value>Enter Acronym</value>
+  </data>
+  <data name="Phl_FechaInicio" xml:space="preserve">
+    <value>Enter Start Date</value>
+  </data>
+  <data name="Phl_FechaTermino" xml:space="preserve">
+    <value>Enter End Date</value>
+  </data>
+  <data name="Phl_Dotacion" xml:space="preserve">
+    <value>Enter Endowment Personnel</value>
+  </data>
+  <data name="Phl_Dotacion_Vehicular" xml:space="preserve">
+    <value>Enter Endowment Vehicle</value>
+  </data>
+  <data name="Phl_ID" xml:space="preserve">
+    <value>Enter ID</value>
+  </data>
+  <data name="Phl_Nombres" xml:space="preserve">
+    <value>Enter Names</value>
+  </data>
+  <data name="Phl_Apellidos" xml:space="preserve">
+    <value>Enter Last Names</value>
+  </data>
+  <data name="Phl_Email" xml:space="preserve">
+    <value>Enter Email Adm. SubContract</value>
+  </data>
+  <data name="Phl_Telefono" xml:space="preserve">
+    <value>Enter Phone</value>
+  </data>
+  <data name="Phl_Monto" xml:space="preserve">
+    <value>Enter Amount</value>
+  </data>
+  <data name="Val_Required_OST" xml:space="preserve">
+    <value>Select OST</value>
+  </data>
+  <data name="Val_Required_FechaInicio" xml:space="preserve">
+    <value>Start Date Required</value>
+  </data>
+  <data name="Val_Required_FechaTermino" xml:space="preserve">
+    <value>End Date Required</value>
+  </data>
+  <data name="Val_Required_Email" xml:space="preserve">
+    <value>Email Required</value>
+  </data>
+  <data name="Val_Required_Dotacion" xml:space="preserve">
+    <value>Endowment Personnel Required</value>
+  </data>
+  <data name="Val_Required_Dotacion_Vehicular" xml:space="preserve">
+    <value>Endowment Vehicle Required</value>
+  </data>
+  <data name="Val_Required_ID_Admin_CTTA" xml:space="preserve">
+    <value>Admin Ctta Required</value>
+  </data>
+  <data name="Val_Required_Nombre_SubContratista" xml:space="preserve">
+    <value>Names Subcontractor Required </value>
+  </data>
+  <data name="Val_Required_Apellidos_SubContratista" xml:space="preserve">
+    <value>Last Names Subcontractor Required </value>
+  </data>
+  <data name="Val_Required_Telefono" xml:space="preserve">
+    <value>Phone Required</value>
+  </data>
+  <data name="Val_Required_EmpresaSubContratista" xml:space="preserve">
+    <value>SubContrator Enterprise Required</value>
+  </data>
+  <data name="Val_Required_Acronimo" xml:space="preserve">
+    <value>Acronym Subcontractor Required</value>
+  </data>
+  <data name="Val_Required_Monto" xml:space="preserve">
+    <value>Amount Required</value>
+  </data>
+  <data name="Val_Required_Archivo" xml:space="preserve">
+    <value>Archive Required</value>
+  </data>
+  <data name="Val_MaxLength_Nombre_Archivo" xml:space="preserve">
+    <value>The name of the must not exceed 45 characters </value>
+  </data>
+  <data name="Lbl_Edicion" xml:space="preserve">
+    <value>Edition</value>
+  </data>
+  <data name="Lbl_ListadoSolicitudes" xml:space="preserve">
+    <value>List of Requests</value>
+  </data>
+</root>

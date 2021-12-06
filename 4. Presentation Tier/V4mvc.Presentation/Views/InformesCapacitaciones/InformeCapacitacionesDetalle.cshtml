@@ -1,0 +1,155 @@
+﻿@model V4mvc.Presentation.Controllers.InformesCapacitacionesController.ViewModelCapacitaciones
+@{
+    ViewBag.Title = "InformeCapacitaciones";
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<style>
+    tfoot {
+        background-color: #3989c6;
+        color: #ffffff;
+    }
+</style>
+<div class="row contacts">
+    <div class="col-md-6" style="overflow-x:auto;">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><strong>Datos del Filtro</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-bind="if: operacion != null">
+                            <td class="tituloTabla"><strong>@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tbl_Informe_Operacion</strong></td>
+                            <td>
+                                <span data-bind="text: operacion"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tituloTabla"><strong>CURSO</strong></td>
+                            <td>
+                                <span data-bind="text: curso"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tituloTabla"><strong>@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tbl_Informe_Periodo</strong></td>
+                            <td>
+                                <span data-bind="text: fechaini"></span>  <span data-bind="text: hora"></span>
+                            </td>
+                        </tr>
+                        <tr data-bind="if: codigo > 0">
+                            <td class="tituloTabla"><strong>Curso Calificado</strong></td>
+                            <td>
+                                <span data-bind="text: finalizado=='SI'?'Curso Finalizado y Calificado Correctamente':'Curso Sin calificar por parte de Orador o area calificadora de cursos.'"></span>
+                            </td>
+                        </tr>
+                        <tr data-bind="if: funcionario != null">
+                            <td class="tituloTabla"><strong>@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tbl_Informe_Funcionario</strong></td>
+                            <td>
+                                <span data-bind="text: funcionario"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">Informes Detalle Capacitaciones</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual : ' + fecha_hoy"></a>
+    </div>
+</div>
+<div class="row" id="powerwidgets" data-bind="if: detalle_capacitaciones.length > 0">
+    <div class="col-md-12 bootstrap-grid">
+        <div class="table-responsive">
+            <table class="table table-bordered" style="width:100%; ">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_ID</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Nombres</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Apellidos</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Empresa</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Asistio</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Nota</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Resultado</th>
+                        <th class="text-center">@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblh_Capacitaciones_Vigencia</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:detalle_capacitaciones">
+                    <tr>
+                        <td class="text-center">
+                            <u><a data-bind="text:RUT_FORMATO,click:function(data,event){VerFichaFuncionario(RUT)}"></a></u>
+                        </td>
+                        <td data-bind="text: NOMBRES"></td>
+                        <td data-bind="text: APELLIDOS"></td>
+                        <td class="text-center" data-bind="text: ACRONIMO"></td>
+                        <td class="text-center" data-bind="style:{ color: FINALIZADO == 'NO' ? '#CCC':'' }">
+                            <span data-bind="text: ASISTIO, style:{ color: ASISTIO == 'NO' ? 'red':'' }"></span>
+                        </td>
+                        <td class="text-center" data-bind="style:{ color: FINALIZADO == 'NO' ? '#CCC':'' }">
+                            <span data-bind="text: NOTA + ' % ', style:{ color: NOTA < 69 ? 'red':''}"></span>
+                        </td>
+                        <td class="text-center" data-bind="style:{ color: FINALIZADO == 'NO' ? '#CCC':'' }">
+                            <span data-bind="text: NOTA >= 69 ? 'Aprobado' : 'Reprobado', style:{ color: NOTA >= 50 ? '':'red'}"></span>
+                        </td>
+                        <td class="text-center" data-bind="style:{ color: FINALIZADO == 'NO' ? '#CCC':'' }">
+                            <span data-bind="text: ASISTIO == 'NO' || NOTA < 69 ? 'Reprobado' : EXPIRA_FORMATO, style:{ color: ASISTIO == 'NO' || NOTA < 69 ? 'red':''}"></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="7" class="text-right">
+                            <strong>
+                                @Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Tblf_Capacitaciones_Totales
+                            </strong>
+                        </th>
+                        <th class="text-right">
+                            <span class="text-white" data-bind="text: detalle_capacitaciones.length"></span>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12" data-bind="if: detalle_capacitaciones.length == 0">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-info-circle"></i>
+            <span>@Contratista.InformesCapacitaciones.InformeCapacitacionesDetalle.Lbl_No_Hay_Coincidencias_Busqueda</span>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/dataTables")
+
+    <script>
+        function ViewModelDetalleCapacitaciones(model) {
+            var self = this;
+            self.detalle_capacitaciones = model.CAPACITACIONES;
+            self.acronimo = model.DETALLE.ACRONIMO;
+            self.empresa = model.DETALLE.EMPRESA_FORMATO;
+            self.operacion = model.DETALLE.OPERACION;
+            self.funcionario = (model.FUNCIONARIO != null) ? (model.FUNCIONARIO.RUT_FORMATO + ' - ' + model.FUNCIONARIO.NOMBRES + ' ' + model.FUNCIONARIO.APELLIDOS) : null;
+            self.codigo = model.DETALLE.CODIGO;
+            self.idcharla = model.DETALLE.IDCHARLA;
+            self.fechaini = model.DETALLE.FECHAINI_FORMATO;
+            self.fechafin = model.DETALLE.FECHAFIN_FORMATO;
+            self.fecha_hoy = model.DETALLE.FECHA_HOY;
+            self.hora = model.DETALLE.HORA;
+            self.curso = model.DETALLE.CHARLA;
+            self.finalizado = model.DETALLE.FINALIZADO;
+        }
+
+        var vm = new ViewModelDetalleCapacitaciones(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(vm);
+    </script>
+}

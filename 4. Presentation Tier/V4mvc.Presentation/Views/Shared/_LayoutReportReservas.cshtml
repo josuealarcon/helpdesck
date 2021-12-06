@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebControl</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/font-awesome/css")
+    <style>
+        html, body {
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            color: #555 !important;
+            width:100%;
+            background-color: #FFF !important; 
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .contenedorReservas {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 20px;
+            border-bottom: 1px solid #3989c6;
+            padding-bottom: 20px;
+        }
+        .contedorImprimir{
+            margin: 20px 10px 0 0;
+        }
+        .contenedorBodyReservas {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .personaImprime {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .footerReservas {
+            border-top: 1px solid #aaa;
+            text-align: center;
+            color: #777;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+     
+    </style>
+</head>
+<body>
+    <div>
+        <div class="contenedorReservas">
+            <div>
+                <a>
+                    <img src="~/images/mantoscopper.jpg" />
+                </a>
+            </div>
+            <div class="contedorImprimir">
+                <div>
+                    <button class="btn btn-info custom-print-btn"><i class="fa fa-print"></i> Imprimir</button>
+                </div>
+                <div>
+                    <div>MantosCopper Chile</div>
+                    <div><a target="_blank" href="https://www.webcontrol.cl">www.webcontrol.cl</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedorBodyReservas">
+            @RenderBody()
+        </div>
+    </div>
+    
+    <footer>
+        <div class="personaImprime" data-bind="with:CURSOPROG">
+            <div>Usuario Imprime: <span data-bind="text: NOMIMPRIME"></span> &nbsp;&nbsp;&nbsp;Fecha: <span data-bind="text: FECHAHOY"></span></div>
+        </div>
+        <div class="footerReservas">
+            Licencia : MantosCopper Chile<br>©opyRight: <a class="hyper" href="https://www.webcontrol.cl" target="_blank">www.webcontrol.cl</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="http://www.webcontrol.cl/soporte.asp" target="_blank">Soporte Usuarios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="https://webcontrol.webcontrol.cl/opciones_tablas/Manuales.asp?id=zxy" target="_blank">Biblioteca de Manuales</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="https://webcontrol.webcontrol.cl/opciones_tablas/videos.asp?id=zxy" target="_blank">Videos de Auto Ayuda</a>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/knockoutJS")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+    @Scripts.Render("~/plugins/utils")
+
+    @Scripts.Render("~/bundles/skinConfig")
+    @Scripts.Render("~/plugins/excel-export")
+    @Scripts.Render("~/bundles/custom-print")
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $(window).on("load", function () {
+            setTimeout(function () { window.print(); }, 1300);
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+CREATE PROCEDURE [dbo].[V4MVC_TRANSPORT_SELECT_ENTERPRISE_CTTA2]
+(
+ @IDEMPRESA		NVARCHAR(10) = NULL
+) 
+AS
+BEGIN
+
+   	DECLARE @VALOR1 NVARCHAR(2)
+
+	SELECT @VALOR1 = ISNULL(VALOR1,'') FROM PARAMETROS_V2 WHERE DESCRIPCION = 'Pases Vehiculares'
+	IF(@VALOR1 = '1')
+		BEGIN
+			SELECT
+				DISTINCT
+					D.PATENTE,
+					SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA1', convert(nvarchar(50),D.PATENTE))), 3, 10) AS ENCRYPT,
+					D.ACRONIMO,
+					D.MARCA,
+					D.MODELO,
+					D.TIPO
+			FROM ( 
+				   SELECT
+						TOP 1000
+						T.PATENTE,
+						E.ACRONIMO,
+						T.MARCA,
+						T.MODELO,
+						T.TIPO
+					FROM TRANSPORT_DIVISION_PASES TD 
+				    INNER JOIN TRANSPORT T
+						ON TD.PATENTE = T.PATENTE 
+				    INNER JOIN ENTERPRISE E
+						ON TD.EMPRESA = E.IDEMPRESA 
+					WHERE (T.EMPRESA IS NOT NULL)	   
+
+					UNION ALL  
+					SELECT
+						TOP 1000
+						T.PATENTE,
+						E.ACRONIMO,
+						T.MARCA,
+						T.MODELO,
+						T.TIPO
+					FROM TRANSPORT T 
+					INNER JOIN ENTERPRISE E
+						ON T.EMPRESA = E.IDEMPRESA
+					WHERE (T.EMPRESA IS NOT NULL)
+			) D 
+		END
+	ELSE
+		BEGIN
+			SELECT
+				DISTINCT
+					D.PATENTE,
+					D.ACRONIMO,
+					SUBSTRING(master.dbo.fn_varbintohexstr(HashBytes('SHA1', convert(nvarchar(50),D.PATENTE))), 3, 10) AS ENCRYPT,
+					D.MARCA,
+					D.MODELO,
+					D.TIPO
+			FROM ( 
+				   SELECT
+						TOP 1000
+						T.PATENTE,
+						E.ACRONIMO,
+						T.MARCA,
+						T.MODELO,
+						T.TIPO
+					FROM TRANSPORT_DIVISION_PASES TD 
+				    INNER JOIN TRANSPORT T
+						ON TD.PATENTE = T.PATENTE 
+				    INNER JOIN ENTERPRISE E
+						ON TD.EMPRESA = E.IDEMPRESA
+				    WHERE (T.EMPRESA IS NOT NULL)
+				   ) D	   
+		END
+END
+
+

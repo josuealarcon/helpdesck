@@ -1,0 +1,167 @@
+﻿<div class="modal inmodal" id="BuscadorFuncionarios" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content  animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">@General._BuscadorFuncionarios.Lbl_Buscar_Trabajador</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-striped small" id="dtWorkers">
+                    <thead>
+                        <tr>
+                            <th>@General._BuscadorFuncionarios.Tblh_BuscadorFuncionarios_ID</th>
+                            <th>@General._BuscadorFuncionarios.Tblh_BuscadorFuncionarios_Nombres</th>
+                            <th>@General._BuscadorFuncionarios.Tblh_BuscadorFuncionarios_Apellidos</th>
+                            <th>@General._BuscadorFuncionarios.Tblh_BuscadorFuncionarios_Empresa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="sch-search">@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_ID</th>
+                            <th class="sch-search">@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Nombres</th>
+                            <th class="sch-search">@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Apellidos</th>
+                            @if (Session["TIPOUSUARIO"].ToString() == "MDTE")
+                            {
+                                <th class="sch-search">@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Empresa</th>
+                            }
+                            else
+                            {
+                                <th>&nbsp;</th>
+                            }
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> &nbsp;@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $.ajaxSetup({
+      global: false
+    
+   });
+    var modalId = null;
+    $("#BuscadorFuncionarios").on('hide.bs.modal', function () {
+        if ($.fn.DataTable.isDataTable("#dtWorkers")) {
+            $('#dtWorkers').DataTable().clear().destroy();
+        }
+    });
+    $("#BuscadorFuncionarios").on("shown.bs.modal", function (e) {
+        modalId = $(e.relatedTarget).data('modal-id');
+
+        $('.sch-search').each(function () {
+            var title = $('#dtWorkers thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" class="form-control" placeholder="' + title + '" style="width:100%;height:32px;" "  />');
+        });
+
+        DtTableWorkers = $('#dtWorkers').DataTable({
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        $(this).val($(this).val().replace(/[-.&\\"\\'\\+\\?\\*\\/\\¿\\!\\¡]/gi, ''));
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+                });
+            },
+            columns: [
+                { "data": "RUT" },
+                { "data": "NOMBRES" },
+                { "data": "APELLIDOS" },
+                { "data": "ACRONIMO" },
+            ],
+            "filter": true,
+            "pagingType": "simple_numbers",
+            "orderClasses": true,
+            "columnFilter": true,
+            "tooltip": true,
+            "sDom": "lrtip",
+            "searchDelay": 500,
+            "scrollCollapse": true,
+            "bDeferRender": true,
+            "bFilter": true,
+            bProcessing: false,
+            bServerSide: true,
+            sAjaxSource: "@Url.Action("_BuscarFuncionarios","Home", new { Area = "Contratista" })"
+        });
+        $('#dtWorkers tbody').on('click', 'tr', function (e1) {
+            e1.preventDefault();
+            e1.stopImmediatePropagation();
+            if (DtTableWorkers != null) {
+                var data = DtTableWorkers.row(this).data();
+                $(this).removeClass('selected');
+                modalRetornaDataWorker(data);
+                $('#BuscadorFuncionarios').modal('hide');
+            }
+            else {
+                $(this).addClass('selected');
+            }
+            return false;
+        });
+        function modalRetornaDataWorker(elemento) {
+            if (elemento != undefined) {
+                switch (modalId) {
+                    case 1:
+                        $('#txtID_MODAL_1').val(elemento.RUT);
+                        $('#txtID_PROPIETARIO_MODAL_1').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNOMBRES_MODAL_1').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODAL_1').val(elemento.APELLIDOS).trigger('change');
+                        break;
+                    case 2:
+                        $('#txtID_MODAL_2').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtID_PROPIETARIO_MODAL_2').val(elemento.RUT).trigger('change');
+                        $('#txtNOMBRES_MODAL_2').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODAL_2').val(elemento.APELLIDOS).trigger('change');
+                        break;
+                    case 3:
+                        $('#txtID_MODAL_3').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtID_PROPIETARIO_MODAL_3').val(elemento.RUT).trigger('change');
+                        $('#txtNOMBRES_MODAL_3').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODAL_3').val(elemento.APELLIDOS).trigger('change');
+                    case 4:
+                        $('#txtID_PROPIETARIO_MODAL_4').val($.trim(elemento.RUT));
+                        $('#txtNOMBRES_MODAL_4').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODAL_4').val(elemento.APELLIDOS).trigger('change');
+                        break;
+                    case 5:
+                        $('#txtID_PROPIETARIO_MODAL_5').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNOMBRES_MODAL_5').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODAL_5').val(elemento.APELLIDOS).trigger('change');
+                        break;
+                    case 6:
+                        $('#txtIdOrador').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNombresOrador').val(elemento.NOMBRES + ' ' + elemento.APELLIDOS).trigger('change');
+                        break;
+                    case 7:
+                        $('#txtIdFuncionario').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNombresFuncionario').val(elemento.NOMBRES).trigger('change');
+                        $('#txtApellidosFuncionario').val(elemento.APELLIDOS).trigger('change');
+                        $('#txtGerenciaFuncionario').val(elemento.IDGERENCIA).trigger('change');
+                        break;
+                    case 8:
+                        $('#txtIdFuncionario').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNombresFuncionario').val(elemento.NOMBRES + ' ' + elemento.APELLIDOS).trigger('change');
+                        break;
+                    default:
+                        $('#txtID_MODALCR_1').val($.trim(elemento.RUT)).trigger('change');
+                        $('#txtNOMBRES_MODALCR_1').val(elemento.NOMBRES).trigger('change');
+                        $('#txtAPELLIDOS_MODALCR_1').val(elemento.APELLIDOS).trigger('change');
+                        break;
+                }
+            }
+        }
+    });
+
+</script>

@@ -1,0 +1,193 @@
+﻿<div class="modal inmodal" id="searcher-enterprisemdte" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content  animated bounceInRight">
+            <div class="modal-header modal-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Busqueda Empresa Mandante</h5>
+            </div>
+            <div class="modal-body" id="modal-searcher-enterprisemdte">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Mostrar</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control input-sm" data-bind="options:$root.listLength,value:length">
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>@Mandante.Home.Tabla.Lbl_Registros</label>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-hover table-striped dataTable small" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-bind="click:function(data,event){order('1',this)}">
+                                IDEMPRESA
+                                <div class="pull-right"><i data-bind="visible: sort() == 1,css: sort() == 1 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('0',this)}">
+                                ACRONIMO
+                                <div class="pull-right"><i data-bind="visible: sort() == 0,css: sort() == 0 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                            <th data-bind="click:function(data,event){order('2',this)}">
+                                NOMBRE / RAZON SOCIAL
+                                <div class="pull-right"><i data-bind="visible: sort() == 2,css: sort() == 2 && ordering() == 'asc' ? 'fa fa-sort-alpha-asc' : 'fa fa-sort-alpha-desc'"></i></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: listEnterpriseMdte">
+                        <tr data-bind="click:function(data,event){$root.selectItem($data)}">
+                            <td data-bind="text: IDEMPRESA"></td>
+                            <td data-bind="text: ACRONIMO"></td>
+                            <td data-bind="text: NOMBRE"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th><input class="form-control input-sm" type="text" placeholder="IDEMPRESA" data-bind="textInput: idempresa" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="ACRONIMO" data-bind="textInput: acronimo" /></th>
+                            <th><input class="form-control input-sm" type="text" placeholder="NOMBRE" data-bind="textInput: nombre" /></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row">
+                    <div class="pull-right">
+                        <ul id="pagination-enteprisemdte" class="pagination"></ul>
+                    </div>
+                    <div class="pull-left">
+                        @Mandante.Home.Tabla.Lbl_Mostrando <span data-bind="text: (start() + 1)"></span> @Mandante.Home.Tabla.Lbl_A <span data-bind="text: registros()"></span> @Mandante.Home.Tabla.Lbl_De <span data-bind="text: count()"></span> @Mandante.Home.Tabla.Lbl_Registros
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> &nbsp;@General._BuscadorFuncionarios.Tblf_BuscadorFuncionarios_Btn_Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/knockoutJS")
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var modelEnterpriseMdte = null;
+    function loadSearcherEnterpriseMdte(idModal) {
+
+        function EnterpriseMdteViewModel() {
+            ko.cleanNode($('#modal-searcher-enterprisemdte')[0]);
+            var self = this;
+            self.idModal = ko.observable(idModal);
+            self.listEnterpriseMdte = ko.observableArray();
+            self.active = ko.observable(true);
+            self.page = ko.observable();
+            self.start = ko.observable(0);
+            self.listLength = ko.observableArray([10, 25, 50, 100]);
+            self.length = ko.observable(10);
+            self.sort = ko.observable("0");
+            self.ordering = ko.observable("asc");
+            self.count = ko.observable(0);
+            self.registros = ko.observable(self.length());
+            self.acronimo = ko.observable().extend({ throttle: 1000 });
+            self.idempresa = ko.observable().extend({ throttle: 1000 });
+            self.nombre = ko.observable().extend({ throttle: 1000 });
+
+            self.addEnterpriseMdte = function (data) { for (var key in data) { self.listEnterpriseMdte.push(ko.toJS(data[key])); } }
+
+            self.page.subscribe(function (value) {
+                self.registros(value * self.length());
+                var pag = ((value * self.length()) - self.length());
+                self.start(pag);
+            });
+
+            self.order = function (value) {
+                self.sort(value);
+                self.start(0);
+                self.ordering() == 'asc' ? self.ordering('desc') : self.ordering('asc');
+            }
+
+            self.length.subscribe(function () {
+                self.init();
+                self.registros(self.length());
+            });
+            self.ordering.subscribe(function () { self.init() });
+            self.acronimo.subscribe(function () { self.init() });
+            self.idempresa.subscribe(function () { self.init() });
+            self.nombre.subscribe(function () { self.init() });
+
+            self.init = function () {
+                if (self.active()) {
+                    var data = {
+                        START: self.start,
+                        LENGTH: self.length,
+                        COLUMN: self.sort,
+                        DIRECTION: self.ordering,
+                        ACRONIMO: self.acronimo,
+                        IDEMPRESA: self.idempresa,
+                        NOMBRE: self.nombre
+                    };
+
+                    $('#pagination-enteprisemdte').pagination({
+                        ajax: function (options, refresh, $target) {
+                            self.page(options.current),
+                                $.ajax({
+                                    url: '@Url.Action("_SearcherEnterprisesMdte", "Home", new { Area = "Mandante" })',
+                                    data: data,
+                                    dataType: 'json'
+                                }).done(function (res) {
+                                    self.listEnterpriseMdte.removeAll();
+                                    self.addEnterpriseMdte(res.data);
+                                    self.count(res.COUNT);
+                                    refresh({
+                                        total: res.COUNT,
+                                        length: self.length()
+                                    });
+                                }).fail(function (error) { console.log('error'); });
+                        },
+                        prev: "@Mandante.Home.Tabla.Lbl_Anterior",
+                        next: "@Mandante.Home.Tabla.Lbl_Siguiente"
+                    });
+                }
+            }
+
+            self.clear = function () {
+                self.active(false);
+                self.length(10);
+                self.sort('0');
+                self.ordering('asc');
+                self.acronimo('');
+                self.idempresa('');
+                self.nombre('');
+            }
+
+            self.selectItem = function (data) {
+                switch (self.idModal()) {
+                    case 1:
+                        $('#txtMadre').val(data.IDEMPRESA).trigger('change');
+                        $('#txtAcronimoMadre').val(data.ACRONIMO).trigger('change');
+                        break;
+                    case 2:
+                        $('#txtIDEMPRESA').val(data.IDEMPRESA).trigger('change');
+                        $('#txtACRONIMO').val(data.ACRONIMO).trigger('change');
+                    case 3:
+                        $('#txtIDEMPRESA3').val(data.IDEMPRESA).trigger('change');
+                        $('#txtACRONIMO3').val(data.ACRONIMO).trigger('change');
+                        break;
+                }
+                self.clear();
+                $('#searcher-enterprisemdte').modal('hide');
+            }
+        }
+
+        var vmEnterpriseMdte = new EnterpriseMdteViewModel();
+        vmEnterpriseMdte.init();
+        modelEnterpriseMdte = vmEnterpriseMdte;
+        ko.applyBindings(vmEnterpriseMdte, $('#modal-searcher-enterprisemdte')[0]);
+
+    }
+
+</script>

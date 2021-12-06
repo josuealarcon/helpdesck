@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "NewEnterpriseCtta";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <img src="~/Images/webcontrol_logo_chico.png" alt="flag" class="img-responsive">
+        <div class="callout callout-info small" style="text-align: justify;">
+            <span>@General.NewEnterpriseCtta.Msg_SolicitarPases</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form id="form-valide-enterprise" name="form-valide-enterprise" class="orb-form" method="post">
+            <fieldset>
+                <legend class="text-center">@General.NewEnterpriseCtta.Lgn_IngresaNuevaEmpresa</legend>
+                <div class="callout callout-info small" style="text-align: justify;">
+                    <span>@General.NewEnterpriseCtta.Msg_IngresarID</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="@General.NewEnterpriseCtta.Phl_IDEmpresa" id="txtIDEMPRESA" name="IDEMPRESA">
+                </div>
+                <button type="button" class="btn btn-primary block full-width m-b" data-bind="click: autorEnterprise">@General.NewEnterpriseCtta.Btn_Ingresar</button>
+                <button data-bind="click: cancel" class="btn btn-danger block full-width m-b">@General.NewEnterpriseCtta.Btn_Cancelar</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+<script>
+       function AutorEnterpriseViewModel() {
+           var self = this;
+
+           self.cancel = function () {
+               var url = '@Url.Action("RedirectToLogin", "Login", new { Area = "" })';
+               window.location = url;
+           }
+
+           self.autorEnterprise = function () {
+               if ($('#form-valide-enterprise').valid()) {
+                   var data = { IDEMPRESA: $('#txtIDEMPRESA').val() };
+                   $.ajax({
+                       contentType: 'application/json',
+                       type: 'POST',
+                       url: '@Url.Action("ObtenerAutorEnterprise", "Login", new { Area = "" })',
+                       data: JSON.stringify(data),
+                       success: function (response) {
+                           switch (response) {
+                               case 'SI':
+                                   window.location = '@Url.Action("Login", "Login", new { Area = "" })';
+                                   break;
+                               case 'FD':
+                                   swal({
+                                       title: "¡ERROR!",
+                                       text: '@Html.Raw(General.NewEnterpriseCtta.Msg_EstadoEmpresaAcronimo)'+ " " + $('#txtIDEMPRESA').val() + " "+ '@Html.Raw(General.NewEnterpriseCtta.Msg_EstadoEmpresaAcronimo2)',
+                                       type: "error",
+                                       showConfirmButton: true,
+                                   });
+                                   break;
+                               case 'XX':
+                                   swal({
+                                       title: "¡ERROR!",
+                                       text:  '@Html.Raw(General.NewEnterpriseCtta.Msg_EstadoID)' +" " + $('#txtIDEMPRESA').val() + " "+'@Html.Raw(General.NewEnterpriseCtta.Msg_EstadoID2)',
+                                       type: "error",
+                                       showConfirmButton: true,
+                                   });
+                                   break;
+                               case "NULL":
+                                   var url = '@Url.Action("DataNewEnterpriseCtta", "Login", new { Area = "", IDEMPRESA = "param-id" })';
+                                   url = url.replace("param-id", $('#txtIDEMPRESA').val());
+                                   window.location = url;
+                                   $('#txtIDEMPRESA').val('');
+                                   break;
+                               default:
+                                   swal({
+                                       title: "¡ERROR!",
+                                       text: '@Html.Raw(@General.NewEnterpriseCtta.Msg_EstadoNoReconocido)',
+                                       type: "error",
+                                       showConfirmButton: true,
+                                   });
+                                   break;
+                           }
+                       }
+                   })
+               }
+           }
+        };
+
+        var vm = new AutorEnterpriseViewModel();
+        ko.applyBindings(vm);
+
+        jQuery.validator.addMethod("lettersnumbersonly", function (value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/i.test(value);
+        }, '@Html.Raw(General.NewEnterpriseCtta.Val_SoloNumeroLetrasSinEspacio)');
+
+        $("#form-valide-enterprise").validate({
+            rules: {
+                "IDEMPRESA": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 9,
+                    lettersnumbersonly: true,
+                    remote: {
+                        url: '@Url.Action("ValidarRUT", "Login", new { Area = "" })',
+                        type: "POST",
+                        data: {
+                            RUT: function () {
+                                return $('#txtIDEMPRESA').val();
+                            }
+                        }
+                    }
+                },
+            },
+            messages: {
+                "IDEMPRESA": {
+                    required: '@General.NewEnterpriseCtta.Val_IdEmpresaRequerido',
+                    minlength: '@General.NewEnterpriseCtta.Val_IDEmpresa8caracteres',
+                    maxlength: '@General.NewEnterpriseCtta.Val_IDEmpresa9Caracteres',
+                    remote: '@General.NewEnterpriseCtta.Val_IDEmpresaInválido'
+                },
+            }
+        });
+</script>
+}

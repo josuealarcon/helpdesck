@@ -1,0 +1,205 @@
+﻿@model V4mvc.Entities.Enterprise
+@{
+    ViewBag.Title = "DashBoardCtta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .highcharts-credits {
+        visibility: hidden !important;
+    }
+</style>
+<!--<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>@Contratista.DashBoard._DashBoardCTTA.Lbl_Acreditacion_Funcionarios_Operacion</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="container_3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>@Contratista.DashBoard._DashBoardCTTA.Lbl_Contratos</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="container_1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>@Contratista.DashBoard._DashBoardCTTA.Lbl_Vencimientos_Proximos_30_dias</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="container_2"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+@*</div>*@
+@section Scripts {
+    @Scripts.Render("~/plugins/highcharts")
+
+    @*<script>
+        Highcharts.setOptions({ colors: ['#00897b', '#c62828', '#D8D8D8', '#DDDF00', '#9B9512', '#A9F5E1', '#287670', '#214F9A', '#107829'] });
+
+        Highcharts.chart('container_1', {
+            chart: {
+                renderTo: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Contrato)",
+                type: 'pie',
+                size: 80
+            },
+            exporting: {
+                enabled: false
+            },
+            title: {
+                text: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Contratos)"
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    showInLegend: true
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                floating: true,
+                x: 1,
+                y: 45
+            },
+            series: [{
+                name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Cantidad)",
+                colorByPoint: true,
+                data: [{
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Vigentes)",
+                    y: @Html.Raw(Model.DOCS_VIGENTES),
+                }, {
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Vencidos)",
+                    y: @Html.Raw(Model.DOCS_VENCIDOS),
+                }]
+            }]
+        });
+
+        Highcharts.chart('container_2', {
+            chart: {
+                renderTo: 'Vencimiento',
+                type: 'pie',
+                size: 80
+            },
+            exporting: {
+                enabled: false
+            },
+            title: {
+                text: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Vencimientos_Proximos_30_dias)"
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false,
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    },
+                    showInLegend: true
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                floating: true,
+                x: 1,
+                y: 45
+            },
+            series: [{
+                name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Cantidad)",
+                colorByPoint: true,
+                data: [{
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Contratos)",
+                    y: @Html.Raw(Model.VENCIMIENTO_OST),
+                }, {
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Vehiculos)",
+                    y: @Html.Raw(Model.VENCIMIENTO_VEH),
+                }, {
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Funcionarios)",
+                    y: @Html.Raw(Model.VENCIMIENTO_WORK),
+                }]
+            }]
+        });
+
+        Highcharts.chart('container_3', {
+            chart: {
+                renderTo: 'Acreditacion',
+            },
+            title: {
+                text: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Acreditacion_Funcionarios_Operacion)"
+            },
+            labels:
+            {
+                items: [{
+                    html: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Documentos_Pendientes_Operacion)",
+                    style:
+                    {
+                        left: '10px',
+                        top: '5px',
+                    }
+                }]
+            },
+            xAxis: {
+                categories: [@Html.Raw(Model.OPERACIONES)],
+                labels: {
+                    rotation: -45,
+                }
+            },
+            series: [
+                {
+                    type: 'column',
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Acreditados)",
+                    data: [@Html.Raw(Model.CANT_ACREDITADOS)]
+                },
+                {
+                    type: 'column',
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_No_Acreditados)",
+                    data: [@Html.Raw(Model.CANT_NOACREDITADOS)]
+                },
+                {
+                    type: 'spline',
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Porcentaje_Acreditados)",
+                    data: [@Html.Raw(Model.PROMEDIO)],
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: Highcharts.getOptions().colors[3],
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        shared: true
+                    }
+                },
+                {
+                    type: 'pie',
+                    name: "@Html.Raw(Contratista.DashBoard._DashBoardCTTA.Lbl_Docs_Pendientes)",
+                    data: [@Html.Raw(Model.CANT_PENDIENTES)],
+                    center: [40, 50],
+                    size: 70,
+                    showInLegend: false,
+                    dataLabels: { enabled: false }
+                }
+            ]
+        });
+    </script>*@
+}

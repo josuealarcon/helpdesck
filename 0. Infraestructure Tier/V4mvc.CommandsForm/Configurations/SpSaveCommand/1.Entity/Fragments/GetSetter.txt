@@ -1,0 +1,14 @@
+﻿		/// <summary>
+		/// Gets or sets el valor de: $0.
+		/// </summary>
+		public $1 $2
+		{
+			get { return $3; }
+			set
+			{
+				if ($4 != value)
+				{
+					$5 = value;
+				}
+			}
+		}

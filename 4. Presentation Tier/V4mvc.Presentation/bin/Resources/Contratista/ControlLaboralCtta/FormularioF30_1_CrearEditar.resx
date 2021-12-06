@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Btn_BorrarArchivo" xml:space="preserve">
+    <value>Eliminar Archivo</value>
+  </data>
+  <data name="Btn_Guardar" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Btn_Swal_Cancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Btn_Swal_SiEliminar" xml:space="preserve">
+    <value>Si, Eliminar</value>
+  </data>
+  <data name="Lbl_AdjuntaNomina" xml:space="preserve">
+    <value>Se Adjunta Nomina</value>
+  </data>
+  <data name="Lbl_Advertencia" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="Lbl_AmbitoValidez" xml:space="preserve">
+    <value>Ambito de Validez</value>
+  </data>
+  <data name="Lbl_Anio" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="Lbl_Certificado" xml:space="preserve">
+    <value>Certificado</value>
+  </data>
+  <data name="Lbl_Clave" xml:space="preserve">
+    <value>Código de Verificación</value>
+  </data>
+  <data name="Lbl_Contratados" xml:space="preserve">
+    <value>Contratados</value>
+  </data>
+  <data name="Lbl_Desvinculados" xml:space="preserve">
+    <value>Desvinculados</value>
+  </data>
+  <data name="Lbl_Documento" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="Lbl_Editar" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Lbl_IDEmpresa" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Lbl_IndexPrincipal_Titulo" xml:space="preserve">
+    <value>Documentos Control Laboral</value>
+  </data>
+  <data name="Lbl_Informacion" xml:space="preserve">
+    <value>Informacion</value>
+  </data>
+  <data name="Lbl_Inspeccion" xml:space="preserve">
+    <value>Inspeccion</value>
+  </data>
+  <data name="Lbl_ListadoTitulo" xml:space="preserve">
+    <value>Lista de Formularios F30-1</value>
+  </data>
+  <data name="Lbl_Monto" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="Lbl_MontosPagados" xml:space="preserve">
+    <value>Montos Pagados ($)</value>
+  </data>
+  <data name="Lbl_MontosPagados_v2" xml:space="preserve">
+    <value>Montos Pagados ($)</value>
+  </data>
+  <data name="Lbl_NombreEmpresa" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Lbl_NoPagadas" xml:space="preserve">
+    <value>No Pagadas</value>
+  </data>
+  <data name="Lbl_NroTrabajadoresPagados" xml:space="preserve">
+    <value>Nro Trabajadores Pagados</value>
+  </data>
+  <data name="Lbl_NroTrabajadoresPagados_v2" xml:space="preserve">
+    <value>Nro Trabajadores Pagados</value>
+  </data>
+  <data name="Lbl_NroTrabajadoresSinPago" xml:space="preserve">
+    <value>Nro Trabajadores Sin Pago</value>
+  </data>
+  <data name="Lbl_NroTrabajadoresSinPago_v2" xml:space="preserve">
+    <value>Nro Trabajadores Sin Pago</value>
+  </data>
+  <data name="Lbl_Nuevo" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="Lbl_Observacion" xml:space="preserve">
+    <value>Observacion</value>
+  </data>
+  <data name="Lbl_Operacion" xml:space="preserve">
+    <value>Operacion</value>
+  </data>
+  <data name="Lbl_OST" xml:space="preserve">
+    <value>OST</value>
+  </data>
+  <data name="Lbl_Pagadas" xml:space="preserve">
+    <value>Pagadas</value>
+  </data>
+  <data name="Lbl_Pendiente" xml:space="preserve">
+    <value>Pendiente</value>
+  </data>
+  <data name="Lbl_Periodo" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="Lbl_PeriodoCertificado" xml:space="preserve">
+    <value>Periodo de Certificado</value>
+  </data>
+  <data name="Lbl_Rechazado" xml:space="preserve">
+    <value>Rechazado</value>
+  </data>
+  <data name="Lbl_Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="Lbl_TipoCertificado" xml:space="preserve">
+    <value>Tipo de Certificado</value>
+  </data>
+  <data name="Lbl_Titulo" xml:space="preserve">
+    <value>Formulario F30-1</value>
+  </data>
+  <data name="Lbl_TotalVigentes" xml:space="preserve">
+    <value>Total Vigentes</value>
+  </data>
+  <data name="Lbl_Validado" xml:space="preserve">
+    <value>Validado</value>
+  </data>
+  <data name="Lgn_Datos" xml:space="preserve">
+    <value>Campos Basicos</value>
+  </data>
+  <data name="Lgn_DatosEmpresa" xml:space="preserve">
+    <value>Datos Empresa</value>
+  </data>
+  <data name="Lgn_DetalleRemuneraciones" xml:space="preserve">
+    <value>Detalle de Remuneraciones</value>
+  </data>
+  <data name="Lgn_EstadoCotizaciones" xml:space="preserve">
+    <value>Estados de las Cotizaciones Previsionales</value>
+  </data>
+  <data name="Lgn_IndemnizacionAniosServicio" xml:space="preserve">
+    <value>Indemnizacion por Años de Servicio</value>
+  </data>
+  <data name="Lgn_IndemnizacionSustitutiva" xml:space="preserve">
+    <value>Indemnizacion Sustitutiva del Aviso Previo</value>
+  </data>
+  <data name="Lgn_SituacionTrabajadores" xml:space="preserve">
+    <value>Situacion de los Trabajadores Declarados a la Fecha de Solicitud</value>
+  </data>
+  <data name="Msg_ArchivoEliminado" xml:space="preserve">
+    <value>Archivo adjunto eliminado</value>
+  </data>
+  <data name="Msg_CamposAsterisco" xml:space="preserve">
+    <value>Los campos marcados con * son obligatorios</value>
+  </data>
+  <data name="Msg_Confirmacion_EliminarArchivo" xml:space="preserve">
+    <value>¿Desea eliminar el archivo adjunto?</value>
+  </data>
+  <data name="Msg_Dropzone_CantidadArchivosExcedida" xml:space="preserve">
+    <value>Cantidad de archivos excede al maximo: {{maxFiles}} </value>
+  </data>
+  <data name="Msg_Dropzone_ExcedeTamanioMaximo" xml:space="preserve">
+    <value>Tamaño actual {{filesize}} excede el maximo: {{maxFilesize}}</value>
+  </data>
+  <data name="Msg_Dropzone_ExtensionInvalida" xml:space="preserve">
+    <value>Extension invalida</value>
+  </data>
+  <data name="Msg_Dropzone_LongMaxExcedida" xml:space="preserve">
+    <value>Nombre de archivo excede longitud maxima: ___MAX_LEN</value>
+  </data>
+  <data name="Msg_Dropzone_PorDefecto" xml:space="preserve">
+    <value>&lt;strong&gt;Soltar archivos aqui o hacer click. &lt;/strong&gt;&lt;/br&gt;</value>
+    <comment>&lt;strong&gt;Drop files here or click to upload. &lt;/strong&gt;&lt;/br&gt;</comment>
+  </data>
+  <data name="Msg_Dropzone_Quitar" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="Msg_EntidadGuardadaCtte" xml:space="preserve">
+    <value>Datos guardados correctamente</value>
+  </data>
+  <data name="Msg_EntidadNoExiste" xml:space="preserve">
+    <value>Error al actualizar datos.</value>
+  </data>
+  <data name="Msg_EntidadYaExiste" xml:space="preserve">
+    <value>Ya existe un registro para el periodo seleccionado</value>
+  </data>
+  <data name="Msg_ExtensionArchivoNoPermitida" xml:space="preserve">
+    <value>Extension de archivo no permitida</value>
+  </data>
+  <data name="Msg_LargoMaxNombreArchivoExcedido" xml:space="preserve">
+    <value>La longitud maxima de nombre del archivo adjunto excedido(45)</value>
+  </data>
+  <data name="Msg_TamanioMaximoArchivoExcedido" xml:space="preserve">
+    <value>El tamaño maximo de archivo excedido(4Mb)</value>
+  </data>
+  <data name="Phl_Operacion" xml:space="preserve">
+    <value>SELECCIONE UNA OPERACION</value>
+  </data>
+  <data name="Phl_OST" xml:space="preserve">
+    <value>SELECCIONE UN OST</value>
+  </data>
+  <data name="Phl_Region" xml:space="preserve">
+    <value>SELECCIONE UNA REGION</value>
+  </data>
+  <data name="Phl_TipoCertificado" xml:space="preserve">
+    <value>SELECCIONA UN TIPO DE CERTIFICADO</value>
+  </data>
+  <data name="Tblb_Detalles_Btn_AgregarDetalle" xml:space="preserve">
+    <value>Agregar Detalle</value>
+  </data>
+  <data name="Tblb_Detalles_Btn_EliminarDetalle" xml:space="preserve">
+    <value>Borrar Detalle</value>
+  </data>
+  <data name="Tblb_Detalles_Lbl_NoResultados" xml:space="preserve">
+    <value>No se hallaron resultados</value>
+  </data>
+  <data name="Tblb_Detalles_Val_Required_MontoPagado" xml:space="preserve">
+    <value>El Monto Pagado es requerido</value>
+  </data>
+  <data name="Tblb_Detalles_Val_Required_NroTrabajadoresPagados" xml:space="preserve">
+    <value>Nro de Trabajadores Pagados es requerido</value>
+  </data>
+  <data name="Tblb_Detalles_Val_Required_NroTrabajadoresSinPago" xml:space="preserve">
+    <value>Nro de Trabajadores No Pagados es requerido</value>
+  </data>
+  <data name="Tblb_Detalles_Val_Required_Periodo" xml:space="preserve">
+    <value>El Periodo es requerido</value>
+  </data>
+  <data name="Tblh_Detalles_MontoPagado" xml:space="preserve">
+    <value>Monto Pagado ($)</value>
+  </data>
+  <data name="Tblh_Detalles_NroTrabajadoresPagados" xml:space="preserve">
+    <value>Nro Trabajadores Pagados</value>
+  </data>
+  <data name="Tblh_Detalles_NroTrabajadoresSinPago" xml:space="preserve">
+    <value>Nro Trabajadores Sin Pago</value>
+  </data>
+  <data name="Tblh_Detalles_Periodo" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="Val_Custom_FechaMayorIgual" xml:space="preserve">
+    <value>La Fecha debe ser mayor o igual a la fecha respectiva</value>
+  </data>
+  <data name="Val_Custom_FechaMayorIgual_PeriodoIni" xml:space="preserve">
+    <value>La Fecha debe ser mayor o igual a la fecha del Periodo Inicial</value>
+  </data>
+  <data name="Val_Custom_FechaMenorIgual" xml:space="preserve">
+    <value>La Fecha debe ser menor o igual a la fecha respectiva</value>
+  </data>
+  <data name="Val_Custom_FechaMenorIgual_PeriodoFin" xml:space="preserve">
+    <value>La Fecha debe ser menor o igual a la fecha del Periodo Fin</value>
+  </data>
+  <data name="Val_Required_Anio" xml:space="preserve">
+    <value>El Año es requerido</value>
+  </data>
+  <data name="Val_Required_Archivo" xml:space="preserve">
+    <value>El archivo adjunto es requerido</value>
+  </data>
+  <data name="Val_Required_Archivo2" xml:space="preserve">
+    <value>El archivo adjunto es requerido</value>
+  </data>
+  <data name="Val_Required_Certificado" xml:space="preserve">
+    <value>El Certificado es requerido</value>
+  </data>
+  <data name="Val_Required_Clave" xml:space="preserve">
+    <value>La Clave es requerida</value>
+  </data>
+  <data name="Val_Required_Contratados" xml:space="preserve">
+    <value>El campo Contratados es requerido</value>
+    <comment>TRA_DECL</comment>
+  </data>
+  <data name="Val_Required_Desvinculados" xml:space="preserve">
+    <value>El campo Desvinculados es requerido</value>
+    <comment>TRA_DESV</comment>
+  </data>
+  <data name="Val_Required_Inspeccion" xml:space="preserve">
+    <value>La Inspeccion es requerida</value>
+  </data>
+  <data name="Val_Required_Monto" xml:space="preserve">
+    <value>El Monto es requerido</value>
+  </data>
+  <data name="Val_Required_MontosPagados" xml:space="preserve">
+    <value>Montos Pagados es requerido</value>
+    <comment>IND_AP_MTO</comment>
+  </data>
+  <data name="Val_Required_MontosPagados_v2" xml:space="preserve">
+    <value>Montos Pagados es requerido</value>
+    <comment>IND_AS_MTO</comment>
+  </data>
+  <data name="Val_Required_NroTrabajadoresPagados" xml:space="preserve">
+    <value>Nro Trabajadores Pagados es requerido</value>
+    <comment>IND_AP_P</comment>
+  </data>
+  <data name="Val_Required_NroTrabajadoresPagados_v2" xml:space="preserve">
+    <value>Nro Trabajadores Pagados es requerido</value>
+    <comment>IND_AS_P</comment>
+  </data>
+  <data name="Val_Required_NroTrabajadoresSinPago" xml:space="preserve">
+    <value>Nro Trabajadores sin Pago es requerido</value>
+    <comment>IND_AP_NP</comment>
+  </data>
+  <data name="Val_Required_NroTrabajadoresSinPago_v2" xml:space="preserve">
+    <value>Nro Trabajadores sin Pago es requerido</value>
+    <comment>IND_AS_NP</comment>
+  </data>
+  <data name="Val_Required_Operacion" xml:space="preserve">
+    <value>La Operacion es requerida</value>
+  </data>
+  <data name="Val_Required_OST" xml:space="preserve">
+    <value>La OST es requerida</value>
+  </data>
+  <data name="Val_Required_Periodo" xml:space="preserve">
+    <value>El Periodo es requerido</value>
+  </data>
+  <data name="Val_Required_PeriodoFin" xml:space="preserve">
+    <value>El Periodo Final es requerido</value>
+  </data>
+  <data name="Val_Required_PeriodoIni" xml:space="preserve">
+    <value>El Periodo Inicial es requerido</value>
+  </data>
+  <data name="Val_Required_Region" xml:space="preserve">
+    <value>La Region es requerida</value>
+  </data>
+  <data name="Val_Required_TipoCertificado" xml:space="preserve">
+    <value>Tipo de Certificado es requerido</value>
+  </data>
+  <data name="Val_Required_TotalVigentes" xml:space="preserve">
+    <value>Total Vigentes es requerido</value>
+    <comment>TRA_VIGE</comment>
+  </data>
+</root>

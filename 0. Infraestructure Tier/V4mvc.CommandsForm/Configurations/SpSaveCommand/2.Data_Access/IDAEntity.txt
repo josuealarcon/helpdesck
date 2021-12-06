@@ -1,0 +1,28 @@
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using V4mvc.Entities;
+
+namespace V4mvc.DataAccess
+{
+	public partial interface IDA$0
+	{
+		#region [ Consultas ]
+
+		ObservableCollection<$1> GetAll();
+
+		$2 GetOne($3);
+
+		#endregion
+
+		#region [ Metodos ]
+
+		bool Save(ref $4 item);
+
+		bool Delete(ref $5 item);
+
+		#endregion
+	}
+}

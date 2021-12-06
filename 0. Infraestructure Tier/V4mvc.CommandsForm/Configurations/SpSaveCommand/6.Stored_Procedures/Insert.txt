@@ -1,0 +1,39 @@
+﻿
+GO
+
+USE $0
+
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[$1]') AND type IN (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[$2]
+
+GO
+
+-- =========================================================
+-- Autor - Fecha Crea  : TiersGenerateCommand - $3
+-- Descripcion         : Procedimiento de Inserción de la tabla $4
+-- Autor - Fecha Modif : 
+-- Descripcion         : 
+-- =========================================================
+CREATE PROCEDURE [dbo].[$5]
+(
+	 $6
+)
+AS
+BEGIN
+
+	INSERT INTO [$7]
+		(
+			$8
+		)
+	VALUES
+		(
+			$9
+		)
+
+	SET @$10 = SCOPE_IDENTITY();
+
+END
+
+GO

@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebControl</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    <!-- Add jQuery Style direct - used for jQGrid plugin -->
+    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Primary Inspinia style -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/font-awesome/css")
+    @Styles.Render("~/Media/css")
+</head>
+<body>
+    <style>
+        #invoice {
+            padding: 10px;
+            min-height: 1000px;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid #aaa;
+            padding: 8px 0;
+            background-color: #FFFFFF;
+            position: relative !important;
+        }
+
+        .invoice {
+            position: relative;
+            background-color: #FFF;
+            min-height: 680px;
+            padding: 0px 20px 0px 20px;
+        }
+
+        .headerMain {
+            padding: 0px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #3989c6
+        }
+
+        .invoice .company-details {
+            text-align: right
+        }
+
+            .invoice .company-details .name {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+
+        .invoice .contacts {
+            margin-bottom: 10px
+        }
+
+        .invoice .invoice-to {
+            text-align: left
+        }
+
+            .invoice .invoice-to .to {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+
+        .invoice .invoice-details {
+            text-align: right
+        }
+
+            .invoice .invoice-details .invoice-id {
+                margin-top: 0;
+                color: #3989c6
+            }
+
+        .invoice main {
+            padding-bottom: 50px
+        }
+
+            .invoice main .thanks {
+                margin-top: -100px;
+                font-size: 2em;
+                margin-bottom: 50px
+            }
+
+            .invoice main .notices {
+                padding-left: 6px;
+                border-left: 6px solid #3989c6
+            }
+
+                .invoice main .notices .notice {
+                    font-size: 1.2em
+                }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            color: #555 !important;
+            background-color: #FFF !important
+        }
+
+        .invoice table tfoot td {
+            border-bottom: none;
+            white-space: nowrap;
+            text-align: right;
+            padding: 0px 8px;
+            border-top: 1px solid #aaa;
+            color: #fff;
+            background: #3989c6;
+        }
+
+            .invoice table tfoot td u a {
+                border-bottom: none;
+                white-space: nowrap;
+                text-align: right;
+                padding: 0px 8px;
+                border-top: 1px solid #aaa;
+                color: #fff;
+                background: #3989c6;
+            }
+
+        .invoice table tfoot tr td:first-child {
+            text-align: center
+        }
+
+        .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+            background-color: #247bbe !important;
+            color: white !important;
+            border-bottom-width: 1px;
+        }
+
+        .invoice table tbody td {
+            vertical-align: middle;
+        }
+    </style>
+    <div id="invoice">
+        <div class="invoice overflow-auto">
+            <div style="min-width: 600px">
+                <header class="headerMain">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a>
+                                <img id="img_informe" src="~/images/mantoscopper.jpg" data-holder-rendered="true" />
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row hide-on-print" style="text-align:right">
+                                <div class="col-lg-12">
+                                    <button id="printReport" class="btn btn-info  dim custom-print-btn"><i class="fa fa-print"></i> Imprimir</button>
+                                    <button class="btn btn-primary dim" onclick="invocarExportaXls();"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align:right">
+                                <div class="col-lg-12">
+                                    <div>MantosCopper Chile</div>
+                                    <div><a target="_blank" href="http://www.webcontrolcorp.com">www.webcontrolcorp.com</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <main>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer class="footer navbar-fixed-bottom">
+        Licencia : MantosCopper Chile<br>©opyRight: <a class="hyper" href="http://www.webcontrol.cl" target="_blank">www.webcontrol.cl</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="http://www.webcontrol.cl/soporte.asp" target="_blank">Soporte Usuarios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="https://webcontrol.webcontrol.cl/opciones_tablas/Manuales.asp?id=zxy" target="_blank">Biblioteca de Manuales</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="hyper" href="https://webcontrol.webcontrol.cl/opciones_tablas/videos.asp?id=zxy" target="_blank">Videos de Auto Ayuda</a>
+    </footer>
+    <!--JQuery-->
+    <!-- End wrapper-->
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/knockoutJS")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+    @Scripts.Render("~/plugins/utils")
+
+    <!-- Skin config script - only for demo purpose-->
+    @Scripts.Render("~/bundles/skinConfig")
+    @Scripts.Render("~/plugins/excel-export")
+    @Scripts.Render("~/bundles/custom-print")
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+
+    <script>
+
+        function invocarExportaXls() {
+            var logo_fullpath = '@Helpers.ResolveServerUrl(VirtualPathUtility.ToAbsolute("~/images/mantoscopper.png"), false)';
+            export_download_xls(logo_fullpath);
+        }
+        function invocarPrint() {
+            window.print();
+        }
+        function VerFichaEmpresa(IDEMPRESA) {
+            var url = '@Url.Action("InformeFichaEmpresa", "InformesEmpresas", new { Area = "" } )?IDEMPRESA=' + IDEMPRESA;
+            window.location = url;
+        }
+
+        function VerFichaVehiculo(PATENTE) {
+            var url = '@Url.Action("InformeFichaVehiculo", "InformesVehiculos", new { Area = "" } )?PATENTE=' + PATENTE;
+            window.location = url;
+        }
+
+        function VerFichaFuncionario(RUT) {
+            var url = '@Url.Action("InformeFichaFuncionarios", "InformesFuncionarios", new { Area = "" })?RUT=' + RUT;
+            window.location = url;
+        }
+
+        function VerFichaPases(NLOTEPROC) {
+            var url = '@Url.Action("InformeConsultaRapidaPase", "InformesConsultaRapida", new { Area = "" } )?NLOTEPROC=' + NLOTEPROC;
+            window.location = url;
+        }
+
+        function VerCharlaDetalle(DIVCOD, CODIGO, RUT, FINALIZADO,FECHA) {
+            var url = '@Url.Action("InformeCapacitacionesDetalle", "InformesCapacitaciones", new { Area = "" } )?DIVCOD=' + DIVCOD + '&CODIGO=' + CODIGO + '&RUT=' + RUT + '&FINALIZADO=' + FINALIZADO + '&FECHAINI=' + FECHA ;
+            window.location = url;
+        }
+
+        function VerInformeFechasFuncDiv(EMPRESA, DIVISION, CERT) {
+            EMPRESA = not_empty(EMPRESA) ? EMPRESA : '';
+            DIVISION = not_empty(DIVISION) ? DIVISION : '';
+            CERT = not_empty(CERT) ? CERT : '';
+            var url = '@Html.Raw(Url.Action("InformeFechaFuncDivision","InformesCertificacion",new { Area = "", EMPRESA = "param-id", DIVISION = "param2-id", CERT = "param3-id" }))';
+            url = url.replace("param-id", EMPRESA);
+            url = url.replace("param2-id", DIVISION);
+            url = url.replace("param3-id", CERT);
+            window.location = url;
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

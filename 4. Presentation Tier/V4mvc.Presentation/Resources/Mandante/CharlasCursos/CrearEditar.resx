@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Btn_Cancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Btn_GuardarDatos" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Chk_NO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="Chk_SI" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="Lbl_Activo" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Lbl_Charla" xml:space="preserve">
+    <value>* Charlas</value>
+  </data>
+  <data name="Lbl_Listado_categoria" xml:space="preserve">
+    <value>Listado de Charlas Cursos</value>
+  </data>
+  <data name="Lbl_Edicion_Charlas" xml:space="preserve">
+    <value>Opciones - Edición de la Charlas</value>
+  </data>
+  <data name="Lbl_Informacion" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="Lbl_InformacionObligatoria" xml:space="preserve">
+    <value>Las opciones marcas con (*) son obligatorias</value>
+  </data>
+  <data name="Chk_Obligatorio" xml:space="preserve">
+    <value>Obligatorio</value>
+  </data>
+  <data name="Chk_Opcional" xml:space="preserve">
+    <value>Opcional</value>
+  </data>
+  <data name="Lbl_Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="Lbl_Descripcion" xml:space="preserve">
+    <value>* Descripción </value>
+  </data>
+  <data name="Lbl_DocumentoRelacionado" xml:space="preserve">
+    <value>Fecha Documento Relacionado</value>
+  </data>
+  <data name="Lbl_horas" xml:space="preserve">
+    <value>* Horas</value>
+  </data>
+  <data name="Lbl_Nueva_Charla" xml:space="preserve">
+    <value>Nueva Charla</value>
+  </data>
+  <data name="Lbl_OpcionesCharla" xml:space="preserve">
+    <value>OPCIONES CHARLAS</value>
+  </data>
+  <data name="Lbl_Operaciones" xml:space="preserve">
+    <value>* Operaciones</value>
+  </data>
+  <data name="Lbl_PorcentajeDeAprobacion" xml:space="preserve">
+    <value>Porcentaje de Aprobación</value>
+  </data>
+  <data name="Lbl_SeleccionarArea" xml:space="preserve">
+    <value>SELECCIONAR AREA</value>
+  </data>
+  <data name="Lbl_SeleccionarTodas" xml:space="preserve">
+    <value>SELECCIONAR TODAS</value>
+  </data>
+  <data name="Lbl_SeleccioneDocumentosRelacionado" xml:space="preserve">
+    <value>SELECCIONE FECHA DOCUMENTO</value>
+  </data>
+  <data name="lbl_Ambito" xml:space="preserve">
+    <value>Ambito</value>
+  </data>
+  <data name="Lbl_Clasificacion" xml:space="preserve">
+    <value>Clasificacion</value>
+  </data>
+  <data name="Lbl_SeleccionarAmbito" xml:space="preserve">
+    <value>SELECCIONAR AMBITO</value>
+  </data>
+  <data name="Lbl_seleccionarClasificacion" xml:space="preserve">
+    <value>SELECCIONAR CLASIFICACIÓN</value>
+  </data>
+  <data name="Lbl_listadoCharlas" xml:space="preserve">
+    <value>Listado de charlas</value>
+  </data>
+  <data name="Lbl_tipoCurso" xml:space="preserve">
+    <value>Tipo curso</value>
+  </data>
+  <data name="Lbl_vigencia" xml:space="preserve">
+    <value>Vigencia</value>
+  </data>
+  <data name="Msg_GuardarInformacionError" xml:space="preserve">
+    <value>Ha ocurrido un error</value>
+  </data>
+  <data name="Msg_GuardarInformacionOK" xml:space="preserve">
+    <value>Datos guardados correctamente</value>
+  </data>
+  <data name="Phl_Descripcion" xml:space="preserve">
+    <value>Ingresar Descripción</value>
+  </data>
+  <data name="Phl_horas" xml:space="preserve">
+    <value>Ingresar Cantidad de horas</value>
+  </data>
+  <data name="Phl_Nombre" xml:space="preserve">
+    <value>Ingresar Charla</value>
+  </data>
+  <data name="Val_Maxlength_charla" xml:space="preserve">
+    <value>EL NOMBRE DE LA CHARLA DEBE TENER  60 CARACTERES COMO MÁXIMO</value>
+  </data>
+  <data name="Val_Maxlength_Descripcion" xml:space="preserve">
+    <value>LA DESCRIPCION DEBE TENER 60 CARACTERES COMO MÁXIMO</value>
+  </data>
+  <data name="Val_MaxLength_Nombre" xml:space="preserve">
+    <value>El nombre de la Charla debe tener 50 caracteres como máximo</value>
+  </data>
+  <data name="Val_Required_charla" xml:space="preserve">
+    <value>CHARLA ES REQUERIDO</value>
+  </data>
+  <data name="Val_Required_descripcion" xml:space="preserve">
+    <value>DESCRIPCION ES REQUERIDO</value>
+  </data>
+  <data name="Val_Required_Divicion" xml:space="preserve">
+    <value>OPERACIONES ES REQUERIDO</value>
+  </data>
+  <data name="Val_Required_horas" xml:space="preserve">
+    <value>HORAS ES REQUERIDO</value>
+  </data>
+  <data name="Val_Required_vencimiento" xml:space="preserve">
+    <value>VENCIMIENTO ES REQUERIDO</value>
+  </data>
+  <data name="Lbl_duracionCharla" xml:space="preserve">
+    <value>(Duracion aprox. Curso/Charla)</value>
+  </data>
+  <data name="Lbl_Ingresar_Vigencia" xml:space="preserve">
+    <value>Ingresar vigencia</value>
+  </data>
+  <data name="Lbl_Meses" xml:space="preserve">
+    <value>(Meses)</value>
+  </data>
+</root>

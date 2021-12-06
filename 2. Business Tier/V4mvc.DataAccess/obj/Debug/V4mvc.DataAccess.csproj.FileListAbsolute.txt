@@ -1,0 +1,38 @@
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.dll.config
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Abstractions.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Container.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.Entities.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Newtonsoft.Json.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.Entities.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Abstractions.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Container.pdb
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.AssemblyReference.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.CoreCompileInputs.cache
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.CopyComplete
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.dll
+D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.pdb
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.dll.config
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.DataAccess.pdb
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Abstractions.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Container.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.Entities.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\V4mvc.Entities.pdb
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Abstractions.pdb
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\bin\Debug\Unity.Container.pdb
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.csproj.CopyComplete
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.dll
+C:\Users\Tilin\source\repos\helpdesk\2. Business Tier\V4mvc.DataAccess\obj\Debug\V4mvc.DataAccess.pdb

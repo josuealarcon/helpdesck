@@ -1,0 +1,17 @@
+CREATE PROCEDURE [dbo].[V4MVC_COLAB_USUARIO_EMAILS_CTTA]
+(
+ @IDEMPRESA		NVARCHAR(10)
+)
+AS
+BEGIN
+	
+	SELECT STUFF((
+       SELECT ';'+Correo_Electronico
+       FROM			COLAB_USUARIO
+	   WHERE		IDEMPRESA		=	@IDEMPRESA
+	   AND			ACTIVO			=   'SI'
+	   AND			ENVIOALERTAS	=	'SI' 
+       FOR XML PATH('')
+),1,1, '') AS Correo_Electronico
+
+END

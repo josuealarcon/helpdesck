@@ -1,0 +1,480 @@
+﻿@model V4mvc.Entities.Enterprise
+@{
+    ViewBag.Title = "DataDataNewEnterpriseCtta";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<style>
+    .center-block {
+        top: 3%
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <fieldset>
+            <legend class="text-center">@General.DataNewEnterpriseCtta.Lgn_DatosNuevaEmpresa</legend>
+        </fieldset>
+        <div class="callout callout-info small" style="text-align: justify;">
+            <span>@General.DataNewEnterpriseCtta.Lbl_IngreseDatosObligatorios</span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <form id="form-valide-enterprise" name="form-valide-enterprise" class="form-horizontal" data-bind="with: newEnterprise">
+        <div class="col-md-6">
+            <fieldset>
+                <legend>@General.DataNewEnterpriseCtta.Lgn_DatosPersonales</legend>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>ID Empresa</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtIDEMPRESA" data-bind="value:IDEMPRESA" name="IDEMPRESA" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_RazonSocial</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtNOMBRE" data-bind="value:NOMBRE" name="NOMBRE" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseRazónSocial" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_NombreFantasia</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtACRONIMO" data-bind="value:ACRONIMO" name="ACRONIMO" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseAcronimo" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_Direccion</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtDIRECCCION" data-bind="value:DIRECCCION" name="DIRECCCION" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseDireccion" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_Telefono</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtTELEFONO" data-bind="value:TELEFONO" name="TELEFONO" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseTelefono"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_Pais</strong></label>
+                    <div class="col-md-8">
+                        <select id="ddlPaises" name="PAIS" class="form-control" data-bind="options: $root.paises,optionsText:'PAIS',optionsValue:'PAIS',value:$root.paisID,optionsCaption:'@General.DataNewEnterpriseCtta.Item_SeleccionePais'">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_Region</strong></label>
+                    <div class="col-md-8">
+                        <select id="ddlRegiones" name="REGION" class="form-control" data-bind="options: $root.regiones,optionsText:'REGION',optionsValue:'REGION',value:$root.regionID,optionsCaption:'@General.DataNewEnterpriseCtta.Item_SeleccioneRegion'">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_Ciudad</strong></label>
+                    <div class="col-md-8">
+                        <select id="ddlCiudades" name="CIUDAD" class="form-control" data-bind="options: $root.ciudades,optionsText:'CIUDAD',optionsValue:'CIUDAD',value:$root.ciudadID,optionsCaption:'@General.DataNewEnterpriseCtta.Item_SeleccioneCiudad'">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_RepresentateLegal</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtNRELEGAL" data-bind="value:NRELEGAL" name="NRELEGAL" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseRepresentanteLegal" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_CorreoRepresentanteLegal</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtEMAIL" data-bind="value:EMAIL" name="EMAIL" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseCorreoRepLegal" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-6">
+            <fieldset>
+                <legend>@General.DataNewEnterpriseCtta.Lgn_DatosUsuInicial</legend>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_IDUsuAdministrador</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtADMINRUT" data-bind="value:ADMINRUT" name="ADMINRUT" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseIDAdministrador" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_ClaveAccesoUsuario</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtCLAVE" data-bind="value:CLAVE" name="CLAVE" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseClaveAcceso" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_ReitereClaveAcceso</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtRECLAVE" name="RECLAVE" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseClaveAcceso" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_CorreoUsuario</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtADMINEMAIL" data-bind="value:ADMINEMAIL" name="ADMINEMAIL" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseCorreoAdministrador" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_NombresUsuario</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtADMINNOM" data-bind="value:ADMINNOM" name="ADMINNOM" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseNombreUsuarioAdministrador" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4"><strong>@General.DataNewEnterpriseCtta.Lbl_ApellidosUsuario</strong></label>
+                    <div class="col-md-8">
+                        <input id="txtADMINAPE" name="ADMINAPE" class="form-control" placeholder="@General.DataNewEnterpriseCtta.Phl_IngreseApellidosAdministrador"/>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="inner-spacer">
+                <div class="callout callout-info small" style="text-align: justify;">
+                    <span>@General.DataNewEnterpriseCtta.Msg_PerfilAdministrador</span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary block full-width m-b" data-bind="click: $root.sendEnterprise">@General.DataNewEnterpriseCtta.Btn_RegistrarEmpresa</button>
+            <button data-bind="click: $root.cancel" class="btn btn-danger block full-width m-b">@General.DataNewEnterpriseCtta.Btn_Cancelar</button>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+        var modelEnterprise = @Html.HtmlConvertToJson(Model);
+    </script>
+
+    <script>
+        function DataNewEnterprise(model) {
+            var self = this;
+            self.newEnterprise = model;
+            self.paises = ko.observableArray();
+            self.paisID = ko.observable();
+            self.regiones = ko.observableArray();
+            self.regionID = ko.observable();
+            self.ciudades = ko.observableArray();
+            self.ciudadID = ko.observable();
+            self.comunas = ko.observableArray();
+            self.comunaID = ko.observable();
+
+            self.cancel = function () {
+                var url = '@Url.Action("RedirectToLogin", "Login", new { Area = "" })';
+                window.location = url;
+            }
+
+            self.sendEnterprise = function () {
+                if ($('#form-valide-enterprise').valid()) {
+                        var data = JSON.stringify({
+                            IDEMPRESA: $("#txtIDEMPRESA").val(),
+                            NOMBRE: $("#txtNOMBRE").val(),
+                            ACRONIMO: $("#txtACRONIMO").val(),
+                            DIRECCCION: $("#txtDIRECCCION").val(),
+                            PAIS: $("#ddlPaises option:selected").val(),
+                            REGION: $("#ddlRegiones option:selected").val(),
+                            CIUDAD: $("#ddlCiudades option:selected").val(),
+                            TELEFONO: $("#txtTELEFONO").val(),
+                            NRELEGAL: $("#txtNRELEGAL").val(),
+                            EMAIL: $("#txtEMAIL").val(),
+                            ADMINRUT: $("#txtADMINRUT").val(),
+                            CLAVE: $("#txtCLAVE").val(),
+                            ADMINEMAIL: $("#txtADMINEMAIL").val(),
+                            ADMINNOM: ($("#txtADMINNOM").val() + " " + $("#txtADMINAPE").val()),
+                            ADMINAPE: $("#txtADMINAPE").val(),
+                            ADMNOM: $("#txtADMINNOM").val(),
+                        });
+                        $.ajax({
+                            contentType: 'application/json',
+                            type: 'POST',
+                            url: '@Url.Action("DataDataNewEnterpriseCtta", "Login", new { Area = "" })',
+                            data: data
+                        }).done(self.successSave)
+                            .fail(self.errorSave);
+                }
+            }
+
+            self.successSave = function (data) {
+                swal({
+                    title: "Datos guardados correctamente",
+                    timer: 3000,
+                    type: "success",
+                    showConfirmButton: true,
+                }, function () {
+                    window.location = '@Url.Action("DashBoard", "DashBoard", new { Area = "Contratista" })';
+                    swal.close();
+                });
+            }
+
+            self.errorSave = function () {
+                swal({
+                    title: "Ha ocurrido un error intentelo nuevamente",
+                    timer: 3000,
+                    type: "error",
+                    showConfirmButton: true,
+                }, function () {
+                    swal.close();
+                });
+            }
+        }
+
+        var vm = new DataNewEnterprise(modelEnterprise);
+        ko.applyBindings(vm);
+        $.validator.setDefaults({ ignore: ":hidden:not(select)" });
+
+        vm.paisID.subscribe(function (value) {
+            if (value != undefined) {
+                $.getJSON('@Url.Action("GetAllRegionesByPais")', { PAIS: $("#ddlPaises").val() }, function (data) {
+                    vm.regiones(data);
+                    if (modelEnterprise.LISTA_PAISES != null)
+                        vm.regionID(modelEnterprise.REGION);
+                }).fail(function () {
+                    swal({
+                        title: '@General.DataNewEnterpriseCtta.Msg_Ocurrio1',
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                    });
+                })
+            }
+            else {
+                vm.regiones.removeAll();
+                vm.regionID(undefined);
+            }
+        });
+
+        vm.regionID.subscribe(function (value) {
+            if (value != undefined) {
+                $.getJSON('@Url.Action("GetAllCiudadByRegion")', { REGION: $("#ddlRegiones").val() }, function (data) {
+                    vm.ciudades(data);
+                    if(modelEnterprise!=null)
+                        vm.ciudadID(modelEnterprise.CIUDAD);
+                }).fail(function () {
+                    swal({
+                        title: '@General.DataNewEnterpriseCtta.Msg_Ocurrio1',
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                    });
+                })
+            }
+            else {
+                vm.ciudades.removeAll();
+                vm.ciudadID(undefined);
+            }
+        });
+
+        vm.ciudadID.subscribe(function (value) {
+            if (value != undefined) {
+                $.getJSON('@Url.Action("GetAllComunaByCiudad")', { CIUDAD: $("#ddlCiudades").val() }, function (data) {
+                    vm.comunas(data);
+                    if(modelEnterprise!=null)
+                        vm.comunaID(modelEnterprise.COMUNA);
+                }).fail(function () {
+                    swal({
+                        title: '@General.DataNewEnterpriseCtta.Msg_Ocurrio1',
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+                    }, function () {
+                        swal.close();
+                    });
+                })
+            }
+            else {
+                vm.comunas.removeAll();
+                vm.comunaID(undefined);
+            }
+        });
+
+        vm.paises(modelEnterprise.LISTA_PAISES);
+        if(modelEnterprise!=null)
+            vm.paisID(modelEnterprise.PAIS);
+
+        jQuery.validator.addMethod("lettersnumbersonly", function (value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9]+$/i.test(value);
+        }, '@General.DataNewEnterpriseCtta.Val_NumeroLetrasSinEspacios');
+
+        $("#form-valide-enterprise").validate({
+            ignore: [],
+            errorPlacement: function (error, element) {
+                if ($(element).parent().hasClass("input-group")) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            rules: {
+                "IDEMPRESA": {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 9,
+                    lettersnumbersonly: true,
+                },
+                "NOMBRE": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "ACRONIMO": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "DIRECCCION": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "PAIS": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "REGION": {
+                    required: true,
+                    maxlength: 5,
+                },
+                "CIUDAD": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "TELEFONO": {
+                    required: true,
+                    maxlength: 50,
+                    number: true,
+                },
+                "NRELEGAL": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "EMAIL": {
+                    required: true,
+                    maxlength: 150,
+                    email: true,
+                },
+                "ADMINRUT": {
+                    required: true,
+                    maxlength: 10,
+                    lettersnumbersonly: true,
+                    remote: {
+                        url: '@Url.Action("ValidarColabUsuarioExiste", "Login", new { Area = "" })',
+                        type: "POST",
+                        data: {
+                            IDEMPRESA: function () {
+                                return $("#txtIDEMPRESA").val();
+                            },
+                            RUT: function () {
+                                return $("#txtADMINRUT").val();
+                            }
+                        }
+                    }
+                },
+                "CLAVE": {
+                    required: true,
+                    maxlength: 10,
+                },
+                "RECLAVE": {
+                    required: true,
+                    maxlength: 10,
+                    equalTo: "#txtCLAVE",
+                },
+                "ADMINEMAIL": {
+                    required: true,
+                    maxlength: 150,
+                    email: true,
+                },
+                "ADMINNOM": {
+                    required: true,
+                    maxlength: 50,
+                },
+                "ADMINAPE": {
+                    required: true,
+                    maxlength: 50,
+                },
+            },
+            messages: {
+                "IDEMPRESA": {
+                    required: '@General.DataNewEnterpriseCtta.Val_IDEmpresa',
+                    minlength: '@General.DataNewEnterpriseCtta.Val_longitugMinima8Caracteres',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima9Caracteres',
+                },
+                "NOMBRE": {
+                    required: '@General.DataNewEnterpriseCtta.Val_NombreRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "ACRONIMO": {
+                    required: '@General.DataNewEnterpriseCtta.Val_AcronimoRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "RUBRO": {
+                    required: '@General.DataNewEnterpriseCtta.Val_RubroRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "DIRECCCION": {
+                    required: '@General.DataNewEnterpriseCtta.Val_DirecciónRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "PAIS": {
+                    required: '@General.DataNewEnterpriseCtta.Val_SeleccionePais',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "REGION": {
+                    required: '@General.DataNewEnterpriseCtta.Val_SeleccioneRegión',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima5Caracteres',
+                },
+                "CIUDAD": {
+                    required: '@General.DataNewEnterpriseCtta.Val_SeleccioneCiudad',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "TELEFONO": {
+                    required: '@General.DataNewEnterpriseCtta.Val_TeléfonoRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                    number: '@General.DataNewEnterpriseCtta.Val_SoloNumeros',
+                },
+                "NRELEGAL": {
+                    required: '@General.DataNewEnterpriseCtta.Val_NombreRepresentanteLegalRequerid',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "EMAIL": {
+                    required: '@General.DataNewEnterpriseCtta.Val_CorreoRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima150Caracteres',
+                    email: '@General.DataNewEnterpriseCtta.Val_EmailInvalido',
+                },
+                "ADMINRUT": {
+                    required: '@General.DataNewEnterpriseCtta.Val_IDAdministradorRequerido',
+                    maxlength:  '@General.DataNewEnterpriseCtta.Val_LongitudMaxima10Caracteres',
+                    remote: '@General.DataNewEnterpriseCtta.Val_IDNoValidoRegistrado',
+                },
+                "CLAVE": {
+                    required: '@General.DataNewEnterpriseCtta.Val_ClaveRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima10Caracteres',
+                },
+                "RECLAVE": {
+                    required: '@General.DataNewEnterpriseCtta.Val_ReitereClave',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima10Caracteres',
+                    equalTo: '@General.DataNewEnterpriseCtta.Val_ClaveNoCoincide',
+                },
+                "ADMINEMAIL": {
+                    required: '@General.DataNewEnterpriseCtta.Val_CorreoAdministradorRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima150Caracteres',
+                    email: '@General.DataNewEnterpriseCtta.Val_EmailInvalido',
+                },
+                "ADMINNOM": {
+                    required: '@General.DataNewEnterpriseCtta.Val_NombreAdministradorRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+                "ADMINAPE": {
+                    required: '@General.DataNewEnterpriseCtta.Val_ApellidoAdministradorRequerido',
+                    maxlength: '@General.DataNewEnterpriseCtta.Val_LongitudMaxima50Caracteres',
+                },
+            }
+        });
+
+    </script>
+}

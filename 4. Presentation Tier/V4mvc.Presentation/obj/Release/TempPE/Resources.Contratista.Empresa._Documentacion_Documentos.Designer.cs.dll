@@ -1,0 +1,115 @@
+te-success").addClass("state-error");
+                    else
+                        jQuery(e).parent().removeClass("state-success").addClass("state-error");
+                },
+                success: function (e) {
+                    if (jQuery(e).parent().hasClass("input-group"))
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                    else
+                        jQuery(e).parent().removeClass("state-error").addClass("state-success");
+                },
+                rules: {
+                    "OBSERVACION": {
+                        required: true,
+                        maxlength: 500,
+                    },
+                    "FECHAS[]": {
+                        required: true,
+                    },
+                    "DIVISIONES[]": {
+                        required: true, //al menos uno de los checkboxes debe estar en checked
+                    },
+                    "MOTIVOS[]": {
+                        required: true,
+                    },
+                    "ARCHIVO": {
+                        required: true,
+                        maxlength: 50,
+                    }
+                },
+                messages: {
+                    "OBSERVACION": {
+                        required: '@Contratista.Funcionarios._Finiquitar.Val_Required_Observacion',
+                        maxlength: '@Contratista.Funcionarios._Finiquitar.Val_MaxLength_Observaciones'
+                    },
+                    "FECHAS[]": {
+                        required: '@Contratista.Funcionarios._Finiquitar.Val_Required_Fecha',
+                    },
+                    "DIVISIONES[]": {
+                        required: '@Contratista.Funcionarios._Finiquitar.Val_Required_Divicion',
+                    },
+                    "MOTIVOS[]": {
+                        required: '@Contratista.Funcionarios._Finiquitar.Val_Required_Motivo',
+                    },
+                    "ARCHIVO": {
+                        required: '@Contratista.Funcionarios._Finiquitar.Mdl_Val_Required_Nombre',
+                        maxlength: '@Contratista.Funcionarios._Finiquitar.Mdl_Val_MaxLength_Nombre'
+                    },
+                }
+            });
+        }
+
+         function deleteWorkerDoc(_data) {
+            return $.ajax({
+                global: true,
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: '@Url.Action("_BorrarDocWorker","FuncionariosCtta")',
+                data: JSON.stringify(_data)
+            });
+        }
+
+        $(".doc-elim").click(function (e) {
+            e.preventDefault();
+            var doc_del_id = $(this).data('docid');
+            var data = {
+                DEL_DOC_ID: doc_del_id,
+                RUT: $(this).data('rut'),
+                DIVCOD: $(this).data('divcod')
+
+            };
+            swal({
+                title: '@Html.Raw(Contratista.Funcionarios._Finiquitar.Msg_ContinuarEliminar)',
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: "@Contratista.Funcionarios._Finiquitar.Btn_Cancelar", // cancelar
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "@Contratista.Funcionarios._Finiquitar.Btn_Continuar", // si proceder
+                closeOnCancel: true
+            }, function () {
+                    $.when(deleteWorkerDoc(data)).then(function (response) {
+                        if (response) {
+                            swal({
+                                title: '@Contratista.Funcionarios._Finiquitar.Msg_DatosActualizados',
+                                timer: 3000,
+                                type: "success",
+                                showConfirmButton: true,
+                            }, function () {
+                                swal.close();
+                            });
+                            var del_row = $('#table_wdocs tr').filter(function () {
+                                return $(this).data("docid") == doc_del_id;
+                            });
+
+                            del_row.remove();
+                        }
+                        else {
+                            swal({
+                                title: '@Resources.General.MsgAnErrorOccurredTryAgainLater',
+                                timer: 3000,
+                                type: "error",
+                                showConfirmButton: true,
+                            }, function () {
+                                swal.close();
+                            });
+                        }
+            
+                }).fail(function (err) {
+                    swal({
+                        title: '@Resources.General.MsgAnErrorOccurredTryAgainLater',
+                        timer: 3000,
+                        type: "error",
+                        showConfirmButton: true,
+          

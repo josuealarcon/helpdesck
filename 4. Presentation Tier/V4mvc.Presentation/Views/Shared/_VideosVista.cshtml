@@ -1,0 +1,33 @@
+﻿
+@model V4mvc.Presentation.Controllers.MasterController.ViewModelVideosVista
+<div id="tab-1" class="tab-pane active">
+
+    <div class="sidebar-title">
+        <h3><i class="fa fa-file-movie-o"></i>&nbsp;@General.Template.Lbl_VistaVideos</h3>
+        <small><i class="fa fa-tim"></i>&nbsp;@General.Template.Lbl_VistaTiene @Model.links.Count videos.</small>
+    </div>
+
+    @if (Model.links.Count > 0)
+    {
+    <div>
+        @foreach (var link in Model.links)
+        {
+            <div class="sidebar-message">
+                <a data-toggle="modal" data-target="#VisualizadorVids" data-modal-video-id="@link.ID_VIDEO">
+                    <div class="pull-left text-center">
+                       <strong><i class="fa fa-video-camera"></i>&nbsp;@link.NOMBRE_ARCHIVO_SIN_EXT</strong>
+                    </div>
+                    <div class="media-body">
+                        <br>
+                        @link.DESCRIPCION
+                        <br>
+                        <small class="text-muted">Version: @link.VERSION</small>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    }
+</div>
+
+

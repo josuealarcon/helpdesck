@@ -1,0 +1,70 @@
+﻿@model V4mvc.Presentation.Controllers.InformesConsultaRapidaController.ViewModel_InformeConsultaRapida
+@{
+    Layout = "~/Views/Shared/_LayoutReport.cshtml";
+}
+<div class="row contacts" data-bind="with:datosInformeID">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6 invoice-details">
+        <h1 class="invoice-id">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Lbl_BusquedaFuncionario</h1>
+        <a class="date" style="color:#212529" data-bind="text:'Fecha Actual: '+FECHA"></a>
+    </div>
+</div>
+<div class="row" id="powerwidgets" data-bind="with:datosInformeID">
+    <div class="col-md-12 bootstrap-grid">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="TablaInformeConsultaRapidaID">
+                <thead>
+                    <tr>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Tblh_Grid_ID</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Tblh_Grid_Nombres</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Tblh_Grid_Apellidos</th>
+                        <th class="text-center">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Tblh_Grid_Empresas</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:$root.workers">
+                    <tr>
+                        <td class="text-center">
+                            <u><a data-bind="text:RUT_FORMATO,click:function(data,event){VerFichaFuncionario($data.RUT)}"></a></u>
+                            <div data-bind="if:BLOQUEADO=='SI'">
+                                <span>Usuario Bloqueado - Comunicarse con RR.HH.</span>
+                            </div>
+                        </td>
+                        <td class="text-left" data-bind="text:NOMBRES"></td>
+                        <td class="text-left" data-bind="text:APELLIDOS"></td>
+                        <td class="text-left">
+                            <div data-bind="foreach:Lista_Empresas">
+                                <a data-bind="text:ACRONIMO+',',click:function(data,event){VerFichaEmpresa(IDEMPRESA)}"></a>
+                            </div>
+                            <div data-bind="if:Lista_Empresas.length == 0">
+                                <span>Sin Empresa</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="notices">
+    <div>@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Msg_Nota</div>
+    <div class="notice">@Contratista.InformesConsultaRapida.InformeConsultaRapidaID.Msg_NotaMensaje</div>
+</div>
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/dataTables")
+    <script>
+    function IndexViewModel(model) {
+        var self = this;
+        self.workers = model.workers;
+        self.datosInformeID = model.datosInformeID;
+    }
+    $(document).ready(function () {
+        var vm = new IndexViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(vm);
+    });
+    </script>
+}
