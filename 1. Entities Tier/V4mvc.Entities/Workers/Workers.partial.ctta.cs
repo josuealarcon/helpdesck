@@ -77,7 +77,6 @@ namespace V4mvc.Entities
         public string ACRONIMO { get; set; }
         public string COUNT_WORKERS { get; set; }
 
-        public ObservableCollection<Local> ZONAS_CONDUCCION { get; set; }
 
         public string DIRECCION { get; set; }
         public string COMUNA { get; set; }
@@ -87,7 +86,6 @@ namespace V4mvc.Entities
         public string FONOHELP { get; set; }
         public string FONO { get; set; }
         public string CELULAR { get; set; }
-        public ObservableCollection<Direccion> LISTA_PAISES { get; set; }
         public string SELECTED { get; set; }
         public string EMAILOLD { get; set; }
         public bool CHECKED { get; set; }
@@ -223,6 +221,12 @@ namespace V4mvc.Entities
         public int START { get; set; }
         public int LENGTH { get; set; }
         public string COLUMN { get; set; }
+        public string COL0 { get; set; }
+        public string COL1 { get; set; }
+        public string COL2 { get; set; }
+        public string COL3 { get; set; }
+        public string USUARIO { get; set; }
+
         public string DIRECTION { get; set; }
         public int COUNT { get; set; }
 

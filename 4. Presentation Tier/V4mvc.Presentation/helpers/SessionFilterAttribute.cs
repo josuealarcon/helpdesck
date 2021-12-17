@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
-using static V4mvc.Presentation.Areas.Contratista.Controllers.DashBoardController;
+using static V4mvc.Presentation.Areas.Usuario.Controllers.DashBoardController;
 
 namespace V4mvc.Presentation.helpers
 {

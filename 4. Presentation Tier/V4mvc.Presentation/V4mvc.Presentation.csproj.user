@@ -4,7 +4,7 @@
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>44331</IISExpressSSLPort>
     <NameOfLastUsedPublishProfile>MANTOSCOPPER</NameOfLastUsedPublishProfile>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <Use64BitIISExpress />
     <IISExpressAnonymousAuthentication />

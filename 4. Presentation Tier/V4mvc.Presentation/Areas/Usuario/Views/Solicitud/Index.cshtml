@@ -1,0 +1,229 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ul class="breadcrumb_links">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Mandante" })">@Mandante.General.Tabla.Lnk_DashBoard</a></li>
+            <li class="active">@Mandante.CharlasCursos.Index.Li_Charlas</li>
+        </ul>
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h2>
+                    <strong>
+                        @Mandante.CharlasCursos.Index.Li_Charlas
+                        &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
+                        @Mandante.CharlasCursos.Index.Lbl_listadoCharlas
+                        <a class="btn btn-primary pull-right" data-bind="click:$root.newCharla"><i class="fa fa-plus"></i></a>
+                    </strong>
+                </h2>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-1 col-sm-1">@Mandante.General.Tabla.Lbl_Mostrar</label>
+                        <div class="col-md-2 col-sm-2">
+                            <select class="form-control " data-bind="options:$root.listLength,value:length"></select>
+                        </div>
+                        <label class="col-md-1 col-sm-1">@Mandante.General.Tabla.Lbl_Registros</label>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="table table-hover table-striped dataTable small" style="width:100%" id="Charla">
+                        <thead>
+                            <tr>
+                                <th data-bind="click:function(){order('1')}">
+                                    @Mandante.CharlasCursos.Index.Tblf_Charla
+                                    <i data-bind="css:sort()=='1'?classOrder:''"></i>
+                                </th>
+                                <th data-bind="click:function(){order('2')}">
+                                    @Mandante.CharlasCursos.Index.Tblf_Descripcion
+                                    <i data-bind="css:sort()=='2'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('3')}">
+                                    @Mandante.CharlasCursos.Index.Tblh_Operaciones
+                                    <i data-bind="css:sort()=='3'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('4')}">
+                                    @Mandante.CharlasCursos.Index.Tblh_Horas
+                                    <i data-bind="css:sort()=='4'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('5')}">
+                                    @Mandante.CharlasCursos.Index.Tblh_Vigencia
+                                    <i data-bind="css:sort()=='5'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('6')}">
+                                    @Mandante.CharlasCursos.Index.Tblh_Obligatorio
+                                    <i data-bind="css:sort()=='6'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                    @Mandante.CharlasCursos.Index.Tblh_Porcentaje
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>
+                                <th>@Mandante.CharlasCursos.Index.Tblb_Editar </th>
+                                @if (Session["GRUPO"].ToString() == "ADMIN")
+                                {
+                                    <th>@Mandante.CharlasCursos.Index.Tblb_Eliminar </th>
+                                }
+                                else
+                                {
+                                    <th>&nbsp;</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach:arrayList">
+                            <tr data-bind="attr:{'data-rut': $data.IDCHARLA}">
+                                <td  data-bind="text: CHARLA"></td>
+                                <td  data-bind="text: DESCRIP"></td>
+                                <td class="text-center" data-bind="text: DIVISIONES"></td>
+                                <td class="text-center" data-bind="text: HORAS"></td>
+                                <td class="text-center" data-bind="text: VENCIMIENTO"></td>
+                                <td class="text-center" data-bind="text: OBLIGATORIO"></td>
+                                <td class="text-center" data-bind="text: PORCENTAJE + '%'"></td>
+                                <td>
+                                    <button type="button" data-bind="click:$root.editCharla" class="btn btn-info btn-sm text-center"><i class='fa fa-pencil'></i>&nbsp;&nbsp;@Mandante.CharlasCursos.Index.Btn_Editar</button>
+                                </td>
+                                @if (Session["GRUPO"].ToString() == "ADMIN")
+                                {
+                                    <td><button type="button" data-bind="click:$root.delCharlas" class="btn btn-danger btn-sm text-center"><i class='fa fa-trash'></i>&nbsp;&nbsp;@Mandante.CharlasCursos.Index.Btn_Eliminar</button></td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th><input class="form-control input-sm" type="text" placeholder="@Mandante.CharlasCursos.Index.Phl_Charla" data-bind="value: col1, valueUpdate:'afterkeydown'" /></th>
+                                <th><input class="form-control input-sm" type="text" placeholder="@Mandante.CharlasCursos.Index.Phl_Descripcion" data-bind="value: col2, valueUpdate:'afterkeydown'" /></th>
+                                <th><select class="form-control input-sm" type="text" data-bind="options:$root.listDivisiones, optionsText: 'DIVISION', optionsValue: 'DIVCOD', value:col3, valueUpdate:'afterkeydown',valueAllowUnset: true" /></th>
+                                <th><input class="form-control input-sm" type="number" min="1" placeholder="@Mandante.CharlasCursos.Index.Phl_Horas" data-bind="value: col4, valueUpdate:'afterkeydown'" /></th>
+                                <th><input class="form-control input-sm" type="number" min="1" placeholder="@Mandante.CharlasCursos.Index.Phl_Vigencia" data-bind="value: col5, valueUpdate:'afterkeydown'" /></th>
+                                <th><select class="form-control input-sm" type="text" data-bind="options:$root.listobligatorio,optionsText: 'name',optionsValue: 'OBLIGATORIO', value: col6, valueUpdate:'afterkeydown',valueAllowUnset: true" /></th>
+                                <th><input class="form-control input-sm" type="number" min="1" max="100" placeholder="@Mandante.CharlasCursos.Index.Tblh_Porcentaje" data-bind="value: col7, valueUpdate:'afterkeydown'" /></th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row" data-bind="if:count()>0">
+                    <div class="form-group">
+                        <div class="col-md-4 pull-left">
+                            @Mandante.General.Tabla.Lbl_Mostrando <span data-bind="text:(count()==0?0:start()+1)"></span>
+                            @Mandante.General.Tabla.Lbl_A <span data-bind="text:(registros()>=count())?count():registros()"></span>
+                            @Mandante.General.Tabla.Lbl_De <span data-bind="text:count()"></span>
+                            @Mandante.General.Tabla.Lbl_Registros
+                        </div>
+                        <div class="col-md-8">
+                            <ul id="pagination" class="pagination pull-right"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div data-bind="ifnot:count()>0">
+                    @Html.Partial("_NoCoincidenciasBusqueda")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/plugins/paginationStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+    @Scripts.Render("~/plugins/pagination")
+    @Scripts.Render("~/plugins/lazyloading")
+
+<script>
+
+        $(document).ready(function () {
+            var vm = new myApp.LazyLoadingViewModel('@Url.Action("GetListCharlasDivisionMdte", "CharlasCursos", new { Area = "Mandante" })');
+
+
+            vm.listDivisiones = ko.observableArray();
+            vm.listobligatorio = ko.observableArray([
+                { name: "TODOS", OBLIGATORIO: "" },
+                { name: "SI", OBLIGATORIO: "SI" },
+                { name: "NO", OBLIGATORIO: "NO" }
+            ]);
+
+
+            $.getJSON('@Url.Action("GetDivisiones", "CharlasCursos", new { Area = "Mandante" })', function (dataDivisiones) {
+                vm.listDivisiones.push({ DIVISION: '@Mandante.CharlasCursos.Index.Opcion_Todos', DIVCOD: '' });
+                for (var i = 0; i < dataDivisiones.length; i++) {
+                    vm.listDivisiones.push(dataDivisiones[i])
+                }
+            });
+
+            vm.delCharlas = function (item) {
+                swal({
+                    title: "@Html.Raw(Mandante.CharlasCursos.Index.Msg_Lbl_Eliminar)",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "@Mandante.CharlasCursos.Index.Msg_Btn_Cancelar",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "@Mandante.CharlasCursos.Index.Msg_Btn_Eliminar",
+                    closeOnConfirm: true
+                },
+                    function () {
+                        $.ajax({
+                            contentType: 'application/json',
+                            type: 'POST',
+                            url: '@Url.Action("DeleteCharlasMdte", "CharlasCursos", new { Area = "Mandante" })',
+                            data: JSON.stringify(item),
+                            success: function (result) {
+                                if (result) {
+                                    swal({
+                                        title: "@Html.Raw(Mandante.CharlasCursos.Index.Msg_EliminacionCorrecta)",
+                                        timer: 3000,
+                                        type: "success",
+                                        showConfirmButton: true,
+                                    }, function () {
+                                        swal.close();
+                                        vm.arrayList.remove(item);
+                                        vm.count(vm.count() - 1);
+                                    });
+                                }
+                                else {
+                                    swal({
+                                        title: "@Mandante.CharlasCursos.Index.Msg_EliminacionError",
+                                        timer: 3000,
+                                        type: "error",
+                                        showConfirmButton: true,
+                                    }, function () {
+                                        swal.close();
+                                    });
+                                }
+                            }
+                        });
+                    });
+            }
+
+            vm.editCharla = function (item) {
+                var url = '@Url.Action("CrearEditar", "CharlasCursos", new { Area = "Mandante" })?IDCHARLA=' + ko.toJS(item.IDCHARLA);
+                window.location = url;
+            };
+
+            vm.newCharla = function () {
+                var url = '@Url.Action("CrearEditar", "CharlasCursos", new { Area = "Mandante" })?IDCHARLA=0';
+                window.location = url;
+            };
+            ko.applyBindings(vm);
+        });
+
+</script>
+
+}

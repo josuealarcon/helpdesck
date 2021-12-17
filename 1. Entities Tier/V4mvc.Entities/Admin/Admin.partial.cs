@@ -8,7 +8,6 @@ namespace V4mvc.Entities
 
         #region [ Variables]
 
-        public ObservableCollection<Docs_Manuales> LIST_DOCS_MANUALES { get; set; }
 
         #endregion
 

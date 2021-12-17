@@ -44,15 +44,6 @@ namespace V4mvc
             { throw ex; }
         }
 
-        public ObservableCollection<Workers> BuscarFuncionariosPases(ref JqueryDatatableParam param)
-        {
-            try
-            {
-                return this.BL_Workers.BuscarFuncionariosPases(ref param);
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
 
         public ObservableCollection<Workers> WorkersDatatablesEnterpriseCtta(string IDEMPRESA, Int32 iDisplayStart, Int32 iDisplayLength, string searchRUT, string searchNOMBRES, string searchAPELLIDOS, string sortCOLUMN, String sortDIRECTION)
         {
@@ -295,15 +286,6 @@ namespace V4mvc
             try
             {
                 return this.BL_Workers.Save_Workers_AprobacionSubContrato( Item);
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
-        public bool updateWorkersEmailBusesReservas_Ctta(string EMAIL, string RUT)
-        {
-            try
-            {
-                return this.BL_Workers.updateWorkersEmailBusesReservas_Ctta(EMAIL, RUT);
             }
             catch (Exception ex)
             { throw ex; }

@@ -16,8 +16,6 @@ namespace V4mvc.Entities
 		#region [ Variables Validación ]
 		public Int32 COUNT_ENTERPRISES { get; set; }
 
-        public ObservableCollection<Direccion> LISTA_PAISES { get; set; }
-        public ObservableCollection<Region> LISTA_REGIONES { get; set; }
         public String ADMINAPE { get; set; }
         public String ADMNOM { get; set; }
         public String FECHABLOQUEO_FORMAT

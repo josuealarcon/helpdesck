@@ -138,7 +138,7 @@ namespace V4mvc.Presentation
                                         }
                                         else
                                         {
-                                            return Json(new KeyValuePair<string, string>("Mandante", ""), JsonRequestBehavior.AllowGet);
+                                            return Json(new KeyValuePair<string, string>("Admin", ""), JsonRequestBehavior.AllowGet);
                                         }
                                     }
                                     else
@@ -314,7 +314,6 @@ namespace V4mvc.Presentation
         {
             Enterprise model = new Enterprise();
             model.IDEMPRESA = IDEMPRESA;
-            model.LISTA_PAISES = proxy.GetAllPaises();
             return View(model);
         }
 
@@ -380,20 +379,7 @@ namespace V4mvc.Presentation
             }
         }
 
-        public JsonResult GetAllRegionesByPais(string PAIS)
-        {
-            return Json(proxy.GetAllRegionesByPais(PAIS), JsonRequestBehavior.AllowGet);
-        }
 
-        public JsonResult GetAllCiudadByRegion(string REGION)
-        {
-            return Json(proxy.GetAllCiudadByRegion(REGION), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetAllComunaByCiudad(string CIUDAD)
-        {
-            return Json(proxy.GetAllComunaByCiudad(CIUDAD), JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult LogOff()
         {
@@ -422,18 +408,7 @@ namespace V4mvc.Presentation
             return PartialView("_RedirectToLogin");
         }
 
-        [HttpGet]
-        public FileResult DownloadDocs_Manuales(int ID_DOC)
-        {
-            try
-            {
-                Docs_Manuales file = proxy.GetOneDocs_Manual(ID_DOC);
-                if (file != null)
-                    return File(file.ARCHIVO, file.TIPO_CONTENIDO, file.NOMBRE_ARCHIVO);
-            }
-            catch (Exception exc) { }
-            return null;
-        }
+      
 
         #endregion
 

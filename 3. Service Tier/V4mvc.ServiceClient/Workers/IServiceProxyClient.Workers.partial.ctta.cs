@@ -18,7 +18,6 @@ namespace V4mvc
         ObservableCollection<Workers> BuscarFuncionarios(Int32 iDisplayStart, Int32 iDisplayLength, String searchRUT, String searchNOMBRES, String searchAPELLIDOS, String searchEMPRESA, String sortCOLUMN, String sortDIRECTION,string IDEMPRESA);
         Workers BuscarFuncionarios_NumRegistros(String searchRUT, String searchNOMBRES, String searchAPELLIDOS, String searchEMPRESA, string IDEMPRESA);
 
-        ObservableCollection<Workers> BuscarFuncionariosPases(ref JqueryDatatableParam param);
 
         ObservableCollection<Workers> WorkersDatatablesEnterpriseCtta(string IDEMPRESA, Int32 iDisplayStart, Int32 iDisplayLength, string searchRUT, string searchNOMBRES, string searchAPELLIDOS, string sortCOLUMN, string sortDIRECTION);
         Workers WorkersDatatablesEnterpriseCountCtta(string IDEMPRESA, string RUT, string NOMBRES, string APELLIDOS);
@@ -61,7 +60,6 @@ namespace V4mvc
         bool SaveDatosPersonalesCtta(ref Workers Item);
         bool SaveWorkersCursos(ref Workers Item);
         bool Save_Workers_AprobacionSubContrato( Workers Item);
-        bool updateWorkersEmailBusesReservas_Ctta(string EMAIL, string RUT);
 
         #endregion
 

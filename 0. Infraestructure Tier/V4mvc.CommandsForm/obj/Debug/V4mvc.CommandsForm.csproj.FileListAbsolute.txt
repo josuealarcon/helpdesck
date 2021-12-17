@@ -8,3 +8,13 @@ D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestruct
 D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.csproj.CoreCompileInputs.cache
 D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.exe
 D:\madelin trabajo\trabajo vale ultimo\WEB CONTROL\WebControlV41\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.pdb
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\bin\Debug\V4mvc.CommandsForm.exe.config
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\bin\Debug\V4mvc.CommandsForm.exe
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\bin\Debug\V4mvc.CommandsForm.pdb
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.csproj.AssemblyReference.cache
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.CommandsFrm.resources
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.Properties.Resources.resources
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.csproj.GenerateResource.cache
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.csproj.CoreCompileInputs.cache
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.exe
+D:\Utp\narvaes\helpdesk\helpdesk\0. Infraestructure Tier\V4mvc.CommandsForm\obj\Debug\V4mvc.CommandsForm.pdb

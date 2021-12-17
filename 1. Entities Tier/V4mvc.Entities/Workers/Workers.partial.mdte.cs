@@ -58,7 +58,6 @@ namespace V4mvc.Entities
 
         public int TIENE_DIVISION_EMPRESA { get; set; }
 
-        public ObservableCollection<A024_Divisiones> LISTA_DIVISIONES { get; set; }
 
         public string DIVISIONES_ENTRE_COMAS { get; set; }
 

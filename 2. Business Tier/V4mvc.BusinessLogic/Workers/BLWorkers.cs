@@ -14,15 +14,14 @@ namespace V4mvc.BusinessLogic
 
         [Dependency]
         public IDAWorkers Repository { get; set; }
-        public IDALocal Local_Repository { get; set; }
+
         public IDAEnterprise Enterprise_Repository { get; set; }
         #endregion
 
         #region [ Constructores ]
-        public BLWorkers(IDAWorkers x_container, IDALocal y_container, IDAEnterprise a_container)
+        public BLWorkers(IDAWorkers x_container, IDAEnterprise a_container)
         {
             Repository = x_container;
-            Local_Repository = y_container;
             Enterprise_Repository = a_container;
         }
         #endregion

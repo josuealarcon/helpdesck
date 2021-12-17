@@ -30,9 +30,6 @@ namespace V4mvc.Entities
         public int TAB { get; set; }
         public string DESCRIPCION { get; set; }
         public string ACRONIMO { get; set; }
-        public ObservableCollection<Local> listLocal{ get; set; }
-        public ObservableCollection<Divisiones> listDivisiones { get; set; }
-        public ObservableCollection<OSTArbol> listOST { get; set; }
         public string EXTENSION { get; set; }
         public string GLOSA { get; set; }
         public string NOMBRE { get; set; }
