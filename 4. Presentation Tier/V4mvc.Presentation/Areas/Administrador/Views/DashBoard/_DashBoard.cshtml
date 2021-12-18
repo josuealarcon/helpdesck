@@ -1,0 +1,152 @@
+﻿@model V4mvc.Entities.Enterprise
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .highcharts-credits {
+        visibility: hidden !important;
+    }
+</style>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="container_1"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div id="container_2"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div id="container_3"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>
+@section Scripts {
+    @Scripts.Render("~/plugins/highcharts")
+
+    @*<script>
+    Highcharts.setOptions({
+        colors: ['#00897b', '#c62828', '#D8D8D8', '#DDDF00', '#9B9512', '#A9F5E1', '#287670', '#214F9A', '#107829']
+    });
+
+    Highcharts.chart('container_1', {
+        chart: {
+            renderTo: 'AccesoPersonasVehiculos',
+        },
+        title: {
+            text: "@Html.Raw(Mandante.DashBoard._DashBoardMDTE.Lbl_Acceso_Funcionarios_Vehiculos_Dia)"
+        },
+        xAxis: {
+            categories: [@Html.Raw(Model.OPERACIONES??"")],
+            labels: {
+                rotation: -45,
+                style: {
+                    color: 'black'
+                }
+            }
+        },
+        yAxis: [{
+            title: {
+                text: '',
+                style: {
+                    color: 'black'
+                }
+            },
+            labels: {
+                style: {
+                    color: 'black'
+                }
+            }
+        }],
+        series: [@Html.Raw(Model.DATA_MOVIMIENTOS)]
+    });
+    Highcharts.chart('container_2', {
+        chart: {
+            renderTo: 'ConsumoCasino',
+            type: 'bar',
+        },
+        title: {
+            text: "@Html.Raw(Mandante.DashBoard._DashBoardMDTE.Lbl_Consumo_Casino_Dia)"
+        },
+        xAxis: {
+            categories: [@Html.Raw(Model.CASINO_CATEGORIAS)],
+            labels: {
+                rotation: -45,
+            }
+        },
+        yAxis: [{
+            title: {
+                text: '',
+            }
+        }],
+        series: [@Html.Raw(Model.DATA_CASINO)]
+    });
+
+    Highcharts.chart('container_3', {
+        chart: {
+            type: 'column',
+        },
+        title: {
+            text: "@Html.Raw(Mandante.DashBoard._DashBoardMDTE.Lbl_Funcionarios_Faena)"
+        },
+        xAxis: {
+            categories: [@Html.Raw(Model.OPERACIONES)]
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: true,
+                y: -20,
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            borderWidth: 1,
+            shadow: true
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}',
+            borderRadius: 10
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        colors: [
+            "#7cb5ec",
+            "#00897b",
+            "#880e4f",
+            "#f7a35c",
+            "#8085e9",
+            "#f15c80",
+            "#e4d354",
+            "#2b908f",
+            "#f45b5b",
+            "#91e8e1"
+        ],
+        series: [@Html.Raw(Model.DATA_FAENA)]
+    });
+    </script>*@
+}

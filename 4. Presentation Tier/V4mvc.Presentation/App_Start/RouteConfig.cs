@@ -20,12 +20,12 @@ namespace V4mvc.Presentation
                 namespaces: new string[] { "V4mvc.Presentation.Controllers"}
             );
 
-            routes.MapRoute(
-                name: "PersonalDefault",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Aprobacion_SubContrato", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "V4mvc.Presentation.Controllers" }
-            );
+            //routes.MapRoute(
+            //    name: "PersonalDefault",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Aprobacion_SubContrato", action = "Index", id = UrlParameter.Optional },
+            //    namespaces: new string[] { "V4mvc.Presentation.Controllers" }
+            //);
 
             //routes.MapRoute(
             //    name: "Contratista",

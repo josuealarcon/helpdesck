@@ -100,7 +100,7 @@
                 $.when(self.saveData(data)).then(function (response) {
                     debugger;
                     if (response.Key == 'Admin')
-                        window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Admin" })';
+                        window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Administrador" })';
                     else if (response.Key == "Usuario")
                         window.location.href = '@Url.Action("DashBoard", "DashBoard", new { Area = "Usuario" })';
                     else if (response.Key == "CambioClave") {

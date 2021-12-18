@@ -13,15 +13,7 @@ namespace V4mvc.BusinessLogic
 	{
 
 		#region [ Consultas ]
-		public ObservableCollection<Enterprise> GetEnterprisesCttaSearcherMdte(ref Enterprise model)
-		{
-			try
-			{
-				return this.Repository.GetEnterprisesCttaSearcherMdte(ref model);
-			}
-			catch (Exception ex)
-			{ throw ex; }
-		}
+
 		public ObservableCollection<Enterprise> EnterpriseDatatables(Int32 iDisplayStart, Int32 iDisplayLength, String searchIDEMPRESA, String searchACRONIMO, String searchNOMBRE, String sortCOLUMN, String sortDIRECTION)
 		{
 			try

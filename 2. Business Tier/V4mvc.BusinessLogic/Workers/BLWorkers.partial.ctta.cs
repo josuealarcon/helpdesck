@@ -44,15 +44,6 @@ namespace V4mvc.BusinessLogic
             { throw ex; }
         }
 
-        public ObservableCollection<Workers> BuscarFuncionariosPases(ref JqueryDatatableParam param)
-        {
-            try
-            {
-                return this.Repository.BuscarFuncionariosPases(ref param);
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
 
         public ObservableCollection<Workers> WorkersDatatablesEnterpriseCtta(string IDEMPRESA, Int32 iDisplayStart, Int32 iDisplayLength, string searchRUT, string searchNOMBRES, string searchAPELLIDOS, string sortCOLUMN, string sortDIRECTION)
         {
@@ -89,7 +80,6 @@ namespace V4mvc.BusinessLogic
             try
             {
                 Workers worker = this.Repository.GetOneWorkers_PasesCtta(RUT, IDPASE, ID_EMPRESA, DIVCOD, FEC_INI, FEC_FIN, TIPO_PASE);
-                worker.ZONAS_CONDUCCION = Local_Repository.GetAllLocal_v2_PasesCtta(RUT, DIVCOD, IDPASE, ID_EMPRESA);
                 return worker;
             }
             catch (Exception ex)
@@ -304,15 +294,7 @@ namespace V4mvc.BusinessLogic
             catch (Exception ex)
             { throw ex; }
         }
-        public bool updateWorkersEmailBusesReservas_Ctta(string EMAIL, string RUT)
-        {
-            try
-            {
-                return this.Repository.updateWorkersEmailBusesReservas_Ctta(EMAIL, RUT);
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
+       
 
         #endregion
 

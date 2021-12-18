@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace V4mvc.Presentation.Areas.Contratista
+namespace V4mvc.Presentation.Areas.Usuario
 {
-    public class ContratistaAreaRegistration : AreaRegistration 
+    public class UsuarioAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {

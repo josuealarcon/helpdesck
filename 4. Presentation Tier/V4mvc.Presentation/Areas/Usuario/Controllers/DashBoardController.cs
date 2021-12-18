@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using V4mvc.Entities;
 using V4mvc.Presentation.helpers;
 
-namespace V4mvc.Presentation.Areas.Contratista.Controllers
+namespace V4mvc.Presentation.Areas.Usuario.Controllers
 {
     [SessionFilter]
     public class DashBoardController : Controller
@@ -28,9 +28,7 @@ namespace V4mvc.Presentation.Areas.Contratista.Controllers
 
         public class ViewModelDashBoard
         {
-            public Direccion direccion { get; set; }
             public Enterprise enterprise { get; set; }
-            public ObservableCollection<WorkersLocal> WL_Enterprise { get; set; }
         }
 
         public class ViewModelMenu
@@ -40,7 +38,6 @@ namespace V4mvc.Presentation.Areas.Contratista.Controllers
             public Admin admin { get; set; }
             public Colab_Usuario colab_usuario { get; set; }
         }
-
         #endregion
 
         #region [ Métodos ]
@@ -51,10 +48,10 @@ namespace V4mvc.Presentation.Areas.Contratista.Controllers
             //    string.IsNullOrEmpty(proxy.GetOneEnterprise(Session["IDEMPRESA"].ToString()).TELEFONO))
             //    return RedirectToAction("ActualizaContactoCtta", "DashBoard");
             //else
-                return RedirectToAction("_DashBoardCTTA", "DashBoard");
+                return RedirectToAction("_DashBoard", "DashBoard");
         }
 
-        public ActionResult _DashBoardCTTA()
+        public ActionResult _DashBoard()
         {
             //return PartialView(proxy.GetDashBoardCtta(Session["IDEMPRESA"].ToString()));
             return PartialView();
@@ -80,6 +77,7 @@ namespace V4mvc.Presentation.Areas.Contratista.Controllers
                     case Constants.USUARIO_MANDANTE:
                         model.menu = proxy.GetAllMenuMdte();
                         model.subMenu = proxy.GetAllSubMenuMdte(Session["GRUPO"].ToString(), Session["ZONA"].ToString());
+                        
                         break;
                     default:
                         break;
@@ -91,7 +89,7 @@ namespace V4mvc.Presentation.Areas.Contratista.Controllers
 
 
             return PartialView(model);
-        }
+         }
 
         #endregion
 
