@@ -48,7 +48,7 @@ namespace V4mvc.Presentation.Areas.Usuario.Controllers
         public ActionResult CrearEditar()
         {
             Solicitud modelsolicitud = new Solicitud();
-            return View(modelsolicitud);
+            return View(modelsolicitud);   
         }
         #endregion
 
