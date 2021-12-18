@@ -59,6 +59,32 @@ namespace V4mvc.DataAccess
 		#endregion
 
 		#region [ Métodos ]
+		public ObservableCollection<Servicio> GetListSolicitudes_Usu(ref Solicitud solicitud)
+		{
+			try
+			{
+				ObservableCollection<Servicio> items = new ObservableCollection<Servicio>();
+				Servicio item = new Servicio();
+				Instance.DAAsignarProcedure("HD_SOLICITUD_SELECT_LISTADO_ADMIN");
+				Instance.DAAgregarParametro("@START", solicitud.START, SqlDbType.Int, 4, ParameterDirection.Input);
+				Instance.DAAgregarParametro("@LENGTH", solicitud.LENGTH, SqlDbType.Int, 4, ParameterDirection.Input);
+				Instance.DAAgregarParametro("@COLUMN", solicitud.COLUMN, SqlDbType.NVarChar, 4, ParameterDirection.Input);
+				Instance.DAAgregarParametro("@DIRECTION", solicitud.DIRECTION, SqlDbType.NVarChar, 4, ParameterDirection.Input);
+				using (IDataReader reader = Instance.DAExecuteReader())
+				{
+					while (reader.Read())
+					{
+						item = new Servicio();
+						Loader.LoadEntity(reader, item);
+						item.Instance = InstanceEntity.Unchanged;
+						items.Add(item);
+					}
+				}
+				return items;
+			}
+			catch (Exception ex)
+			{ throw ex; }
+		}
 
 		#endregion
 

@@ -176,6 +176,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Areas\Usuario\Controllers\SolicitudController.cs" />
     <Compile Include="Areas\Usuario\UsuarioAreaRegistration.cs" />
     <Compile Include="Areas\Usuario\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Administrador\Controllers\DashBoardController.cs" />
