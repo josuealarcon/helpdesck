@@ -6,7 +6,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
-using ASPENCRYPTLib;
 using System.Web.Routing;
 using System.Reflection;
 
@@ -54,34 +53,34 @@ namespace V4mvc.Presentation
 
             return new HtmlString(JsonConvert.SerializeObject(model, settings));
         }
-        public static string Encrypt(string message)
-        {
-            try
-            {
-                ICryptoManager objCM = new CryptoManager();
-                ICryptoContext objContext = objCM.OpenContext("", true, Missing.Value);
-                ICryptoKey objKey = objContext.GenerateKeyFromPassword("webcontrol");
-                ICryptoBlob objBlob = objKey.EncryptText(message);
-                return objBlob.Hex;
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
+        //public static string Encrypt(string message)
+        //{
+        //    try
+        //    {
+        //        ICryptoManager objCM = new CryptoManager();
+        //        ICryptoContext objContext = objCM.OpenContext("", true, Missing.Value);
+        //        ICryptoKey objKey = objContext.GenerateKeyFromPassword("webcontrol");
+        //        ICryptoBlob objBlob = objKey.EncryptText(message);
+        //        return objBlob.Hex;
+        //    }
+        //    catch (Exception ex)
+        //    { throw ex; }
+        //}
 
-        public static string Decrypt(string message)
-        {
-            try
-            {
-                ICryptoManager objCM = new CryptoManager();
-                ICryptoContext objContext = objCM.OpenContext("", true, Missing.Value);
-                ICryptoKey objKey = objContext.GenerateKeyFromPassword("webcontrol");
-                ICryptoBlob objBlob = objCM.CreateBlob();
-                objBlob.Hex = message;
-                return objKey.DecryptText(objBlob);
-            }
-            catch (Exception ex)
-            { throw ex; }
-        }
+        //public static string Decrypt(string message)
+        //{
+        //    try
+        //    {
+        //        ICryptoManager objCM = new CryptoManager();
+        //        ICryptoContext objContext = objCM.OpenContext("", true, Missing.Value);
+        //        ICryptoKey objKey = objContext.GenerateKeyFromPassword("webcontrol");
+        //        ICryptoBlob objBlob = objCM.CreateBlob();
+        //        objBlob.Hex = message;
+        //        return objKey.DecryptText(objBlob);
+        //    }
+        //    catch (Exception ex)
+        //    { throw ex; }
+        //}
         public static string ResolveServerUrl(string serverUrl, bool forceHttps)
         {
             if (serverUrl.IndexOf("://") > -1)
