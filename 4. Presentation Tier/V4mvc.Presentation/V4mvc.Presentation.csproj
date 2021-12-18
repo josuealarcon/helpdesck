@@ -53,11 +53,6 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="ASPENCRYPTLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\Correcciones\Barrick\ASPENCRYPTLib.dll</HintPath>
-    </Reference>
     <Reference Include="ClosedXML">
       <HintPath>..\..\packages\ClosedXML.0.95.2\lib\net40\ClosedXML.dll</HintPath>
     </Reference>
@@ -6568,17 +6563,6 @@
       <CustomToolNamespace>Mandante.Videos</CustomToolNamespace>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="ASPENCRYPTLib1">
-      <Guid>{B72DF063-28A4-11D3-BF19-009027438003}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
