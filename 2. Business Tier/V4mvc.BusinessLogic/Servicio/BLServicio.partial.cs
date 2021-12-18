@@ -31,7 +31,15 @@ namespace V4mvc.BusinessLogic
         #endregion
 
         #region [ Métodos ]
-
+        public ObservableCollection<Servicio> GetListSolicitudes_Usu(ref Solicitud solicitud)
+        {
+            try
+            {
+                return this.Repository.GetListSolicitudes_Usu(ref solicitud);
+            }
+            catch (Exception ex)
+            { throw ex; }
+        }
         #endregion
 
     }

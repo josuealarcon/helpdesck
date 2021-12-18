@@ -14,7 +14,7 @@ namespace V4mvc
 		#endregion
 
 		#region [ Métodos ]
-
+		ObservableCollection<Servicio> GetListSolicitudes_Usu(ref Solicitud solicitud);
 		#endregion
 
 	}

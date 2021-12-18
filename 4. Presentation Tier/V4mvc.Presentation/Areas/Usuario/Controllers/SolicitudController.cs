@@ -34,12 +34,22 @@ namespace V4mvc.Presentation.Areas.Usuario.Controllers
         {
             return View();
         }
+
+        #endregion
+
+        #region [ Consultas ]
+
+        public ActionResult GetListSolicitudes(Solicitud ITEM)
+        {
+            var result = proxy.GetListSolicitudes_Usu(ref ITEM);
+
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult CrearEditar()
         {
             Solicitud modelsolicitud = new Solicitud();
             return View(modelsolicitud);
         }
-
         #endregion
 
     }
