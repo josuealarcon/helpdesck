@@ -5,3 +5,11 @@ D:\Utp\narvaes\helpdesk\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc
 D:\Utp\narvaes\helpdesk\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CopyComplete
 D:\Utp\narvaes\helpdesk\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.dll
 D:\Utp\narvaes\helpdesk\helpdesk\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.pdb
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.dll
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\bin\Debug\V4mvc.Entities.pdb
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\bin\Debug\Newtonsoft.Json.dll
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.AssemblyReference.cache
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CoreCompileInputs.cache
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.csproj.CopyComplete
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.dll
+E:\narvaes\helpdesck\1. Entities Tier\V4mvc.Entities\obj\Debug\V4mvc.Entities.pdb

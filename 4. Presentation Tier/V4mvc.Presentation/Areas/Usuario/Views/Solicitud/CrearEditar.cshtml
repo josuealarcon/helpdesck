@@ -1,4 +1,5 @@
-﻿@model V4mvc.Presentation.Areas.Mandante.Controllers.CharlasCursosController.ViewModelCrearEditar
+﻿@model V4mvc.Entities.Solicitud
+
 
 @{
     ViewBag.Title = "CrearEditar";
@@ -9,14 +10,11 @@
     <div class="col-lg-12">
         <ul class="breadcrumb_links">
             <li><a href="#"><i class="fa fa-home"></i></a></li>
-            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Mandante" })">@Mandante.General.Tabla.Lnk_DashBoard</a></li>
-            <li><a href="@Url.Action("Index", "CharlasCursos", new { Area = "Mandante" })">@Mandante.CharlasCursos.CrearEditar.Lbl_listadoCharlas</a></li>
+            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Usuario" })">DashBoard</a></li>
+            <li><a href="@Url.Action("Index", "Solicitud", new { Area = "Usuario" })">Listado de Solicitudes</a></li>
             <li class="active">
-                <div data-bind="if: !esNuevo">
-                    <span data-bind="text: '@Mandante.CharlasCursos.CrearEditar.Lbl_Edicion_Charlas '"> </span>
-                </div>
-                <div data-bind="if: esNuevo">
-                    <span data-bind="text: '@Mandante.CharlasCursos.CrearEditar.Lbl_Nueva_Charla '"> </span>
+                <div>
+                    <span data-bind="text: 'Nueva Solicitud '"> </span>
                 </div>
             </li>
         </ul>
@@ -28,107 +26,49 @@
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h2>
-                        <span data-bind="if: esNuevo">
-                            @Mandante.CharlasCursos.CrearEditar.Lbl_listadoCharlas
+                        <span>
+                            Listado de Solicitudes
                             &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
-                            @Mandante.CharlasCursos.CrearEditar.Lbl_Nueva_Charla
-                        </span>
-                        <span data-bind="if: !esNuevo">
-                            @Mandante.CharlasCursos.CrearEditar.Lbl_listadoCharlas
-                            &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
-                            @Mandante.CharlasCursos.CrearEditar.Lbl_Edicion_Charlas
+                            Nueva Solicitud - Seleccione una CategorÍa o Servicio
                         </span>
                     </h2>
                 </div>
-                <div class="panel-body" data-bind="with:charla">
+                <div class="panel-body" data-bind="with: modelSolicitud">
                     <div class="callout callout-info">
-                        <h4>@Mandante.General.Tabla.Lbl_Informacion</h4>
-                        <p>@Mandante.General.Tabla.Msg_InformacionObligatoria</p>
+                        <h4>Informacion</h4>
+                        <p>Los campos con * son obligatorios</p>
                     </div>
                     <form id="form-valide-charlascurso" name="form-valide-categoria" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-md-2 ">@Mandante.CharlasCursos.CrearEditar.Lbl_Charla</label>
+                        @*<div class="form-group">
+                            <label class="col-md-2">CategorÍa o Servicio</label>
                             <div class="col-md-4">
-                                <input name="CHARLA" id="CHARLA" class="form-control" placeholder="@Mandante.CharlasCursos.CrearEditar.Phl_Nombre" data-bind="value: CHARLA" />
+                                <select name="ID_DOC_FEC" class="form-control" data-bind="options:$root.listServicios, optionsText: 'NOMBRE', optionsValue: 'VALOR', value:$root.IDSOLICITUD, optionsCaption:'SELECCIONE UN SERVICIO'"></select>
                             </div>
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_Descripcion  </label>
-                            <div class="col-md-4">
-                                <input name="DESCRIPCION" id="DESCRIP" class="form-control" placeholder="@Mandante.CharlasCursos.CrearEditar.Phl_Descripcion" data-bind="value :DESCRIP" />
-                            </div>
-                        </div>
+                        </div>*@
                         <div class="form-group">
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_Operaciones</label>
+                            <label class="col-md-2">CategorÍa o Servicio</label>
                             <div class="col-md-10">
-                                <div class="icheck-greensea">
-                                    <input type="checkbox" data-bind="checked:$root.selectAllDivisiones" id="selectAllDiv" />
-                                    <label for="selectAllDiv"><strong>@Mandante.CharlasCursos.CrearEditar.Lbl_Seleccionar_Todas</strong></label>
-                                </div>
-                            </div>
-                            <p class="col-md-2"></p>
-                            <div class="col-md-10">
-                                <div data-bind="foreach:$root.divisionesSeleccionadas">
-                                    <div class="col-md-4">
+                                <div data-bind="foreach:$root.listServicios">
+                                    <div class="col-md-10">
                                         <div class="icheck-greensea">
-                                            <input type="checkbox" data-bind="checked:CHECKED,attr:{id:DIVCOD}" />
-                                            <label data-bind="text:DIVISION, attr:{for:DIVCOD}"> </label>
+                                            <input type="radio" data-bind="checked:CHECKED,attr:{id:NOMBRE , name:1}" />
+                                            <label data-bind="text:NOMBRE, attr:{for:NOMBRE, name:1}"> </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_horas</label>
-                            <div class="col-md-2">
-                                <input name="HORAS" id="HORAS" class="form-control" type="number" placeholder="@Mandante.CharlasCursos.CrearEditar.Phl_horas" data-bind="value: HORAS" />
-                            </div>
-                            <p class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_duracionCharla</p>
-                            <label class="col-md-2">* @Mandante.CharlasCursos.CrearEditar.Lbl_vigencia </label>
-                            <div class="col-md-2">
-                                <input name="VENCIMIENTO" id="VENCIMIENTO" class="form-control" type="number" placeholder="@Mandante.CharlasCursos.CrearEditar.Lbl_Ingresar_Vigencia" data-bind="value: VENCIMIENTO" />
-                            </div>
-                            <p class="col-md-2" style="border:hidden">@Mandante.CharlasCursos.CrearEditar.Lbl_Meses</p>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 ">@Mandante.CharlasCursos.CrearEditar.Lbl_tipoCurso</label>
-                            <div class="col-md-4">
-                                <select name="ID_AREA" class="form-control" data-bind="options:$root.listTipoCurso, optionsText: 'NOMBRE', optionsValue: 'VALOR', value:$root.tipoCurso, optionsCaption:'@Mandante.CharlasCursos.CrearEditar.Lbl_SELECCIONE_TIPO_CURSO'"></select>
-                            </div>
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_Area  </label>
-                            <div class="col-md-4">
-                                <select name="ID_AREA" class="form-control" data-bind="options:$root.areas, optionsText: 'AREA', optionsValue: 'ID_AREA', value:$root.area, optionsCaption:'@Mandante.CharlasCursos.CrearEditar.Lbl_SeleccionarArea'"></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_DocumentoRelacionado</label>
-                            <div class="col-md-4">
-                                <select name="ID_DOC_FEC" class="form-control" data-bind="options:$root.docsFec, optionsText: 'NOMBRE', optionsValue: 'ID_DOC_FEC', value:$root.fechaDocRelacionado, optionsCaption:'@Mandante.CharlasCursos.CrearEditar.Lbl_SeleccioneDocumentosRelacionado'"></select>
-                            </div>
-                            <label class="col-md-2">* @Mandante.CharlasCursos.CrearEditar.Lbl_PorcentajeDeAprobacion  </label>
-                            <div class="col-md-2">
-                                <input name="PORCENTAJE" id="PORCENTAJE" type="number" class="form-control" data-bind="value: PORCENTAJE" />
-                            </div>
-                            <span class="col-md-2">%</span>
-                        </div>
-                        <div class="form-group" id="selectsQV" hidden>
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.Lbl_Clasificacion </label>
-                            <div class="col-md-4">
-                                <select name="ID_CLASIFIACION" id="CLASIFICACION" class="form-control" data-bind="options:$root.clasificaciones, optionsText: 'NOMBRE', optionsValue: 'ID' , value:$root.clasificacion, optionsCaption:'@Mandante.CharlasCursos.CrearEditar.Lbl_seleccionarClasificacion'"></select>
-                            </div>
-                            <label class="col-md-2">@Mandante.CharlasCursos.CrearEditar.lbl_Ambito </label>
-                            <div class="col-md-4">
-                                <select name="ID_AMBITO" id="AMBITO" class="form-control" data-bind="options:$root.ambitos, optionsText:'NOMBRE', optionsValue: 'ID', value:$root.ambito, optionsCaption:'@Mandante.CharlasCursos.CrearEditar.Lbl_SeleccionarAmbito'"></select>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-4">
                                 <div style="display:flex; justify-content:space-around">
                                     <button id="btnGuardar" name="btnGuardar" data-bind="click:$root.saveCharlasCursos" class="btn btn-success">
-                                        <i class="fa fa-floppy-o"></i>&nbsp;&nbsp;@Mandante.CharlasCursos.CrearEditar.Btn_GuardarDatos
+                                        <i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar
                                     </button>
                                     <button class="btn btn-danger" data-bind="click:$root.cancelCharlaCurso">
-                                        <i class="fa fa-times"></i>&nbsp;&nbsp;@Mandante.CharlasCursos.CrearEditar.Btn_Cancelar
+                                        <i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar
                                     </button>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -148,54 +88,45 @@
     @Scripts.Render("~/plugins/iCheck")
     @Scripts.Render("~/plugins/sweetAlert")
 
-<script>
-        function Divisiones(data) {
-            var selft = this;
-            selft.DIVISION = ko.observable(data.DIVISION);
-            selft.CHECKED = ko.observable(data.CHECKED);
-            selft.DIVCOD = ko.observable(data.DIVCOD);
-            selft.CHECKED.subscribe(function (value) {
-                if (selft.DIVCOD() === 'QV') {
-                    if (value)
-                        $('#selectsQV').show();
-                    else {
-                        $('#selectsQV').hide();
-                    }
-                }
-            });
-            if (selft.DIVCOD() === 'QV' && selft.CHECKED() === true)
-                $('#selectsQV').show();
-        };
+    <script>
+        //function Divisiones(data) {
+        //    var selft = this;
+        //    selft.DIVISION = ko.observable(data.DIVISION);
+        //    selft.CHECKED = ko.observable(data.CHECKED);
+        //    selft.DIVCOD = ko.observable(data.DIVCOD);
+        //    selft.CHECKED.subscribe(function (value) {
+        //        if (selft.DIVCOD() === 'QV') {
+        //            if (value)
+        //                $('#selectsQV').show();
+        //            else {
+        //                $('#selectsQV').hide();
+        //            }
+        //        }
+        //    });
+        //    if (selft.DIVCOD() === 'QV' && selft.CHECKED() === true)
+        //        $('#selectsQV').show();
+        //};
 
         function ViewModelCharlasCursos(model) {
             var self = this;
-            self.charla = model.Charla;
-            self.areas = model.Areas;
-            self.docsFec = model.DocsFec;
-            self.clasificaciones = model.Clasificaciones;
-            self.ambitos = model.Ambitos;
-            self.esNuevo = model.Charla.IDCHARLA > 0 ? false : true;
-            self.selectAllDivisiones = ko.observable();
-            self.divisionesSeleccionadas = ko.observableArray();
-            self.selectAllDivisiones = ko.observable();
-            self.listTipoCurso = ko.observableArray([
-                {NOMBRE:"@Mandante.CharlasCursos.CrearEditar.Lbl_OPCIONAL", VALOR:"NO"},
-                {NOMBRE:"@Mandante.CharlasCursos.CrearEditar.Lbl_OBLIGATORIO", VALOR:"SI"},
+            self.modelSolicitud = model;
+            self.IDSOLICITUD = ko.observable();
+            self.listServicios = ko.observableArray([
+                { NOMBRE: "TI", VALOR: "TI", CHECKED:false},
+                { NOMBRE: "Recursos Humanos", VALOR: "Recursos Humanos", CHECKED: false },
+                { NOMBRE: "Instalaciones", VALOR: "Instalaciones" ,CHECKED: false },
             ]);
-            self.tipoCurso = ko.observable(model.Charla.OBLIGATORIO);
-            self.area = ko.observable(model.Charla.ID_AREA);
-            self.fechaDocRelacionado = ko.observable(model.Charla.ID_DOC_FEC);
-            self.clasificacion = ko.observable(model.Charla.ID_CLASIFIACION);
-            self.ambito = ko.observable(model.Charla.ID_AMBITO);
+            debugger
 
-            for (var divison in model.DivisionesSeleccionadas) {
-                self.divisionesSeleccionadas.push(new Divisiones(ko.toJS(model.DivisionesSeleccionadas[divison])));
-            }
-            self.selectAllDivisiones.subscribe(function (value) {
-                ko.utils.arrayForEach(self.divisionesSeleccionadas(), function (division) {
-                    division.CHECKED(value);
-                });
-            });
+
+            //for (var divison in model.DivisionesSeleccionadas) {
+            //    self.divisionesSeleccionadas.push(new Divisiones(ko.toJS(model.DivisionesSeleccionadas[divison])));
+            //}
+            //self.selectAllDivisiones.subscribe(function (value) {
+            //    ko.utils.arrayForEach(self.divisionesSeleccionadas(), function (division) {
+            //        division.CHECKED(value);
+            //    });
+            //});
 
             self.saveCharlasCursos = function () {
                 if ($('#form-valide-charlascurso').valid()) {
@@ -229,7 +160,7 @@
                         data: JSON.stringify(data),
                         success: function () {
                             swal({
-                                title: '@Mandante.CharlasCursos.CrearEditar.Msg_GuardarInformacionOK',
+                                title: 'Guardado Correctamente',
                                 timer: 3000,
                                 type: "success",
                                 showConfirmButton: true,
@@ -239,7 +170,7 @@
                         },
                         error: function () {
                             swal({
-                                title: '@Mandante.CharlasCursos.CrearEditar.Msg_GuardarInformacionError',
+                                title: 'Ocurrio un Error',
                                 timer: 3000,
                                 type: "error",
                                 showConfirmButton: true,
@@ -267,44 +198,14 @@
                     required: true,
                     maxlength: 50,
                 },
-                "DESCRIPCION": {
-                    required: true,
-                    maxlength: 60,
-                },
-                "HORAS": {
-                    required: true,
-                    range: [0, 100],
-                },
-                "VENCIMIENTO": {
-                    required: true,
-                    range: [0, 400],
-                },
-                "PORCENTAJE": {
-                    required: true,
-                }
             },
             messages: {
                 "CHARLA": {
-                    required: "@Mandante.CharlasCursos.CrearEditar.Val_Required_charla",
-                    maxlength: "@Mandante.CharlasCursos.CrearEditar.Val_Maxlength_charla",
+                    required: "",
+                    maxlength: "",
                 },
-                "DESCRIPCION": {
-                    required: "@Mandante.CharlasCursos.CrearEditar.Val_Required_descripcion",
-                    maxlength: "@Mandante.CharlasCursos.CrearEditar.Val_Maxlength_Descripcion",
-                },
-                "HORAS": {
-                    required: "@Mandante.CharlasCursos.CrearEditar.Val_Required_horas",
-                    range: "@Mandante.CharlasCursos.CrearEditar.Val_Rango_Horas",
-                },
-                "VENCIMIENTO": {
-                    required: "@Mandante.CharlasCursos.CrearEditar.Val_Required_vencimiento",
-                    range: "@Mandante.CharlasCursos.CrearEditar.Val_Rango_Vencimiento",
-                },
-                "PORCENTAJE": {
-                    required: "@Mandante.CharlasCursos.CrearEditar.Val_Requerido_Porcentaje",
-                }
             }
         });
 
-</script>
+    </script>
 }
