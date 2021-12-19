@@ -34,11 +34,11 @@ namespace V4mvc.Presentation.Controllers
             ViewModelAdmin model = new ViewModelAdmin();
             switch (Session["TIPOUSUARIO"].ToString())
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     model.colab_usuario = proxy.GetOneColabUsuario_Ctta(Session["IDEMPRESA"].ToString(), Session["USUARIO"].ToString());
                     break;
 
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     model.admin = proxy.GetOneAdmin(Session["USUARIO"].ToString());
                     break;
             }
@@ -50,11 +50,11 @@ namespace V4mvc.Presentation.Controllers
             ViewModelAdmin model = new ViewModelAdmin();
             switch (Session["TIPOUSUARIO"].ToString())
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     model.colab_usuario = proxy.GetOneColabUsuario_Ctta(Session["IDEMPRESA"].ToString(), Session["USUARIO"].ToString());
                     break;
 
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     model.admin = proxy.GetOneAdmin(Session["USUARIO"].ToString());
                     break;
             }

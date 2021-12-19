@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using V4mvc.Entities;
 using V4mvc.Presentation.helpers;
 
-namespace V4mvc.Presentation.Areas.Usuario.Controllers
+namespace V4mvc.Presentation.Areas.Administrador.Controllers
 {
     [SessionFilter]
     public class SolicitudController : Controller
@@ -41,8 +41,11 @@ namespace V4mvc.Presentation.Areas.Usuario.Controllers
 
         public ActionResult GetListSolicitudes(Solicitud ITEM)
         {
-            ITEM.DNI_USUARIO = Session["USUARIO"].ToString();
-            var result = proxy.GetListSolicitudes_Usu(ref ITEM);
+            if(Session["COLABORADOR"].ToString() == "True")
+            {
+                ITEM.DNI_COLABORADOR = Session["USUARIO"].ToString();
+            }
+            var result = proxy.GetListSolicitudes_Adm(ref ITEM);
 
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }

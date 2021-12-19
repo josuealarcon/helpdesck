@@ -20,18 +20,22 @@
     <link href="~/Content/animate.css" rel="stylesheet">
     <link href="~/Content/style.css" rel="stylesheet">
     <style>
+      
+
         body {
+            /* The image used */
+            background-image: url("../images/img_2.jpg");
             /* Full height */
-            width:100%;
+            height: 100%;
             /* Center and scale the image nicely */
+            background-position: center;
             background-repeat: no-repeat;
-            background-size: auto;
-            position: center;
-            overflow: hidden;
+            background-size: cover;
         }
+       
     </style>
 </head>
-<body class="gray-bg" background="~/images/img_2.jpg">
+<body >
     <div class="colorful-page-wrapper">
 
 
@@ -40,9 +44,9 @@
                 <div class="login-width">
                     @RenderBody()
                 </div>
-                <div class="row">
+                <div class="row" style="padding-left: -20px">
                     <div class="pull-right">
-                        <p class="m-t"> <small> HelpDesk &copy; 2021</small></p>
+                        <p class="m-t"> <small > HelpDesk &copy; 2021       </small></p>
                     </div>
                 </div>
             </div>

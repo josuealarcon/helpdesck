@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace V4mvc.Entities
 {
 	[Serializable()]
-	public partial class WC_SubMenu 
+	public partial class WC_SubMenu
 	{
 		#region [ Variables ]
 		private Decimal m_codmenu;
@@ -14,15 +14,16 @@ namespace V4mvc.Entities
 		private String m_descripcion;
 		private String m_activo;
 		private String m_permiso;
-        private String m_linkv4;
-        #endregion
+		private String m_linkv4;
+		private String m_iconov4;
+		#endregion
 
-        #region [ Constructores ]
-        /// <summary>
-        /// Inicializar una nueva instancia de la clase WC_SubMenu.
-        /// </summary>
-        public WC_SubMenu()
-		{  }
+		#region [ Constructores ]
+		/// <summary>
+		/// Inicializar una nueva instancia de la clase WC_SubMenu.
+		/// </summary>
+		public WC_SubMenu()
+		{ }
 		#endregion
 
 		#region [ Propiedades ]
@@ -68,24 +69,38 @@ namespace V4mvc.Entities
 				}
 			}
 		}
-        /// <summary>
+		/// <summary>
 		/// Gets or sets el valor de: LINKV4.
 		/// </summary>
-		public String LinkV4
-        {
-            get { return m_linkv4; }
-            set
-            {
-                if (m_linkv4 != value)
-                {
-                    m_linkv4 = value;
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets el valor de: ICONO.
-        /// </summary>
-        public String ICONO
+		public String LINKV4
+		{
+			get { return m_linkv4; }
+			set
+			{
+				if (m_linkv4 != value)
+				{
+					m_linkv4 = value;
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets el valor de: ICONOV4.
+		/// </summary>
+		public String ICONOV4
+		{
+			get { return m_iconov4; }
+			set
+			{
+				if (m_iconov4 != value)
+				{
+					m_iconov4 = value;
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets el valor de: ICONO.
+		/// </summary>
+		public String ICONO
 		{
 			get { return m_icono; }
 			set
@@ -142,7 +157,7 @@ namespace V4mvc.Entities
 
 		#region [ Instance Entity ]
 		public InstanceEntity m_instance;
-		
+
 		/// <summary>
 		/// Gets or sets el valor de: InstanceEntity.
 		/// </summary>
@@ -151,8 +166,8 @@ namespace V4mvc.Entities
 			get { return m_instance; }
 			set { m_instance = value; }
 		}
-		
-		
+
+
 		#endregion
 	}
 }

@@ -8,7 +8,8 @@
     <div class="col-md-6">
 
         <div class="col-md-12">
-            <img src="~/images/flaticons/help-desk.png" alt="flag" class="img-responsive">
+            <img src="~/images/logo_l.png" alt="flag" class="img-responsive  img-rounded">
+            <img src="~/images/flaticons/help-desk.png" alt="flag" class="img-responsive" style="zoom: 50%"   >
         </div>
     </div>
     <div class="col-md-6">
@@ -172,15 +173,7 @@
                             required: !0,
                             minlength: 8,
                             maxlength: 20,
-                            remote: {
-                                url: '@Url.Action("ValidarRUT","Login")',
-                                type: "POST",
-                                data: {
-                                  RUT: function() {
-                                    return $("#txtUsuario").val();
-                                  }
-                                }
-                              }
+                            
                         },
                         "ADMCLAVE": {
                             required: !0,

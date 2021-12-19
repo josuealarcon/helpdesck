@@ -25,17 +25,11 @@
                     }
                     @foreach (var subMenu in Model.subMenu.Where(var => var.CODMENU == menu.CODMENU).ToList())
                     {
-                        if (!string.IsNullOrEmpty(subMenu.LinkV4))
+                        if (!string.IsNullOrEmpty(subMenu.LINKV4))
                         {
-                            <li><a href="@Url.Content(subMenu.LinkV4)" title="@subMenu.DESCRIPCION">@Html.Raw(subMenu.DESCRIPCION)</a></li>
-                        }
-                    }
-                    @if (menu.CODMENU == 1)
-                    {
-                        <li style="margin:0;">
-                            @Html.Action("_ConsultaRapida", "InformesConsultaRapida", new { Area = "" })
-                        </li>
+                            <li class="@Html.IsSelected(url:subMenu.LINKV4)"><a href="@Url.Content(subMenu.LINKV4)" title="@subMenu.DESCRIPCION"><i class="@subMenu.ICONOV4"></i>@subMenu.DESCRIPCION</a></li>
 
+                        }
                     }
                 </ul>
             </li>
@@ -46,6 +40,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element" style="text-align: center">
+                        <img alt="image" class="img-rounded img-responsive" src="~/Images/logo_l.png" /><br/>
                         <span>
                             <img alt="image" class="img-circle img-responsive" src="~/images/unknow.jpg" />
                         </span>
@@ -63,7 +58,7 @@
                         </ul>
                     </div>
                     <div class="logo-element">
-                        WC
+                        <img alt="image" class="img-rounded img-responsive" src="~/Images/logo_c.png" />
                     </div>
                 </li>
                 <li>

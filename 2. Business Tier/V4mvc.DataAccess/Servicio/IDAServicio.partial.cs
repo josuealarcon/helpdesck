@@ -15,6 +15,7 @@ namespace V4mvc.DataAccess
 
         #region [ Métodos ]
         ObservableCollection<Servicio> GetListSolicitudes_Usu(ref Solicitud solicitud);
+        ObservableCollection<Servicio> GetListSolicitudes_Adm(ref Solicitud solicitud);
         #endregion
 
     }

@@ -51,7 +51,7 @@ namespace V4mvc.Presentation
                     Session["INTENTOS"] = 0;
                     switch (model.TIPOUSUARIO)
                     {
-                        case Constants.USUARIO_CONTRATISTA:
+                        case Constants.USUARIO_USUARIO:
                             Colab_Usuario colab_usuario = proxy.ValidarLoginColab_Usuario(model.ADMRUTEMPRESA, model.ADMRUT, model.ADMCLAVE);
                             if (colab_usuario != null)
                             {
@@ -68,7 +68,7 @@ namespace V4mvc.Presentation
                                         if (!string.IsNullOrEmpty(colab_usuario.IDEMPRESA))
                                         {
                                             HttpCookie cookie = Request.Cookies["URL_USER"];
-                                            Session["TIPOUSUARIO"] = Constants.USUARIO_CONTRATISTA;
+                                            Session["TIPOUSUARIO"] = Constants.USUARIO_USUARIO;
                                             Session["IDEMPRESA"] = model.ADMRUTEMPRESA;
                                             Session["FUNCIONARIO"] = colab_usuario.NOMBRES + " " + colab_usuario.APELLIDOS;
                                             Session["ACRONIMO"] = colab_usuario.ACRONIMO;
@@ -76,7 +76,7 @@ namespace V4mvc.Presentation
                                             Session["USUARIO"] = model.ADMRUT;
                                             Session["NIVELUSUARIO"] = colab_usuario.TipoUsuario;
                                             Session["INTENTOS"] = 0;
-                                            FormsAuthentication.SetAuthCookie(Constants.USUARIO_CONTRATISTA, true);
+                                            FormsAuthentication.SetAuthCookie(Constants.USUARIO_ADMINISTRADOR, true);
                                             if (cookie != null)
                                             {
                                                 return Json(new KeyValuePair<string, string>("URL", cookie.Value), JsonRequestBehavior.AllowGet);
@@ -106,7 +106,7 @@ namespace V4mvc.Presentation
                                 return Json(new KeyValuePair<string, string>("Error", "Usuario o Contraseña incorrectos"), JsonRequestBehavior.AllowGet);
                             }
                             break;
-                        case Constants.USUARIO_MANDANTE:
+                        case Constants.USUARIO_ADMINISTRADOR:
                             Admin admin = proxy.ValidarLoginAdmin(model.ADMRUT, model.ADMCLAVE);
                             if (admin != null)
                             {
@@ -120,7 +120,7 @@ namespace V4mvc.Presentation
                                     else if (admin.EXPIRA > 0)
                                     {
                                         HttpCookie cookie = Request.Cookies["URL_MDTE"];
-                                        Session["TIPOUSUARIO"] = Constants.USUARIO_MANDANTE;
+                                        Session["TIPOUSUARIO"] = Constants.USUARIO_ADMINISTRADOR;
                                         Session["USUARIO"] = model.ADMRUT;
                                         Session["GRUPO"] = admin.ADMTIPO;
                                         Session["ZONA"] = admin.ADMLUGAR;
@@ -130,8 +130,10 @@ namespace V4mvc.Presentation
                                         Session["PUERTOS"] = admin.ADMPUERTOS;
                                         Session["EMAIL"] = admin.ADMEMAIL;
                                         Session["DIVISIONES"] = admin.ADMDIVISION;
+                                        Session["COLABORADOR"] = admin.COLABORADOR;
                                         Session["INTENTOS"] = 0;
-                                        FormsAuthentication.SetAuthCookie(Constants.USUARIO_MANDANTE, true);
+                                        Session["FUNCIONARIO"] = admin.NOMBRES + " " + admin.APELLIDOS;
+                                        FormsAuthentication.SetAuthCookie(Constants.USUARIO_USUARIO, true);
                                         if (cookie != null)
                                         {
                                             return Json(new KeyValuePair<string, string>("URL", cookie.Value), JsonRequestBehavior.AllowGet);
@@ -182,14 +184,14 @@ namespace V4mvc.Presentation
             string IDEMPRESA = string.Empty;
             switch (Session["USUARIOTIPO"].ToString())
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     IDEMPRESA = Session["IDEMPRESA"].ToString();
                     Colab_Usuario colab_usuario = proxy.GetOneColabUsuario_Ctta(IDEMPRESA, ID);
                     EmailPassword(IDEMPRESA, colab_usuario.Rut, colab_usuario.NOMBRES, colab_usuario.APELLIDOS, NUEVACLAVE, colab_usuario.Correo_Electronico, IP);
                     proxy.CambioClaveHistoricoCtta(ID, IDEMPRESA, NUEVACLAVE, IP);
                     proxy.CambioClaveCtta(ID, IDEMPRESA, NUEVACLAVE);
                     break;
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     Admin admin = proxy.GetOneAdmin(ID);
                     EmailPassword(IDEMPRESA, admin.ADMRUT, admin.NOMBRES, admin.APELLIDOS, NUEVACLAVE, admin.ADMEMAIL, IP);
                     proxy.CambioClaveHistoricoMdte(ID, NUEVACLAVE, IP);
@@ -210,10 +212,10 @@ namespace V4mvc.Presentation
             bool data = false;
             switch (Session["USUARIOTIPO"].ToString())
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     data = proxy.ValidarClaveCtta(Session["USUARIO"].ToString(), Session["IDEMPRESA"].ToString(), CLAVE);
                     break;
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     data = proxy.ValidarClaveMdte(Session["USUARIO"].ToString(), CLAVE);
                     break;
                 default: break;
@@ -226,10 +228,10 @@ namespace V4mvc.Presentation
             bool data = false;
             switch (Session["USUARIOTIPO"].ToString())
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     data = proxy.ValidarClaveHistoricoCtta(Session["USUARIO"].ToString(), Session["IDEMPRESA"].ToString(), CLAVE);
                     break;
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     data = proxy.ValidarClaveHistoricoMdte(Session["USUARIO"].ToString(), CLAVE);
                     break;
                 default: break;
@@ -250,7 +252,7 @@ namespace V4mvc.Presentation
             string correo = "";
             switch (TIPOUSUARIO)
             {
-                case Constants.USUARIO_CONTRATISTA:
+                case Constants.USUARIO_USUARIO:
                     Colab_Usuario colab_usuario = proxy.GetOneColabUsuario_Ctta(IDEMPRESA, RUT);
                     if (colab_usuario != null)
                     {
@@ -263,7 +265,7 @@ namespace V4mvc.Presentation
                         }
                     }
                     break;
-                case Constants.USUARIO_MANDANTE:
+                case Constants.USUARIO_ADMINISTRADOR:
                     Admin admin = proxy.GetOneAdmin(RUT);
                     if (admin != null)
                     {
@@ -338,7 +340,7 @@ namespace V4mvc.Presentation
                 workers.APELLIDOS = model.ADMINAPE;
                 proxy.SaveWorkersNewEnterpriseCTTA(ref workers);
 
-                Session["TIPOUSUARIO"] = Constants.USUARIO_CONTRATISTA;
+                Session["TIPOUSUARIO"] = Constants.USUARIO_USUARIO;
                 Session["IDEMPRESA"] = model.IDEMPRESA;
                 Session["FUNCIONARIO"] = model.ADMNOM + ' ' + model.ADMINAPE;
                 Session["ACRONIMO"] = model.ACRONIMO;
@@ -346,7 +348,7 @@ namespace V4mvc.Presentation
                 Session["USUARIO"] = model.ADMINRUT;
                 Session["NIVELUSUARIO"] = "ADMIN";
                 Session["INTENTOS"] = 0;
-                FormsAuthentication.SetAuthCookie(Constants.USUARIO_CONTRATISTA, true);
+                FormsAuthentication.SetAuthCookie(Constants.USUARIO_USUARIO, true);
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);

@@ -7,8 +7,8 @@ namespace V4mvc.Presentation
 {
     public static class Constants
     {
-        public const String USUARIO_CONTRATISTA = "USER";
-        public const String USUARIO_MANDANTE = "ADMIN";
+        public const String USUARIO_USUARIO = "USER";
+        public const String USUARIO_ADMINISTRADOR = "ADMIN";
         public const Boolean ACTIVADO_DELEGADO_OST = true;
         public enum DISPUTA_ORIGEN
         {

@@ -39,6 +39,15 @@ namespace V4mvc
             catch (Exception ex)
             { throw ex; }
         }
+        public ObservableCollection<Servicio> GetListSolicitudes_Adm(ref Solicitud solicitud)
+        {
+            try
+            {
+                return this.BL_Servicio.GetListSolicitudes_Adm(ref solicitud);
+            }
+            catch (Exception ex)
+            { throw ex; }
+        }
         #endregion
 
     }

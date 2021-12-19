@@ -61,13 +61,18 @@ namespace V4mvc.Presentation.Areas.Administrador.Controllers
             {
                 switch (Session["TIPOUSUARIO"].ToString())
                 {
-                    case Constants.USUARIO_CONTRATISTA:
+                    case Constants.USUARIO_USUARIO:
                         model.menu = proxy.GetAllMenuCtta();
                         model.subMenu = proxy.GetAllSubMenuCtta(Session["NIVELUSUARIO"].ToString());
+                        model.colab_usuario = new Colab_Usuario();
+                        model.colab_usuario.NOMBRES = Session["FUNCIONARIO"].ToString();
                         break;
-                    case Constants.USUARIO_MANDANTE:
+                    case Constants.USUARIO_ADMINISTRADOR:
+
                         model.menu = proxy.GetAllMenuMdte();
                         model.subMenu = proxy.GetAllSubMenuMdte(Session["GRUPO"].ToString(), Session["ZONA"].ToString());
+                        model.colab_usuario = new Colab_Usuario();
+                        model.colab_usuario.NOMBRES = Session["FUNCIONARIO"].ToString();
                         break;
                     default:
                         break;

@@ -40,6 +40,15 @@ namespace V4mvc.BusinessLogic
             catch (Exception ex)
             { throw ex; }
         }
+        public ObservableCollection<Servicio> GetListSolicitudes_Adm(ref Solicitud solicitud)
+        {
+            try
+            {
+                return this.Repository.GetListSolicitudes_Adm(ref solicitud);
+            }
+            catch (Exception ex)
+            { throw ex; }
+        }
         #endregion
 
     }

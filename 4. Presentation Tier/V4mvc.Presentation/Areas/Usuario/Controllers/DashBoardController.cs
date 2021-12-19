@@ -64,7 +64,7 @@ namespace V4mvc.Presentation.Areas.Usuario.Controllers
             {
                 switch (Session["TIPOUSUARIO"].ToString())
                 {
-                    case Constants.USUARIO_CONTRATISTA:
+                    case Constants.USUARIO_USUARIO:
                         model.menu = proxy.GetAllMenuCtta();
                         model.subMenu = proxy.GetAllSubMenuCtta(Session["NIVELUSUARIO"].ToString());
 
@@ -74,7 +74,7 @@ namespace V4mvc.Presentation.Areas.Usuario.Controllers
                         model.colab_usuario.ACRONIMO = Session["ACRONIMO"].ToString();
                         model.colab_usuario.Rut = Session["USUARIO"].ToString();
                         break;
-                    case Constants.USUARIO_MANDANTE:
+                    case Constants.USUARIO_ADMINISTRADOR:
                         model.menu = proxy.GetAllMenuMdte();
                         model.subMenu = proxy.GetAllSubMenuMdte(Session["GRUPO"].ToString(), Session["ZONA"].ToString());
                         

@@ -1,0 +1,211 @@
+﻿@model V4mvc.Entities.Solicitud
+
+
+@{
+    ViewBag.Title = "CrearEditar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ul class="breadcrumb_links">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Usuario" })">DashBoard</a></li>
+            <li><a href="@Url.Action("Index", "Solicitud", new { Area = "Usuario" })">Listado de Solicitudes</a></li>
+            <li class="active">
+                <div>
+                    <span data-bind="text: 'Nueva Solicitud '"> </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2>
+                        <span>
+                            Listado de Solicitudes
+                            &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
+                            Nueva Solicitud - Seleccione una CategorÍa o Servicio
+                        </span>
+                    </h2>
+                </div>
+                <div class="panel-body" data-bind="with: modelSolicitud">
+                    <div class="callout callout-info">
+                        <h4>Informacion</h4>
+                        <p>Los campos con * son obligatorios</p>
+                    </div>
+                    <form id="form-valide-charlascurso" name="form-valide-categoria" class="form-horizontal">
+                        @*<div class="form-group">
+                            <label class="col-md-2">CategorÍa o Servicio</label>
+                            <div class="col-md-4">
+                                <select name="ID_DOC_FEC" class="form-control" data-bind="options:$root.listServicios, optionsText: 'NOMBRE', optionsValue: 'VALOR', value:$root.IDSOLICITUD, optionsCaption:'SELECCIONE UN SERVICIO'"></select>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <label class="col-md-2">CategorÍa o Servicio</label>
+                            <div class="col-md-10">
+                                <div data-bind="foreach:$root.listServicios">
+                                    <div class="col-md-10">
+                                        <div class="icheck-greensea">
+                                            <input type="radio" data-bind="checked:CHECKED,attr:{id:NOMBRE , name:1}" />
+                                            <label data-bind="text:NOMBRE, attr:{for:NOMBRE, name:1}"> </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <div style="display:flex; justify-content:space-around">
+                                    <button id="btnGuardar" name="btnGuardar" data-bind="click:$root.saveCharlasCursos" class="btn btn-success">
+                                        <i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Guardar
+                                    </button>
+                                    <button class="btn btn-danger" data-bind="click:$root.cancelCharlaCurso">
+                                        <i class="fa fa-times"></i>&nbsp;&nbsp;Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck-bootstrap/iCheckBootstrapStyles")
+    @Styles.Render("~/plugins/sweetAlertStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+        //function Divisiones(data) {
+        //    var selft = this;
+        //    selft.DIVISION = ko.observable(data.DIVISION);
+        //    selft.CHECKED = ko.observable(data.CHECKED);
+        //    selft.DIVCOD = ko.observable(data.DIVCOD);
+        //    selft.CHECKED.subscribe(function (value) {
+        //        if (selft.DIVCOD() === 'QV') {
+        //            if (value)
+        //                $('#selectsQV').show();
+        //            else {
+        //                $('#selectsQV').hide();
+        //            }
+        //        }
+        //    });
+        //    if (selft.DIVCOD() === 'QV' && selft.CHECKED() === true)
+        //        $('#selectsQV').show();
+        //};
+
+        function ViewModelCharlasCursos(model) {
+            var self = this;
+            self.modelSolicitud = model;
+            self.IDSOLICITUD = ko.observable();
+            self.listServicios = ko.observableArray([
+                { NOMBRE: "TI", VALOR: "TI", CHECKED:false},
+                { NOMBRE: "Recursos Humanos", VALOR: "Recursos Humanos", CHECKED: false },
+                { NOMBRE: "Instalaciones", VALOR: "Instalaciones" ,CHECKED: false },
+            ]);
+            debugger
+
+
+            //for (var divison in model.DivisionesSeleccionadas) {
+            //    self.divisionesSeleccionadas.push(new Divisiones(ko.toJS(model.DivisionesSeleccionadas[divison])));
+            //}
+            //self.selectAllDivisiones.subscribe(function (value) {
+            //    ko.utils.arrayForEach(self.divisionesSeleccionadas(), function (division) {
+            //        division.CHECKED(value);
+            //    });
+            //});
+
+            self.saveCharlasCursos = function () {
+                if ($('#form-valide-charlascurso').valid()) {
+                    var divisiones;
+                    ko.utils.arrayForEach(self.divisionesSeleccionadas(), function (division) {
+                        if (division.CHECKED() === true) {
+                            divisiones = divisiones ? divisiones + ',' + division.DIVCOD() : division.DIVCOD();
+                        }
+                    });
+                    var data = {
+                        IDCHARLA: model.Charla.IDCHARLA,
+                        CHARLA: $("#CHARLA").val().toUpperCase(),
+                        DESCRIP: $("#DESCRIP").val().toUpperCase(),
+                        HORAS: parseInt($("#HORAS").val()),
+                        VENCIMIENTO: parseInt($("#VENCIMIENTO").val()),
+                        PORCENTAJE: parseInt($("#PORCENTAJE").val()),
+                        OBLIGATORIO: self.tipoCurso(),
+                        ID_AREA: self.area(),
+                        ID_DOC_FEC: self.fechaDocRelacionado(),
+                        ID_CLASIFIACION: self.clasificacion(),
+                        ID_AMBITO: self.ambito(),
+                        DIVISIONES: divisiones,
+                    };
+                    $.ajax({
+                        global: true,
+                        async: false,
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: '@Url.Action("SaveCharla", "CharlasCursos", new { Area = "Mandante" })',
+                        data: JSON.stringify(data),
+                        success: function () {
+                            swal({
+                                title: 'Guardado Correctamente',
+                                timer: 3000,
+                                type: "success",
+                                showConfirmButton: true,
+                            }, function () {
+                                swal.close();
+                            });
+                        },
+                        error: function () {
+                            swal({
+                                title: 'Ocurrio un Error',
+                                timer: 3000,
+                                type: "error",
+                                showConfirmButton: true,
+                            }, function () {
+                                swal.close();
+                            });
+                        }
+                    });
+                }
+            }
+
+            self.cancelCharlaCurso = function () {
+                var url = '@Url.Action("Index", "CharlasCursos", new { Area = "Mandante" })';
+                window.location = url;
+            };
+        }
+
+        var vm = new ViewModelCharlasCursos(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(vm);
+
+        $("#form-valide-charlascurso").validate({
+            ignore: [],
+            rules: {
+                "CHARLA": {
+                    required: true,
+                    maxlength: 50,
+                },
+            },
+            messages: {
+                "CHARLA": {
+                    required: "",
+                    maxlength: "",
+                },
+            }
+        });
+
+    </script>
+}

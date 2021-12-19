@@ -28,6 +28,7 @@ namespace V4mvc.Entities
         public string COL5 { get; set; }
         public string COL6 { get; set; }
         public string COL7 { get; set; }
+        public string DNI_COLABORADOR { get; set; }
         #endregion
     }
 }
