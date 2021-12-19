@@ -1550,7 +1550,7 @@ namespace V4mvc.Entities
 		
 		/// <summary>
 		/// Gets or sets el valor de: InstanceEntity.
-		/// </summary>
+		/// </summary>   
 		public InstanceEntity Instance
 		{
 			get { return m_instance; }

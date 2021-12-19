@@ -30,13 +30,6 @@
                             <li><a href="@Url.Content(subMenu.LinkV4)" title="@subMenu.DESCRIPCION">@Html.Raw(subMenu.DESCRIPCION)</a></li>
                         }
                     }
-                    @if (menu.CODMENU == 1)
-                    {
-                        <li style="margin:0;">
-                            @Html.Action("_ConsultaRapida", "InformesConsultaRapida", new { Area = "" })
-                        </li>
-
-                    }
                 </ul>
             </li>
         }

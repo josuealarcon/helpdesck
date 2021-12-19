@@ -171,6 +171,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Areas\Administrador\Controllers\MovSolicitudController.cs" />
+    <Compile Include="Areas\Usuario\Controllers\SolicitudController.cs" />
     <Compile Include="Areas\Usuario\UsuarioAreaRegistration.cs" />
     <Compile Include="Areas\Usuario\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Administrador\Controllers\DashBoardController.cs" />
@@ -3969,6 +3971,8 @@
     <Content Include="Areas\Administrador\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Usuario\Views\Solicitud\CrearEditar.cshtml" />
     <Content Include="Areas\Usuario\Views\Solicitud\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\MovSolicitud\CrearEditar.cshtml" />
+    <Content Include="Areas\Administrador\Views\MovSolicitud\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Login\_RedirectToLogin.cshtml" />
     <Content Include="Views\Master\_MainPerfil.cshtml" />

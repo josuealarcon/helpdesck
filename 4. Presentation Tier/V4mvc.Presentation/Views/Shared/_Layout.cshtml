@@ -49,11 +49,11 @@
     @Scripts.Render("~/bundles/skinConfig")
     @RenderSection("scripts", required: false)
 
-    @Html.Partial("_BuscadorFuncionarios")
+    @*@Html.Partial("_BuscadorFuncionarios")
     @Html.Partial("_BuscadorVehiculos")
     @Html.Partial("_BuscadorEmpresas")
     @Html.Partial("_VisualizadorArchivo")
-    @Html.Partial("_VisualizadorVideo")
+    @Html.Partial("_VisualizadorVideo")*@
 </body>
 </html>
 
@@ -64,8 +64,8 @@
     };
 
     $(document).ready(function () {
-        if ('@Session["TIPOUSUARIO"]' === 'CTTA')
-            setCookie("URL_CTTA", window.location.href);
+        if ('@Session["TIPOUSUARIO"]' === 'URL_USER')
+            setCookie("URL_USER", window.location.href);
         else
             setCookie("URL_MDTE", window.location.href);
     });

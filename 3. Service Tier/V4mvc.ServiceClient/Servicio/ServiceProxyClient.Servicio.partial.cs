@@ -30,7 +30,15 @@ namespace V4mvc
         #endregion
 
         #region [ Métodos ]
-
+        public ObservableCollection<Servicio> GetListSolicitudes_Usu(ref Solicitud solicitud)
+        {
+            try
+            {
+                return this.BL_Servicio.GetListSolicitudes_Usu(ref solicitud);
+            }
+            catch (Exception ex)
+            { throw ex; }
+        }
         #endregion
 
     }
