@@ -22,7 +22,7 @@
                         Solicitudes
                         &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
                         LISTADO DE SOLICITUDES
-                        <a class="btn btn-primary pull-right" data-bind="click:$root.newSolicitud"><i class="fa fa-plus"></i></a>
+                        <a class="btn btn-primary pull-right" data-bind="click:$root.newSolicitud"><strong>&nbsp;Nueva Solicitud&nbsp;</strong><i class="fa fa-plus"></i></a>
                     </strong>
                 </h2>
             </div>
@@ -68,14 +68,6 @@
                                     ESTADO
                                     <i data-bind="css:sort()=='7'?classOrder:''"></i>
                                 </th>
-                                <th class="text-center" data-bind="click:function(){order('7')}">
-                                   NOMBRES DEL SOLICITANTE
-                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
-                                </th>
-                                <th class="text-center" data-bind="click:function(){order('7')}">
-                                    DNI EL SOLICITANTE
-                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>  
-                                </th>                               
 
                             </tr>
                         </thead>
@@ -87,7 +79,7 @@
                                 <td class="text-center" data-bind="text: FECHA_GML"></td>
                                 <td class="text-center" data-bind="text: AREA"></td>
                                 <td class="text-center" data-bind="text: PRIORIDAD"></td>
-                                <td class="text-center" data-bind="text: ESTADO "></td>
+                                <td class="text-center"> <label data-bind="text: ESTADO , attr:{ class: ESTADO == 'Pendiente' ?  'label label-warning': ESTADO == 'En espera de aprobacion' ? 'label label-success': ESTADO == 'Cerrado' ? 'label label-primary' :'' }"></label></td>
                             </tr>
                         </tbody>
                         <tfoot>
@@ -136,11 +128,11 @@
 
 <script>
 
-        $(document).ready(function () {
+       $(document).ready(function () {
             var vm = new myApp.LazyLoadingViewModel('@Url.Action("GetListSolicitudes", "Solicitud", new { Area = "Usuario" })');
 
             vm.newSolicitud = function () {
-                var url = '@Url.Action("CrearEditar", "Solicitud", new { Area = "Mandante" })';
+                var url = '@Url.Action("CrearEditar", "Solicitud", new { Area = "Usuario" })';
                 window.location = url;
             };
             ko.applyBindings(vm);
