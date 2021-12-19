@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ul class="breadcrumb_links">
+            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="@Url.Action("DashBoard", "DashBoard", new { Area = "Usuario" })">DashBoard</a></li>
+            <li class="active">solicitudes</li>
+        </ul>
+    </div>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h2>
+                    <strong>
+                        Solicitudes
+                        &nbsp;<span class="fa fa-chevron-circle-right"></span>&nbsp;
+                        LISTADO DE SOLICITUDES
+                              <a class="btn btn-primary pull-right" data-bind="click:$root.newSolicitud"><strong>&nbsp;Nueva Solicitud&nbsp;</strong><i class="fa fa-plus"></i></a>
+                    </strong>
+                </h2>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-1 col-sm-1">MOSTAR</label>
+                        <div class="col-md-2 col-sm-2">
+                            <select class="form-control " data-bind="options:$root.listLength,value:length"></select>
+                        </div>
+                        <label class="col-md-1 col-sm-1">REGISTRO</label>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="table table-hover table-striped dataTable small" style="width:100%" id="Charla">
+                        <thead>
+                            <tr>
+                                <th data-bind="click:function(){order('1')}">
+                                    DESCRIPCION SOLICITUD
+                                    <i data-bind="css:sort()=='1'?classOrder:''"></i>
+                                </th>
+                                <th data-bind="click:function(){order('2')}">
+                                    NUMERO DE TICKET
+                                    <i data-bind="css:sort()=='2'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('3')}">
+                                    ASUNTO
+                                    <i data-bind="css:sort()=='3'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('4')}">
+                                    FECHA
+                                    <i data-bind="css:sort()=='4'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('5')}">
+                                    AREA
+                                    <i data-bind="css:sort()=='5'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('6')}">
+                                    PRIORIDAD
+                                    <i data-bind="css:sort()=='6'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                    ESTADO
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                   NOMBRES DEL SOLICITANTE
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                    DNI EL SOLICITANTE
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>                               
+
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach:arrayList">
+                            <tr data-bind="attr:{'data-rut': $data.ID_SOLICITUD}">
+                                <td  data-bind="text: DESCRIPCION"></td>
+                                <td  data-bind="text: NUM_TICKET"></td>
+                                <td class="text-center" data-bind="text: ASUNTO"></td>
+                                <td class="text-center" data-bind="text: FECHA_GML"></td>
+                                <td class="text-center" data-bind="text: AREA"></td>
+                                <td class="text-center" data-bind="text: PRIORIDAD"></td>
+                                <td class="text-center" > <label  data-bind="text: ESTADO , attr:{ class: ESTADO == 'Pendiente' ?  'label label-warning': ESTADO == 'En espera de aprobacion' ? 'label label-success': ESTADO == 'Cerrado' ? 'label label-primary' :'' }"></label></td>
+                                <td class="text-center" data-bind="text: NOMBRES_SOLICITANTE "></td>
+                                <td class="text-center" data-bind="text: DNI_USUARIO "></td>
+                               
+                            </tr>
+                        </tbody>                        
+                    </table>
+                </div>
+                <div class="row" data-bind="if:count()>0">
+                    <div class="form-group">
+                        <div class="col-md-4 pull-left">
+                            Mostrando <span data-bind="text:(count()==0?0:start()+1)"></span>
+                            A <span data-bind="text:(registros()>=count())?count():registros()"></span>
+                            De <span data-bind="text:count()"></span>
+                           Registros
+                        </div>
+                        <div class="col-md-8">
+                            <ul id="pagination" class="pagination pull-right"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div data-bind="ifnot:count()>0">
+                    @Html.Partial("_NoCoincidenciasBusqueda")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/plugins/paginationStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+    @Scripts.Render("~/plugins/pagination")
+    @Scripts.Render("~/plugins/lazyloading")
+
+<script>
+
+        $(document).ready(function () {
+            var vm = new myApp.LazyLoadingViewModel('@Url.Action("GetListSolicitudes", "Solicitud", new { Area = "Usuario" })');
+
+            vm.newSolicitud = function () {
+                var url = '@Url.Action("CrearEditar", "Solicitud", new { Area = "Usuario" })';
+                window.location = url;
+            };
+            ko.applyBindings(vm);
+        });
+
+</script>
+
+}
