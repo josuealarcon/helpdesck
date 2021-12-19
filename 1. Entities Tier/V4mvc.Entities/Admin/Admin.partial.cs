@@ -16,6 +16,7 @@ namespace V4mvc.Entities
         public String NOMBRES { get; set; }
         public String APELLIDOS { get; set; }
         public String TIPOUSUARIO { get; set; }
+        public String COLABORADOR { get; set; }
         public int EXPIRA { get; set; }
         public string ADMEMAIL_O
         {

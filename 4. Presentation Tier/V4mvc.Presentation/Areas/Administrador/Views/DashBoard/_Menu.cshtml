@@ -24,15 +24,9 @@
                     }
                     @foreach (var subMenu in Model.subMenu.Where(var => var.CODMENU == menu.CODMENU).ToList())
                     {
-                        <li class="@Html.IsSelected(url:subMenu.LinkV4)"><a href="@Url.Content(subMenu.LinkV4)" title="@subMenu.DESCRIPCION"><i class="fa fa-table"></i>@subMenu.DESCRIPCION</a></li>
+                        <li class="@Html.IsSelected(url:subMenu.LINKV4)"><a href="@Url.Content(subMenu.LINKV4)" title="@subMenu.DESCRIPCION"><i class="@subMenu.ICONOV4"></i>@subMenu.DESCRIPCION</a></li>
                     }
-                    @if (menu.CODMENU == 1)
-                    {
-                        <li style="margin:0">
-                            @Html.Action("_ConsultaRapida", "InformesConsultaRapida", new { Area = "" })
-                        </li>
-
-                    }
+                   
                 </ul>
             </li>
         }
@@ -43,26 +37,23 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element" style="text-align: center">
-                    <span>
-                        <img alt="image" class="img-circle" src="~/Images/profile_small.jpg" />
-                    </span>
+                    <img alt="image" class="img-rounded img-responsive" src="~/Images/logo_l.png" />
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">Oscar Requena</strong>
-                            </span> <span class="text-muted text-xs block">Administrador<b class="caret"></b></span>
+                                <strong class="font-bold">@Model.colab_usuario.NOMBRES</strong>
+                            </span> <span class="text-muted text-xs block">Usuario<b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="@Url.Action("Profile", "AppViews")">Profile</a></li>
-                        <li><a href="@Url.Action("Contacts", "AppViews")">Contacts</a></li>
-                        <li><a href="@Url.Action("Inbox", "Mailbox")">Mailbox</a></li>
                         <li class="divider"></li>
-                        <li><a href="@Url.Action("LogOff", "Login", new { area = ""})"><i class="fa fa-power-off"></i><span>&nbsp; Logout</span></a></li>
+                        <li><a href="@Url.Action("LogOff", "Login", new { area = ""})"><i class="fa fa-power-off"></i><span>&nbsp; Cerrar sesión</span></a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
-                    WC
+                    <img alt="image" class="img-rounded img-responsive" src="~/Images/logo_c.png" />
+
+
                 </div>
             </li>
             <li>

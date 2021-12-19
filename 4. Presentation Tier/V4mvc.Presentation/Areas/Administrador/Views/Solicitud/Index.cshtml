@@ -73,34 +73,36 @@
                                     <i data-bind="css:sort()=='7'?classOrder:''"></i>
                                 </th>
                                 <th class="text-center" data-bind="click:function(){order('7')}">
-                                    DNI EL SOLICITANTE
-                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>  
+                                    DNI DEL SOLICITANTE
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>     
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                   NOMBRES DEL COLABORADOR
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
+                                </th>
+                                <th class="text-center" data-bind="click:function(){order('7')}">
+                                    DNI DEL COLABORADOR
+                                    <i data-bind="css:sort()=='7'?classOrder:''"></i>
                                 </th>                               
 
                             </tr>
                         </thead>
                         <tbody data-bind="foreach:arrayList">
                             <tr data-bind="attr:{'data-rut': $data.ID_SOLICITUD}">
-                                <td data-bind="text: DESCRIPCION"></td>
-                                <td data-bind="text: NUM_TICKET"></td>
+                                <td  data-bind="text: DESCRIPCION"></td>
+                                <td  data-bind="text: NUM_TICKET"></td>
                                 <td class="text-center" data-bind="text: ASUNTO"></td>
                                 <td class="text-center" data-bind="text: FECHA_GML"></td>
                                 <td class="text-center" data-bind="text: AREA"></td>
                                 <td class="text-center" data-bind="text: PRIORIDAD"></td>
                                 <td class="text-center" data-bind="text: ESTADO "></td>
+                                <td class="text-center" data-bind="text: NOMBRES_SOLICITANTE "></td>
+                                <td class="text-center" data-bind="text: DNI_USUARIO "></td>
+                                <td class="text-center" data-bind="text: NOMBRES_COLABORADOR "></td>
+                                <td class="text-center" data-bind="text: 71440893 "></td>
+                               
                             </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th><input class="form-control input-sm" type="text" placeholder="DESCRIPCION" data-bind="value: col1, valueUpdate:'afterkeydown'" /></th>
-                                <th><input class="form-control input-sm" type="text" placeholder="numero de ticket" data-bind="value: col2, valueUpdate:'afterkeydown'" /></th>
-                                <th><input class="form-control input-sm" type="text" placeholder="ASUNTO" data-bind="value: col3, valueUpdate:'afterkeydown'" /></th>
-                                <th>&nbsp;</th>
-                                <th><input class="form-control input-sm" type="number" min="1" placeholder="AREA" data-bind="value: col5, valueUpdate:'afterkeydown'" /></th>
-                                <th><input class="form-control input-sm" type="number" min="1" max="100" placeholder="PRIORIDAD" data-bind="value: col6, valueUpdate:'afterkeydown'" /></th>
-
-                            </tr>
-                        </tfoot>
+                        </tbody>                        
                     </table>
                 </div>
                 <div class="row" data-bind="if:count()>0">
@@ -137,7 +139,7 @@
 <script>
 
         $(document).ready(function () {
-            var vm = new myApp.LazyLoadingViewModel('@Url.Action("GetListSolicitudes", "Solicitud", new { Area = "Usuario" })');
+            var vm = new myApp.LazyLoadingViewModel('@Url.Action("GetListSolicitudes", "Solicitud", new { Area = "Administrador" })');
 
             vm.newSolicitud = function () {
                 var url = '@Url.Action("CrearEditar", "Solicitud", new { Area = "Mandante" })';
